@@ -133,10 +133,36 @@ const config: Config = {
           position: 'left',
         },
         {
-          type: 'docSidebar',
-          sidebarId: 'legal',
+          type: 'dropdown',
           html: '<i class="fas fa-gavel"></i> מדיניות',
           position: 'left',
+          items: [
+            {
+              type: 'docSidebar',
+              sidebarId: 'legaltegriai',
+              html: '<i class="fas fa-globe"></i> חברה',
+            },
+            {
+              type: 'docSidebar',
+              sidebarId: 'legalworkway',
+              html: '<i class="fas fa-tasks"></i> WorkWay',
+            },
+            {
+              type: 'docSidebar',
+              sidebarId: 'legalbranding',
+              html: '<i class="fas fa-palette"></i> מותגים',
+            },
+            {
+              type: 'docSidebar',
+              sidebarId: 'legaldiscord',
+              html: '<i class="fab fa-discord"></i> דיסקורד',
+            },
+            {
+              type: 'docSidebar',
+              sidebarId: 'legalfivem',
+              html: '<i class="fas fa-car"></i> פייבאם',
+            },
+            ],
         },
         {
           type: 'dropdown',
