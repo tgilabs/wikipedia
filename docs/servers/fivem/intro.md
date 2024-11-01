@@ -33,4 +33,4 @@ sidebar_position: 1
 
 נא לקחת בחשבון, כל פעולה בתוך הפלטפורמה "FiveM" לא משפיעה על חשבון ה- GTA Online שלכם כלל.
 
-על מנת להישאר מעודכנים לגבי כל מידע שותף על השרת, ניתן לעקוב אחר החדר ⁠🎉update🎉 [בשרת הדיסקורד](https://discord.gg/vse4DWBH5b),  שם ישלחו עדכונים לגבי השרת.
+על מנת להישאר מעודכנים ולקבל מידע שוטף על השרת, ניתן לעקוב אחר החדר ⁠🎉update🎉 [בשרת הדיסקורד](https://discord.gg/vse4DWBH5b), שם ישלחו עדכונים לגבי השרת.

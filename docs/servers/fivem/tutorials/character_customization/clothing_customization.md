@@ -98,7 +98,7 @@ title: עיצוב הבגדים👕
 
 ![כפתור הורדת האפליקצייה](../../img/charactercustomization/char45.png)
 
-החץ האדום מסמל את ג'קט שאנחנו מדברים עליו עכשיו
+החץ האדום מסמל את הג'קט שאנחנו מדברים עליו עכשיו
 
 החץ הכחול מדבר על החולצה שדיברנו עלייה לפני, שצריכה להשתנות ביחס לג'קט
 
