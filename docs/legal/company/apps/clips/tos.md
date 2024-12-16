@@ -1,6 +1,6 @@
 ---
-sidebar_position: 7
-title: קליפים!
+sidebar_position: 2
+title: תנאי שימוש
 ---
 
 # תנאים והגבלות לשימוש במערכת העלאת הקליפים
