@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'ויקי-ספייס',
-  tagline: 'חקירת הקוסמוס האינסופי של הידע',
+  title: 'וויקיפדיה',
+  tagline: 'הויקיפדיה הרשמית של TeGriAi | המקום הכי ישראלי ברשת | שרת הדיסקורד וקהילת הגיימינג של ישראל',
   favicon: 'img/logo.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -80,9 +80,9 @@ const config: Config = {
       respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'ויקי-ספייס',
+      title: 'וויקיפדיה',
       logo: {
-        alt: 'לוגו ויקי-ספייס',
+        alt: 'לוגו וויקיפדיה',
         src: 'img/logo.png',
       },
       items: [
