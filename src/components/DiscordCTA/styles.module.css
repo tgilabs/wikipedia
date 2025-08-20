@@ -132,17 +132,6 @@
   box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
 }
 
-.arrowIcon {
-  width: 16px;
-  height: 16px;
-  transition: transform 0.3s ease;
-  transform: scaleX(-1); /* Flip arrow for RTL */
-}
-
-.joinButton:hover .arrowIcon {
-  transform: translateX(-2px) scaleX(-1);
-}
-
 .backgroundDecoration {
   position: absolute;
   top: -50%;
