@@ -16,24 +16,23 @@
 .discordCTA {
   background: 
     linear-gradient(135deg, 
-      rgba(53, 195, 243, 0.8) 0%,
-      rgba(139, 159, 232, 0.8) 25%,
-      rgba(230, 129, 216, 0.8) 50%,
-      rgba(255, 169, 164, 0.8) 75%,
-      rgba(254, 210, 206, 0.8) 100%
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(88, 101, 242, 0.8) 30%,
+      rgba(0, 0, 0, 0.85) 100%
     ),
     url('/img/discord-background.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border-radius: 16px;
-  padding: 2rem;
+  border-radius: 20px;
+  padding: 2.5rem;
   margin: 2rem 0;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(53, 195, 243, 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
   transition: all 0.3s ease;
   direction: rtl;
+  border: 2px solid rgba(88, 101, 242, 0.3);
 }
 
 .discordCTA:hover {
@@ -44,23 +43,25 @@
 .content {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2rem;
   position: relative;
   z-index: 2;
 }
 
 .iconContainer {
   flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1rem;
+  background: rgba(88, 101, 242, 0.15);
+  border-radius: 16px;
+  padding: 1.25rem;
   backdrop-filter: blur(10px);
+  border: 1px solid rgba(88, 101, 242, 0.3);
 }
 
 .discordIcon {
-  width: 48px;
-  height: 48px;
-  fill: white;
+  width: 56px;
+  height: 56px;
+  fill: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
 
 .textContent {
@@ -68,50 +69,67 @@
   color: white;
   text-align: right;
   direction: rtl;
-  padding-right: 1rem;
+  padding-right: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 12px;
+  padding: 1.5rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .title {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.5rem;
-  font-weight: 700;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0 0 0.75rem 0;
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
   text-align: right;
   direction: rtl;
+  color: #ffffff;
+  line-height: 1.2;
 }
 
 .description {
-  margin: 0;
-  font-size: 1rem;
-  opacity: 0.9;
-  line-height: 1.5;
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  opacity: 0.95;
+  line-height: 1.4;
   text-align: right;
   direction: rtl;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 400;
 }
 
 .joinButton {
   background: var(--discord-blurple);
-  border: 2px solid var(--discord-blurple);
+  border: none;
   color: var(--discord-white);
-  padding: 0.75rem 1.5rem;
-  border-radius: 12px;
-  font-weight: 600;
-  font-size: 1rem;
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
   flex-shrink: 0;
-  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+  box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
 }
 
 .joinButton:hover {
   background: #4752C4;
-  border-color: #4752C4;
-  transform: translateX(-2px);
-  box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(88, 101, 242, 0.6);
+}
+
+.joinButton:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
 }
 
 .arrowIcon {
@@ -200,35 +218,49 @@
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .discordCTA {
-    padding: 1.5rem;
+    padding: 2rem 1.5rem;
   }
   
   .content {
     flex-direction: column;
     text-align: center;
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   .textContent {
     text-align: center;
-    padding-right: 0;
+    padding: 1.5rem 1rem;
     direction: rtl;
   }
   
   .title {
-    font-size: 1.25rem;
+    font-size: 1.6rem;
     text-align: center;
     direction: rtl;
+    margin-bottom: 0.5rem;
   }
   
   .description {
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: center;
     direction: rtl;
+    margin-bottom: 0;
   }
   
   .joinButton {
     align-self: center;
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+  }
+  
+  .iconContainer {
+    padding: 1rem;
+    order: -1;
+  }
+  
+  .discordIcon {
+    width: 48px;
+    height: 48px;
   }
   
   .compact {
@@ -259,21 +291,25 @@
 /* Small mobile screens */
 @media (max-width: 480px) {
   .discordCTA {
-    padding: 1rem;
+    padding: 1.5rem 1rem;
     margin: 1rem 0;
   }
   
   .title {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
   
   .description {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
   
   .joinButton {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .textContent {
+    padding: 1.25rem 0.75rem;
   }
 }
 
@@ -281,11 +317,9 @@
 html[data-theme='dark'] .discordCTA {
   background: 
     linear-gradient(135deg, 
-      rgba(53, 195, 243, 0.3) 0%,
-      rgba(139, 159, 232, 0.3) 25%,
-      rgba(230, 129, 216, 0.3) 50%,
-      rgba(255, 169, 164, 0.3) 75%,
-      rgba(254, 210, 206, 0.3) 100%
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(88, 101, 242, 0.7) 30%,
+      rgba(0, 0, 0, 0.9) 100%
     ),
     url('/img/discord-background.png');
   background-size: cover;
