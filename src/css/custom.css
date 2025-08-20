@@ -305,6 +305,23 @@ html[dir="rtl"] .navbar__logo {
   margin-left: 0;
 }
 
+/* Force RTL layout for navbar */
+html[dir="rtl"] .navbar {
+  direction: rtl;
+}
+
+html[dir="rtl"] .navbar__inner {
+  direction: rtl;
+}
+
+html[dir="rtl"] .navbar__item {
+  direction: rtl;
+}
+
+html[dir="rtl"] .navbar__link {
+  direction: rtl;
+}
+
 /* Discord Button Styling */
 .discord-button {
   background: linear-gradient(135deg, #5865f2, #4752c4) !important;

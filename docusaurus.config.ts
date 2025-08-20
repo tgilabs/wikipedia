@@ -32,6 +32,15 @@ const config: Config = {
   i18n: {
     defaultLocale: 'he',
     locales: ['he'],
+    localeConfigs: {
+      he: {
+        label: 'עברית',
+        direction: 'rtl',
+        htmlLang: 'he-IL',
+        calendar: 'gregory',
+        path: 'he',
+      },
+    },
   },
 
   plugins: [
@@ -83,30 +92,30 @@ const config: Config = {
       hideOnScroll: false,
       items: [
         {
-          to: '/docs/comunity/about',
+          href: 'https://discord.gg/tgi',
           position: 'left',
-          label: '👥 קהילה',
+          html: '<i class="fab fa-discord"></i> הצטרף לדיסקורד',
+          className: 'discord-button',
+        },
+        {
+          to: '/docs/comunity/about',
+          position: 'right',
+          html: '<i class="fas fa-users"></i> קהילה',
         },
         {
           to: '/docs/gaming/roblox',
-          position: 'left',
-          label: '🎮 שרתי משחק',
+          position: 'right',
+          html: '<i class="fas fa-gamepad"></i> שרתי משחק',
         },
         {
           to: '/docs/workway/intro',
-          position: 'left',
-          label: '💼 פרוייקטים',
+          position: 'right',
+          html: '<i class="fas fa-briefcase"></i> פרוייקטים',
         },
         {
           to: '/docs/legal/discord/rules',
-          position: 'left',
-          label: '⚖️ חוק ותקן',
-        },
-        {
-          href: 'https://discord.gg/tgi',
           position: 'right',
-          label: '💬 הצטרף לדיסקורד',
-          className: 'discord-button',
+          html: '<i class="fas fa-gavel"></i> חוק ותקן',
         },
       ],
     },
