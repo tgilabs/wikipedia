@@ -31,12 +31,7 @@ const config: Config = {
   // Hebrew RTL configuration
   i18n: {
     defaultLocale: 'he',
-    localeConfigs: {
-      he: {
-        direction: 'rtl',
-        // htmlLang: 'he-IL',
-      },
-    },
+    locales: ['he'],
   },
 
   plugins: [
@@ -85,20 +80,8 @@ const config: Config = {
         alt: 'לוגו וויקיפדיה',
         src: 'img/logo.png',
       },
-      items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'right',
-          label: 'חקור',
-        },
-        {to: '/blog', label: 'יומן קוסמי', position: 'right'},
-        {
-          href: 'https://github.com/facebook/docusaurus',
-          label: 'GitHub',
-          position: 'left',
-        },
-      ],
+      hideOnScroll: false,
+      items: [],
     },
     footer: {
       style: 'dark',
