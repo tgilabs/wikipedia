@@ -79,7 +79,7 @@ body {
 }
 
 /* Stars background only for non-docs pages (homepage and standalone pages) */
-body:not([class*="docs-doc-page"]):not([class*="docs-wrapper"]) {
+/* body:not([class*="docs-doc-page"]):not([class*="docs-wrapper"]) {
   background-image: 
     radial-gradient(2px 2px at 20px 30px, #fff, transparent),
     radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
@@ -89,7 +89,7 @@ body:not([class*="docs-doc-page"]):not([class*="docs-wrapper"]) {
   background-repeat: repeat;
   background-size: 200px 100px;
   animation: twinkle 4s infinite;
-}
+} */
 
 /* Typography Classes */
 .font-karantina {

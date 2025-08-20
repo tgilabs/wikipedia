@@ -88,7 +88,7 @@ const config: Config = {
           html: '<i class="fas fa-users"></i> קהילה',
         },
         {
-          page: 'intro',
+          to: 'intro',
           position: 'left',
           html: '<i class="fas fa-gamepad"></i> שרתי משחק',
         },
