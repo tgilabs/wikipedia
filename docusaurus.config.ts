@@ -83,28 +83,28 @@ const config: Config = {
       items: [
         {
           to: '/docs/comunity/about',
-          position: 'right',
+          position: 'left',
           html: '<i class="fas fa-users"></i> קהילה',
         },
         {
           to: '/docs/gaming/roblox',
-          position: 'right',
+          position: 'left',
           html: '<i class="fas fa-gamepad"></i> שרתי משחק',
         },
         {
           to: '/docs/workway/intro',
-          position: 'right',
+          position: 'left',
           html: '<i class="fas fa-briefcase"></i> פרוייקטים',
         },
         {
           to: '/docs/legal/discord/rules',
-          position: 'right',
+          position: 'left',
           html: '<i class="fas fa-gavel"></i> חוק ותקן',
         },
         {
           href: 'https://discord.gg/tgi',
-          position: 'left',
-          html: '<i class="fab fa-discord"></i> הצטרף לדיסקורד',
+          position: 'right',
+          html: '<i class="fab fa-discord"></i> בואו לדיסקורד',
           className: 'discord-button',
         },
       ],
