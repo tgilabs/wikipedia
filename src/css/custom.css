@@ -297,7 +297,8 @@ html[dir="rtl"] .markdown {
 /* RTL-specific navbar adjustments */
 html[dir="rtl"] .navbar__brand {
   margin-right: 0;
-  margin-left: 1rem;
+  margin-left: auto;
+  order: 3;
 }
 
 html[dir="rtl"] .navbar__logo {
@@ -312,6 +313,8 @@ html[dir="rtl"] .navbar {
 
 html[dir="rtl"] .navbar__inner {
   direction: rtl;
+  display: flex;
+  justify-content: space-between;
 }
 
 html[dir="rtl"] .navbar__item {
@@ -320,6 +323,23 @@ html[dir="rtl"] .navbar__item {
 
 html[dir="rtl"] .navbar__link {
   direction: rtl;
+}
+
+/* Additional RTL adjustments for proper positioning */
+html[dir="rtl"] .navbar__items {
+  flex-direction: row;
+}
+
+html[dir="rtl"] .navbar__items--left {
+  order: 1;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+html[dir="rtl"] .navbar__items--right {
+  order: 2;
+  flex: 1;
+  justify-content: center;
 }
 
 /* Discord Button Styling */
@@ -346,6 +366,13 @@ html[dir="rtl"] .navbar__link {
   flex: 1;
   justify-content: center;
   margin-right: 0 !important;
+  display: flex;
+  align-items: center;
+}
+
+/* Center navigation items container */
+.navbar-center-item {
+  margin: 0 0.5rem;
 }
 
 /* FontAwesome icon styling in navbar */
@@ -358,6 +385,97 @@ html[dir="rtl"] .navbar__link {
 html[dir="rtl"] .navbar__item .navbar__link i {
   margin-left: 0.5rem;
   margin-right: 0;
+}
+
+/* RTL navbar layout adjustments */
+html[dir="rtl"] .navbar__items--right {
+  justify-content: center;
+  flex: 1;
+}
+
+html[dir="rtl"] .navbar__items--left {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+html[dir="rtl"] .navbar__brand {
+  margin-right: 0;
+  margin-left: auto;
+  order: 3;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 996px) {
+  .navbar__items--right {
+    display: none;
+  }
+  
+  .navbar__toggle {
+    display: block;
+  }
+  
+  .navbar-sidebar {
+    direction: rtl;
+  }
+  
+  .navbar-sidebar .navbar__items {
+    flex-direction: column;
+  }
+  
+  .navbar-sidebar .navbar__item {
+    width: 100%;
+    text-align: right;
+    padding: 0.5rem 1rem;
+  }
+  
+  .discord-button {
+    margin: 0.5rem 1rem;
+    display: block;
+    text-align: center;
+  }
+  
+  html[dir="rtl"] .navbar__brand {
+    margin-left: 0;
+    order: 1;
+  }
+  
+  /* Mobile menu RTL adjustments */
+  html[dir="rtl"] .navbar-sidebar__back {
+    text-align: right;
+  }
+  
+  html[dir="rtl"] .navbar-sidebar__brand {
+    text-align: right;
+  }
+  
+  html[dir="rtl"] .navbar-sidebar__items {
+    text-align: right;
+  }
+  
+  /* Mobile hamburger menu positioning */
+  html[dir="rtl"] .navbar__toggle {
+    order: 1;
+    margin-left: 0;
+    margin-right: auto;
+  }
+  
+  html[dir="rtl"] .navbar__brand {
+    order: 2;
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+}
+
+/* Ensure proper spacing and layout */
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+html[dir="rtl"] .navbar__inner {
+  flex-direction: row;
 }
 
 .discord-button:active {
