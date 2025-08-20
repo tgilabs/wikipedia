@@ -81,7 +81,34 @@ const config: Config = {
         src: 'img/logo.png',
       },
       hideOnScroll: false,
-      items: [],
+      items: [
+        {
+          to: '/docs/comunity/about',
+          position: 'left',
+          label: '👥 קהילה',
+        },
+        {
+          to: '/docs/gaming/roblox',
+          position: 'left',
+          label: '🎮 שרתי משחק',
+        },
+        {
+          to: '/docs/workway/intro',
+          position: 'left',
+          label: '💼 פרוייקטים',
+        },
+        {
+          to: '/docs/legal/discord/rules',
+          position: 'left',
+          label: '⚖️ חוק ותקן',
+        },
+        {
+          href: 'https://discord.gg/tgi',
+          position: 'right',
+          label: '💬 הצטרף לדיסקורד',
+          className: 'discord-button',
+        },
+      ],
     },
     footer: {
       style: 'dark',

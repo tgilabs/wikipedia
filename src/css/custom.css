@@ -304,3 +304,47 @@ html[dir="rtl"] .navbar__logo {
   margin-right: 0.5rem;
   margin-left: 0;
 }
+
+/* Discord Button Styling */
+.discord-button {
+  background: linear-gradient(135deg, #5865f2, #4752c4) !important;
+  color: white !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  border: none !important;
+}
+
+.discord-button:hover {
+  background: linear-gradient(135deg, #4752c4, #3c47a0) !important;
+  color: white !important;
+  text-decoration: none !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4) !important;
+}
+
+.discord-button:active {
+  transform: translateY(0) !important;
+}
+
+/* Make navbar items look better */
+.navbar__item {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.navbar__link:hover {
+  color: var(--ifm-color-primary) !important;
+}
+
+/* Responsive navbar adjustments */
+@media (max-width: 996px) {
+  .discord-button {
+    margin-top: 0.5rem;
+    display: block;
+    text-align: center;
+  }
+}
+
