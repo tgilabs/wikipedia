@@ -55,26 +55,31 @@
   padding: 1.25rem;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(88, 101, 242, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .discordIcon {
-  width: 56px;
-  height: 56px;
-  fill: rgba(255, 255, 255, 0.9);
+  font-size: 56px;
+  color: rgba(255, 255, 255, 0.9);
   filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
 }
 
 .textContent {
   flex: 1;
-  color: white;
-  text-align: right;
+  color: #ffffff !important;
+  text-align: center;
   direction: rtl;
-  padding-right: 1.5rem;
+  padding: 1.5rem;
   background: rgba(0, 0, 0, 0.4);
   border-radius: 12px;
-  padding: 1.5rem;
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
@@ -82,20 +87,20 @@
   font-size: 2rem;
   font-weight: 800;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
-  text-align: right;
+  text-align: center;
   direction: rtl;
-  color: #ffffff;
+  color: #ffffff !important;
   line-height: 1.2;
 }
 
 .description {
   margin: 0 0 1rem 0;
   font-size: 1.1rem;
-  opacity: 0.95;
+  opacity: 1;
   line-height: 1.4;
-  text-align: right;
+  text-align: center;
   direction: rtl;
-  color: rgba(255, 255, 255, 0.9);
+  color: #ffffff;
   font-weight: 400;
 }
 
@@ -155,20 +160,26 @@
 
 .compact .iconContainer {
   padding: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .compact .discordIcon {
-  width: 32px;
-  height: 32px;
+  font-size: 32px;
 }
 
 .compact .title {
   font-size: 1.25rem;
   margin-bottom: 0.25rem;
+  color: #ffffff;
+  text-align: center;
 }
 
 .compact .description {
   font-size: 0.9rem;
+  color: #ffffff;
+  text-align: center;
 }
 
 .compact .joinButton {
@@ -192,6 +203,10 @@
 .banner .textContent {
   order: 2;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner .joinButton {
@@ -202,6 +217,9 @@
 .banner .iconContainer {
   order: 1;
   align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Mobile Responsiveness */
@@ -220,6 +238,10 @@
     text-align: center;
     padding: 1.5rem 1rem;
     direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   .title {
@@ -227,6 +249,7 @@
     text-align: center;
     direction: rtl;
     margin-bottom: 0.5rem;
+    color: #ffffff;
   }
   
   .description {
@@ -234,6 +257,7 @@
     text-align: center;
     direction: rtl;
     margin-bottom: 0;
+    color: #ffffff;
   }
   
   .joinButton {
@@ -245,11 +269,13 @@
   .iconContainer {
     padding: 1rem;
     order: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   .discordIcon {
-    width: 48px;
-    height: 48px;
+    font-size: 48px;
   }
   
   .compact {
@@ -264,16 +290,22 @@
   .compact .textContent {
     text-align: center;
     direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   
   .compact .title {
     text-align: center;
     direction: rtl;
+    color: #ffffff;
   }
   
   .compact .description {
     text-align: center;
     direction: rtl;
+    color: #ffffff;
   }
 }
 
