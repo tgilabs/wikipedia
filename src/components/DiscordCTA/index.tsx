@@ -10,9 +10,9 @@ interface DiscordCTAProps {
 }
 
 const DiscordCTA: React.FC<DiscordCTAProps> = ({
-  title = "הצטרף לקהילת הדיסקורד שלנו",
-  description = "חבר אלינו בדיסקורד לדיונים, עדכונים ותמיכה מהקהילה",
-  buttonText = "הצטרף לדיסקורד",
+  title = "בואו למקום הכי ישראלי ברשת",
+  description = "בואו לקהילת הדיסקורד הגדולה ביותר במדינת ישראל",
+  buttonText = "בואו לדיסקורד",
   inviteUrl = "https://discord.gg/tgi",
   variant = 'default'
 }) => {
