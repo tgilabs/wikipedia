@@ -90,14 +90,14 @@ const config: Config = {
         {
           type: 'docSidebar',
           sidebarId: 'tutorialSidebar',
-          position: 'left',
+          position: 'right',
           label: 'חקור',
         },
-        {to: '/blog', label: 'יומן קוסמי', position: 'left'},
+        {to: '/blog', label: 'יומן קוסמי', position: 'right'},
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
-          position: 'right',
+          position: 'left',
         },
       ],
     },
