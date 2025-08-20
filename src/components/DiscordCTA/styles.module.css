@@ -1,3 +1,18 @@
+/* Discord Brand Colors */
+:root {
+  --discord-blurple: #5865F2;
+  --discord-green: #57F287;
+  --discord-yellow: #FEE75C;
+  --discord-fuchsia: #EB459E;
+  --discord-red: #ED4245;
+  --discord-white: #FFFFFF;
+  --discord-black: #000000;
+  --discord-dark-not-black: #2C2F33;
+  --discord-dark: #23272A;
+  --discord-light-grey: #99AAB5;
+  --discord-dark-grey: #2C2F33;
+}
+
 .discordCTA {
   background: linear-gradient(135deg, 
     var(--color-gradient-start) 0%,
@@ -13,6 +28,7 @@
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(53, 195, 243, 0.3);
   transition: all 0.3s ease;
+  direction: rtl;
 }
 
 .discordCTA:hover {
@@ -45,6 +61,7 @@
 .textContent {
   flex: 1;
   color: white;
+  text-align: right;
 }
 
 .title {
@@ -52,6 +69,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: right;
 }
 
 .description {
@@ -59,12 +77,13 @@
   font-size: 1rem;
   opacity: 0.9;
   line-height: 1.5;
+  text-align: right;
 }
 
 .joinButton {
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  background: var(--discord-blurple);
+  border: 2px solid var(--discord-blurple);
+  color: var(--discord-white);
   padding: 0.75rem 1.5rem;
   border-radius: 12px;
   font-weight: 600;
@@ -76,32 +95,35 @@
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
 }
 
 .joinButton:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateX(2px);
+  background: #4752C4;
+  border-color: #4752C4;
+  transform: translateX(-2px);
+  box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
 }
 
 .arrowIcon {
   width: 16px;
   height: 16px;
   transition: transform 0.3s ease;
+  transform: scaleX(-1); /* Flip arrow for RTL */
 }
 
 .joinButton:hover .arrowIcon {
-  transform: translateX(2px);
+  transform: translateX(-2px) scaleX(-1);
 }
 
 .backgroundDecoration {
   position: absolute;
   top: -50%;
-  right: -20%;
+  left: -20%; /* Changed from right to left for RTL */
   width: 100%;
   height: 200%;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
-  transform: rotate(45deg);
+  transform: rotate(-45deg); /* Changed rotation for RTL */
   pointer-events: none;
 }
 
@@ -153,10 +175,12 @@
 
 .banner .textContent {
   order: 2;
+  text-align: center;
 }
 
 .banner .joinButton {
   order: 3;
+  align-self: center;
 }
 
 .banner .iconContainer {
@@ -176,12 +200,18 @@
     gap: 1rem;
   }
   
+  .textContent {
+    text-align: center;
+  }
+  
   .title {
     font-size: 1.25rem;
+    text-align: center;
   }
   
   .description {
     font-size: 0.9rem;
+    text-align: center;
   }
   
   .joinButton {
@@ -193,26 +223,42 @@
   }
   
   .compact .content {
-    flex-direction: row;
-    text-align: right;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .compact .textContent {
+    text-align: center;
+  }
+  
+  .compact .title {
+    text-align: center;
+  }
+  
+  .compact .description {
+    text-align: center;
   }
 }
 
-/* RTL Support for Hebrew */
-[dir="rtl"] .content {
-  flex-direction: row-reverse;
-}
-
-[dir="rtl"] .textContent {
-  text-align: right;
-}
-
-[dir="rtl"] .joinButton:hover {
-  transform: translateX(-2px);
-}
-
-[dir="rtl"] .joinButton:hover .arrowIcon {
-  transform: translateX(-2px) scaleX(-1);
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .discordCTA {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .title {
+    font-size: 1.1rem;
+  }
+  
+  .description {
+    font-size: 0.85rem;
+  }
+  
+  .joinButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
 }
 
 /* Dark theme adjustments */
@@ -233,11 +279,13 @@ html[data-theme='dark'] .iconContainer {
 }
 
 html[data-theme='dark'] .joinButton {
-  background: rgba(53, 195, 243, 0.2);
-  border-color: rgba(53, 195, 243, 0.4);
+  background: var(--discord-blurple);
+  border-color: var(--discord-blurple);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
 }
 
 html[data-theme='dark'] .joinButton:hover {
-  background: rgba(53, 195, 243, 0.3);
-  border-color: rgba(53, 195, 243, 0.6);
+  background: #4752C4;
+  border-color: #4752C4;
+  box-shadow: 0 6px 20px rgba(88, 101, 242, 0.5);
 }
