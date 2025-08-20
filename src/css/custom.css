@@ -335,11 +335,29 @@ html[dir="rtl"] .navbar__link {
 }
 
 .discord-button:hover {
-  background: linear-gradient(135deg, #4752c4, #3c47a0) !important;
-  color: white !important;
-  text-decoration: none !important;
+  background: linear-gradient(135deg, #4752c4, #3c42a3) !important;
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4) !important;
+  color: white !important;
+}
+
+/* Center navbar items */
+.navbar__items--right {
+  flex: 1;
+  justify-content: center;
+  margin-right: 0 !important;
+}
+
+/* FontAwesome icon styling in navbar */
+.navbar__item .navbar__link i {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+}
+
+/* RTL specific adjustments for icons */
+html[dir="rtl"] .navbar__item .navbar__link i {
+  margin-left: 0.5rem;
+  margin-right: 0;
 }
 
 .discord-button:active {

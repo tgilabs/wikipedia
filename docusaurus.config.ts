@@ -74,6 +74,10 @@ const config: Config = {
     ],
   ],
 
+  stylesheets: [
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+  ],
+
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
