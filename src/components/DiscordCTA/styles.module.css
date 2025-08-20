@@ -14,13 +14,7 @@
 }
 
 .discordCTA {
-  background: 
-    linear-gradient(135deg, 
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(88, 101, 242, 0.8) 30%,
-      rgba(0, 0, 0, 0.85) 100%
-    ),
-    url('/img/discord-background.png');
+  /* Background will be set via inline style for dynamic image support */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -336,16 +330,7 @@
 
 /* Dark theme adjustments */
 html[data-theme='dark'] .discordCTA {
-  background: 
-    linear-gradient(135deg, 
-      rgba(0, 0, 0, 0.9) 0%,
-      rgba(88, 101, 242, 0.7) 30%,
-      rgba(0, 0, 0, 0.9) 100%
-    ),
-    url('/img/discord-background.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* Inline styles will override, but provide fallback */
   border: 1px solid rgba(53, 195, 243, 0.3);
 }
 

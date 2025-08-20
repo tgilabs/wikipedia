@@ -7,6 +7,7 @@ interface DiscordCTAProps {
   buttonText?: string;
   inviteUrl?: string;
   variant?: 'default' | 'compact' | 'banner';
+  image?: string;
 }
 
 const DiscordCTA: React.FC<DiscordCTAProps> = ({
@@ -14,14 +15,27 @@ const DiscordCTA: React.FC<DiscordCTAProps> = ({
   description = "בואו לקהילת הדיסקורד הגדולה ביותר במדינת ישראל",
   buttonText = "בואו לדיסקורד",
   inviteUrl = "https://discord.gg/tgi",
-  variant = 'default'
+  variant = 'default',
+  image = "/img/discord-background.png"
 }) => {
   const handleJoinClick = () => {
     window.open(inviteUrl, '_blank', 'noopener,noreferrer');
   };
 
+  const containerStyle = {
+    backgroundImage: `linear-gradient(135deg, 
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(88, 101, 242, 0.8) 30%,
+      rgba(0, 0, 0, 0.85) 100%
+    ), url('${image}')`
+  };
+
   return (
-    <div className={`${styles.discordCTA} ${styles[variant]}`} dir="rtl">
+    <div 
+      className={`${styles.discordCTA} ${styles[variant]}`} 
+      dir="rtl"
+      style={containerStyle}
+    >
       <div className={styles.content}>
         <button 
           className={styles.joinButton}

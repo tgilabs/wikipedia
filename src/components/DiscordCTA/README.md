@@ -37,6 +37,7 @@ import DiscordCTA from '@site/src/components/DiscordCTA';
   description="המקום הכי ישראלי ברשת - קהילת גיימינג תוססת עם אירועים, חברים למשחק ותמיכה קהילתית"
   buttonText="הצטרפו עכשיו"
   inviteUrl="https://discord.gg/your-invite-link"
+  image="/img/roblox-discord-background.png"
 />
 ```
 
@@ -70,6 +71,7 @@ import DiscordCTA from '@site/src/components/DiscordCTA';
 | `buttonText` | `string` | `"הצטרף לדיסקורד"` | Text for the CTA button |
 | `inviteUrl` | `string` | `"https://discord.gg/your-invite-link"` | Discord invite URL |
 | `variant` | `'default' \| 'compact' \| 'banner'` | `'default'` | Component layout variant |
+| `image` | `string` | `"/img/discord-background.png"` | Background image URL |
 
 ## Variants
 
