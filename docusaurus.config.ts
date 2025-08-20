@@ -7,7 +7,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 const config: Config = {
   title: 'ויקי-ספייס',
   tagline: 'חקירת הקוסמוס האינסופי של הידע',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/logo.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -15,15 +15,15 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://wiki.tegriai.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'tgilabs', // Usually your GitHub org/user name.
+  projectName: 'wikipedia', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -31,11 +31,10 @@ const config: Config = {
   // Hebrew RTL configuration
   i18n: {
     defaultLocale: 'he',
-    locales: ['he'],
     localeConfigs: {
       he: {
         direction: 'rtl',
-        htmlLang: 'he-IL',
+        // htmlLang: 'he-IL',
       },
     },
   },
@@ -84,7 +83,7 @@ const config: Config = {
       title: 'ויקי-ספייס',
       logo: {
         alt: 'לוגו ויקי-ספייס',
-        src: 'img/logo.svg',
+        src: 'img/logo.png',
       },
       items: [
         {
