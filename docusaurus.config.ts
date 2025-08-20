@@ -43,20 +43,6 @@ const config: Config = {
     },
   },
 
-  plugins: [
-    async function tailwindPlugin(context, options) {
-      return {
-        name: "docusaurus-tailwindcss",
-        configurePostCss(postcssOptions) {
-          // Appends TailwindCSS and AutoPrefixer.
-          postcssOptions.plugins.push(require("@tailwindcss/postcss"));
-          postcssOptions.plugins.push(require("autoprefixer"));
-          return postcssOptions;
-        },
-      };
-    },
-  ],
-
   presets: [
     [
       'classic',
@@ -96,81 +82,40 @@ const config: Config = {
       hideOnScroll: false,
       items: [
         {
-          href: 'https://discord.gg/tgi',
-          position: 'left',
-          html: '<i class="fab fa-discord"></i> הצטרף לדיסקורד',
-          className: 'discord-button',
-        },
-        {
           to: '/docs/comunity/about',
           position: 'right',
           html: '<i class="fas fa-users"></i> קהילה',
-          className: 'navbar-center-item',
         },
         {
           to: '/docs/gaming/roblox',
           position: 'right',
           html: '<i class="fas fa-gamepad"></i> שרתי משחק',
-          className: 'navbar-center-item',
         },
         {
           to: '/docs/workway/intro',
           position: 'right',
           html: '<i class="fas fa-briefcase"></i> פרוייקטים',
-          className: 'navbar-center-item',
         },
         {
           to: '/docs/legal/discord/rules',
           position: 'right',
           html: '<i class="fas fa-gavel"></i> חוק ותקן',
-          className: 'navbar-center-item',
+        },
+        {
+          href: 'https://discord.gg/tgi',
+          position: 'left',
+          html: '<i class="fab fa-discord"></i> הצטרף לדיסקורד',
+          className: 'discord-button',
         },
       ],
     },
     footer: {
       style: 'dark',
       links: [
-        {
-          title: 'ניווט',
-          items: [
-            {
-              label: 'חקור מסמכים',
-              to: '/docs/intro',
-            },
-          ],
-        },
-        {
-          title: 'קהילה',
-          items: [
-            {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-            },
-            {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
-            },
-          ],
-        },
-        {
-          title: 'עוד',
-          items: [
-            {
-              label: 'יומן קוסמי',
-              to: '/blog',
-            },
-            {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
-            },
-          ],
-        },
       ],
-      copyright: `זכויות יוצרים © ${new Date().getFullYear()} ויקי-ספייס. חוקרים את הקוסמוס של הידע.`,
+      copyright: ` ${new Date().getFullYear()} TeGriAI © כל הזכויות שמורות . 
+      <br> מופעל על ידי <a href="https://www.tegriai.com/lab">מעבדות טגי</a> 
+      <br> הפרוייקט הזה הוא פרוייקט בקוד פתוח ברשיון <a href="https://github.com/tgilabs/public-docs?tab=CC-BY-4.0-1-ov-file">CC-BY-4.0 license</a>`,
     },
     prism: {
       theme: prismThemes.dracula,
