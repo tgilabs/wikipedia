@@ -2,5 +2,5 @@
 title: המקום הכי ישראלי ברשת | TeGriAi | מידע על שרתי הקהילה
 sidebar_label: שרתי הקהילה
 description: שרתי הדיסקורד של קהילת TeGriAi, קהילת הדיסקורד הגדולה ביותר במדינת ישראל! בואו לשחק במקום הכי ישראלי ברשת
-sidebar_position: 1
+sidebar_position: 2
 ---
