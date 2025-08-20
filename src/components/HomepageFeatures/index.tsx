@@ -11,32 +11,32 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: '🌌 ידע קוסמי',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        נווט דרך המרחב העצום של המידע כמו חקירה של גלקסיות רחוקות.
+        כל פיסת ידע היא כוכב המחכה להתגלות.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: '🚀 התמקדות בגילוי',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        שגר למסע התיעוד שלך בזמן שאנחנו מטפלים בקוסמוס הטכני.
+        התמקד ביצירת תוכן מעולה בתיקיית <code>docs</code>.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: '⭐ מופעל על ידי React',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        הרחב את תחנת החלל שלך עם רכיבי React. בנה חוויה מאוחדת
+        בכל הגלקסיה של התיעוד שלך.
       </>
     ),
   },
@@ -49,8 +49,8 @@ function Feature({title, Svg, description}: FeatureItem) {
         <Svg className={styles.featureSvg} role="img" />
       </div>
       <div className="text--center padding-horiz--md">
-        <Heading as="h3" className="text-2xl font-bold text-blue-600 mb-4">{title}</Heading>
-        <p className="text-gray-700 leading-relaxed">{description}</p>
+        <Heading as="h3" className="font-karantina text-gradient">{title}</Heading>
+        <p className="font-assistant">{description}</p>
       </div>
     </div>
   );

@@ -2,46 +2,46 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# מבוא למדריך
 
-Let's discover **Docusaurus in less than 5 minutes**.
+בואו נגלה את **Docusaurus בפחות מ-5 דקות**.
 
-## Getting Started
+## תחילת העבודה
 
-Get started by **creating a new site**.
+התחל על ידי **יצירת אתר חדש**.
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+או **נסה את Docusaurus מיד** עם **[docusaurus.new](https://docusaurus.new)**.
 
-### What you'll need
+### מה תצטרך
 
-- [Node.js](https://nodejs.org/en/download/) version 18.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+- [Node.js](https://nodejs.org/en/download/) גרסה 18.0 או מעלה:
+  - בעת התקנת Node.js, מומלץ לסמן את כל התיבות הקשורות לתלותיים.
 
-## Generate a new site
+## צור אתר חדש
 
-Generate a new Docusaurus site using the **classic template**.
+צור אתר Docusaurus חדש בעזרת **התבנית הקלאסית**.
 
-The classic template will automatically be added to your project after you run the command:
+התבנית הקלאסית תתווסף אוטומטית לפרויקט שלך לאחר הרצת הפקודה:
 
 ```bash
 npm init docusaurus@latest my-website classic
 ```
 
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
+ניתן להקליד פקודה זו ב-Command Prompt, Powershell, Terminal, או כל טרמינל משולב אחר של עורך הקוד שלך.
 
-The command also installs all necessary dependencies you need to run Docusaurus.
+הפקודה גם מתקינה את כל התלותיים הנחוצים להרצת Docusaurus.
 
-## Start your site
+## הפעל את האתר שלך
 
-Run the development server:
+הרץ את שרת הפיתוח:
 
 ```bash
 cd my-website
 npm run start
 ```
 
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
+הפקודה `cd` משנה את התיקייה שעליה אתה עובד. כדי לעבוד עם האתר החדש שיצרת, תצטרך לנווט אליו בטרמינל.
 
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
+הפקודה `npm run start` בונה את האתר שלך מקומית ומגישה אותו דרך שרת פיתוח, מוכן לצפייה בכתובת http://localhost:3000/.
 
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+פתח את `docs/intro.md` (העמוד הזה) וערוך כמה שורות: האתר **נטען מחדש אוטומטית** ומציג את השינויים שלך.
