@@ -82,12 +82,13 @@ const config: Config = {
       hideOnScroll: false,
       items: [
         {
-          to: '/docs/comunity/about',
+          type: 'docSidebar',
+          sidebarId: 'community',
           position: 'left',
           html: '<i class="fas fa-users"></i> קהילה',
         },
         {
-          to: '/docs/gaming/roblox',
+          page: 'intro',
           position: 'left',
           html: '<i class="fas fa-gamepad"></i> שרתי משחק',
         },
@@ -97,7 +98,8 @@ const config: Config = {
           html: '<i class="fas fa-briefcase"></i> פרוייקטים',
         },
         {
-          to: '/docs/legal/discord/rules',
+          type: 'docSidebar',
+          sidebarId: 'legal',
           position: 'left',
           html: '<i class="fas fa-gavel"></i> חוק ותקן',
         },
