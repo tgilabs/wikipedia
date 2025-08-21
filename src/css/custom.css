@@ -112,6 +112,22 @@ h1, h2, h3, h4, h5, h6,
   text-shadow: 0 0 20px rgba(53, 195, 243, 0.3);
 }
 
+/* White title utility class - use when you want white text instead of gradient */
+.title-white,
+h1.title-white,
+h2.title-white,
+h3.title-white,
+h4.title-white,
+h5.title-white,
+h6.title-white {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-clip: unset !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
+}
+
 /* Hero Section */
 .hero {
   background: linear-gradient(135deg, rgba(53, 195, 243, 0.1) 0%, rgba(139, 159, 232, 0.1) 25%, rgba(230, 129, 216, 0.1) 50%, rgba(255, 169, 164, 0.1) 75%, rgba(254, 210, 206, 0.1) 100%);
