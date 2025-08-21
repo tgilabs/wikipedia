@@ -13,28 +13,28 @@ const NavigationCards = [
     title: 'קהילה',
     icon: 'fas fa-users',
     description: 'הצטרפו לקהילת הגיימינג הגדולה והכי ישראלית ברשת',
-    link: '/docs/community/about',
+    link: '/section/community/welcome',
     gradient: 'from-blue-500 to-purple-600'
   },
   {
     title: 'שרתי משחק',
     icon: 'fas fa-gamepad',
     description: 'גלו את שרתי המשחקים שלנו ברובלוקס ועוד',
-    link: '/docs/gaming/roblox',
+    link: '/section/gaming/roblox',
     gradient: 'from-purple-500 to-pink-600'
   },
   {
     title: 'פרוייקטים',
     icon: 'fas fa-briefcase',
     description: 'למדו על הפרוייקטים הטכנולוגיים של TeGriAi',
-    link: '/docs/platforms/workway/intro',
+    link: '/section/platforms/workway/intro',
     gradient: 'from-pink-500 to-orange-600'
   },
   {
     title: 'חוק ותקן',
     icon: 'fas fa-gavel',
     description: 'כללי הקהילה, מדיניות פרטיות וכל המידע החוקי',
-    link: '/docs/legal/landing',
+    link: '/section/legal/landing',
     gradient: 'from-orange-500 to-yellow-600'
   }
 ];
