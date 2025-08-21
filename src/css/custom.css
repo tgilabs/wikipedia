@@ -1,88 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Karantina:wght@300;400;700&family=Assistant:wght@200;300;400;500;600;700;800&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 /**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
+ * Custom Space-themed styling for Docusaurus
+ * Dark mode always with space theme, stars, and cosmic branding
  */
 
-
- @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap');
- @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&display=swap');
- @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css');
- @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/brands.min.css');
-
-
-/* Use Rubik for elements with the class "title" */
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  font-family: Rubik, sans-serif;
-}
-
-
-body, p {
-  font-family: Heebo, sans-serif;
-}
-
-h1 {
-  font-size: 2.5rem;
-}
-h2 {
-  font-size: 2rem;
-}
-h3 {
-  font-size: 1.75rem;
-}
-h4 {
-  font-size: 1.5rem;
-}
-h5 {
-  font-size: 1.25rem;
-}
-h6 {
-  font-size: 1rem;
-}
-
-
-
+/* CSS Custom Properties for Space Theme */
 :root {
-  --ifm-color-primary: #1782f4;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #007bff;
-  --ifm-color-primary-lightest: #3cad6e;
-  --ifm-color-primary-blue: #0069d9;
-  --ifm-color-container-background: #f8f9fa;
-  --ifm-color-container-border: #d8d8d8;
-  --background: #E3E3E3;
+  /* Gradient System */
+  --color-gradient-start: #35c3f3;
+  --color-gradient-mid-1: #8b9fe8;
+  --color-gradient-mid-2: #e681d8;
+  --color-gradient-mid-3: #ffa9a4;
+  --color-gradient-end: #fed2ce;
+  
+  /* Core Colors */
+  --color-dark-bg: #0a0a0a;
+  --color-glow-blue: #35c3f3;
+  --color-glow-purple: #8b9fe8;
+  --color-glow-pink: #e681d8;
+  
+  /* Typography */
+  --font-karantina: 'Karantina', cursive, fantasy;
+  --font-body: 'Rubik', 'Heebo', 'Assistant', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  
+  /* Docusaurus Primary Colors - Space Theme */
+  --ifm-color-primary: #35c3f3;
+  --ifm-color-primary-dark: #1eb8ef;
+  --ifm-color-primary-darker: #16b0ea;
+  --ifm-color-primary-darkest: #129bc4;
+  --ifm-color-primary-light: #4ccef7;
+  --ifm-color-primary-lighter: #5dd2f8;
+  --ifm-color-primary-lightest: #7fdbfa;
+  
+  /* Background and Text */
+  --ifm-background-color: var(--color-dark-bg);
+  --ifm-background-surface-color: #111111;
+  --ifm-color-content: #ffffff;
+  --ifm-color-content-secondary: rgba(255, 255, 255, 0.8);
+  
+  /* Code and Syntax Highlighting */
   --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  --maintext: #000000;
-  --shadow-box-headerimage: rgba(0, 0, 0, 0.475);
-  --box-shadow-containers: rgba(0, 0, 0, 0.308);
-  --border-color-secondary: black;
+  --docusaurus-highlighted-code-line-bg: rgba(53, 195, 243, 0.1);
+  --ifm-code-background: rgba(17, 17, 17, 0.8);
+  
 
-
-  --border-color-secondary: black;
-
+  
+  /* Footer */
+  --ifm-footer-background-color: rgba(10, 10, 10, 0.98);
+  
+  /* Links */
+  --ifm-link-color: var(--color-glow-blue);
+  --ifm-link-hover-color: var(--color-glow-purple);
 }
 
+/* Force dark theme always */
 [data-theme='dark'] {
-  --ifm-color-primary: #3697ff;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #3697ff;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
-  --ifm-color-primary-blue: #0069d9;
-  --ifm-color-container-background: #2d2d2d;
-  --background: #201f1f; 
-  --ifm-color-container-border: #242424;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  --maintext: #ffffff;
-  --shadow-box-headerimage: rgba(255, 255, 255, 0.306);
-  --box-shadow-containers: rgba(0, 110, 255, 0.253);
-  --border-color-secondary: white;
+  --ifm-color-primary: #35c3f3;
+  --ifm-color-primary-dark: #1eb8ef;
+  --ifm-color-primary-darker: #16b0ea;
+  --ifm-color-primary-darkest: #129bc4;
+  --ifm-color-primary-light: #4ccef7;
+  --ifm-color-primary-lighter: #5dd2f8;
+  --ifm-color-primary-lightest: #7fdbfa;
+  --docusaurus-highlighted-code-line-bg: rgba(53, 195, 243, 0.2);
+}
 
+/* Global Space Background */
+html {
+  background: var(--color-dark-bg);
+}
 
+body {
+  background: var(--color-dark-bg);
+  font-family: var(--font-body);
+  color: var(--ifm-color-content);
+}
+
+/* Stars background only for non-docs pages (homepage and standalone pages) */
+/* body:not([class*="docs-doc-page"]):not([class*="docs-wrapper"]) {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #fff, transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: twinkle 4s infinite;
+} */
+
+/* Typography Classes */
+.font-karantina {
+  font-family: var(--font-karantina) !important;
+}
+
+.font-assistant {
+  font-family: var(--font-body) !important;
+}
+
+/* Headers use Karantina font */
+h1, h2, h3, h4, h5, h6,
+.hero__title,
+.hero__subtitle {
+  font-family: var(--font-karantina) !important;
+  background: linear-gradient(135deg, var(--color-gradient-start) 0%, var(--color-gradient-mid-1) 25%, var(--color-gradient-mid-2) 50%, var(--color-gradient-mid-3) 75%, var(--color-gradient-end) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 20px rgba(53, 195, 243, 0.3);
+}
+
+/* White title utility class - use when you want white text instead of gradient */
+.title-white,
+h1.title-white,
+h2.title-white,
+h3.title-white,
+h4.title-white,
+h5.title-white,
+h6.title-white {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  background-clip: unset !important;
+  color: #ffffff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Hero Section */
+.hero {
+  background: linear-gradient(135deg, rgba(53, 195, 243, 0.1) 0%, rgba(139, 159, 232, 0.1) 25%, rgba(230, 129, 216, 0.1) 50%, rgba(255, 169, 164, 0.1) 75%, rgba(254, 210, 206, 0.1) 100%);
+  border-bottom: 1px solid rgba(53, 195, 243, 0.2);
+}
+
+.hero__title {
+  font-size: clamp(3rem, 2.4rem + 3vw, 4rem);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+  font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.5rem);
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+/* Cards and Containers */
+.card,
+.item,
+.margin-top--lg {
+  background: rgba(17, 17, 17, 0.8) !important;
+  border: 1px solid rgba(53, 195, 243, 0.2) !important;
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+}
+
+/* Buttons */
+.button {
+  background: linear-gradient(135deg, var(--color-glow-blue) 0%, var(--color-glow-purple) 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(53, 195, 243, 0.3);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(53, 195, 243, 0.4);
+  background: linear-gradient(135deg, var(--color-glow-purple) 0%, var(--color-glow-pink) 100%);
+}
+
+/* Code Blocks */
+.prism-code {
+  background: var(--ifm-code-background) !important;
+  border: 1px solid rgba(53, 195, 243, 0.2);
+  border-radius: 8px;
+}
+
+/* Sidebar */
+.theme-doc-sidebar-container {
+  background: rgba(10, 10, 10, 0.95) !important;
+  border-right: 1px solid rgba(53, 195, 243, 0.2);
+}
+
+/* Footer */
+.footer {
+  background: var(--ifm-footer-background-color) !important;
+  border-top: 1px solid rgba(53, 195, 243, 0.2);
+}
+
+/* Animations */
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Glow effects for interactive elements */
+.menu__link:hover,
+.button:hover {
+  text-shadow: 0 0 10px rgba(53, 195, 243, 0.5);
+}
+
+/* Custom utility classes */
+.space-glow {
+  box-shadow: 0 0 20px rgba(53, 195, 243, 0.3), 0 0 40px rgba(139, 159, 232, 0.2);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--color-gradient-start) 0%, var(--color-gradient-mid-1) 25%, var(--color-gradient-mid-2) 50%, var(--color-gradient-mid-3) 75%, var(--color-gradient-end) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html[dir="rtl"] {
+  font-family: 'Rubik', 'Heebo', 'Assistant', sans-serif;
+}
+
+html[dir="rtl"] .theme-doc-sidebar-container {
+  border-right: var(--ifm-toc-border-width, 1px) solid var(--ifm-toc-border-color, rgba(53, 195, 243, 0.2));
+  border-left: none;
+}
+
+html[dir="rtl"] .menu__link {
+  text-align: right;
+}
+
+html[dir="rtl"] .hero__title,
+html[dir="rtl"] .hero__subtitle {
+  text-align: center;
+}
+
+html[dir="rtl"] .footer__links {
+  text-align: right;
+}
+
+html[dir="rtl"] .footer__title {
+  text-align: right;
+}
+
+html[dir="rtl"] .button {
+  direction: ltr;
+}
+
+html[dir="rtl"] .breadcrumbs__item:not(:last-child):after {
+  content: '\005C';
+  margin: 0 var(--ifm-breadcrumb-separator-size-multiplier) * var(--ifm-breadcrumb-item-padding-horizontal);
+  transform: scaleX(-1);
+}
+
+/* Hebrew typography improvements */
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6 {
+  font-family: var(--font-karantina);
+  line-height: 1.4;
+}
+
+html[dir="rtl"] p,
+html[dir="rtl"] li,
+html[dir="rtl"] span {
+  font-family: 'Rubik', 'Heebo', sans-serif;
+  line-height: 1.6;
+}
+
+/* Better spacing for Hebrew text */
+html[dir="rtl"] .markdown {
+  letter-spacing: 0.01em;
+}
+
+/* Discord Button - Official Discord Brand Colors */
+.discord-button {
+  background: #5865F2 !important;
+  color: #ffffff !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 6px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  border: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.discord-button:hover {
+  background: #4752C4 !important;
+  color: #ffffff !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4) !important;
+}
+
+.discord-button:active {
+  background: #3C44A3 !important;
+  transform: translateY(0) !important;
+  box-shadow: 0 2px 6px rgba(88, 101, 242, 0.3) !important;
+}
+
+.discord-button i {
+  font-size: 1.1rem;
 }

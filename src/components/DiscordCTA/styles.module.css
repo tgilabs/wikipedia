@@ -1,0 +1,363 @@
+/* Discord Brand Colors */
+:root {
+  --discord-blurple: #5865F2;
+  --discord-green: #57F287;
+  --discord-yellow: #FEE75C;
+  --discord-fuchsia: #EB459E;
+  --discord-red: #ED4245;
+  --discord-white: #FFFFFF;
+  --discord-black: #000000;
+  --discord-dark-not-black: #2C2F33;
+  --discord-dark: #23272A;
+  --discord-light-grey: #99AAB5;
+  --discord-dark-grey: #2C2F33;
+}
+
+.discordCTA {
+  /* Background will be set via inline style for dynamic image support */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  direction: rtl;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.discordCTA::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.discordCTA:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.iconContainer {
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 1.25rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.discordIcon {
+  font-size: 56px;
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+}
+
+.textContent {
+  flex: 1;
+  color: #ffffff !important;
+  text-align: center;
+  direction: rtl;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0 0 0.75rem 0;
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  direction: rtl;
+  color: #ffffff !important;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  opacity: 1;
+  line-height: 1.4;
+  text-align: center;
+  direction: rtl;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.joinButton {
+  background: var(--discord-blurple);
+  border: none;
+  color: var(--discord-white);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  box-shadow: 0 6px 20px rgba(88, 101, 242, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.joinButton:hover {
+  background: #4752C4;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(88, 101, 242, 0.6);
+}
+
+.joinButton:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+}
+
+.backgroundDecoration {
+  position: absolute;
+  top: -50%;
+  left: -20%; /* Changed from right to left for RTL */
+  width: 100%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  transform: rotate(-45deg); /* Changed rotation for RTL */
+  pointer-events: none;
+}
+
+/* Compact Variant */
+.compact {
+  padding: 1.25rem;
+  margin: 1rem 0;
+}
+
+.compact .content {
+  gap: 1rem;
+}
+
+.compact .iconContainer {
+  padding: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compact .discordIcon {
+  font-size: 32px;
+}
+
+.compact .title {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.compact .description {
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.compact .joinButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Banner Variant */
+.banner {
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.banner .content {
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+}
+
+.banner .textContent {
+  order: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner .joinButton {
+  order: 3;
+  align-self: center;
+}
+
+.banner .iconContainer {
+  order: 1;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .discordCTA {
+    padding: 2rem 1.5rem;
+  }
+  
+  .content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .textContent {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .title {
+    font-size: 1.6rem;
+    text-align: center;
+    direction: rtl;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+  }
+  
+  .description {
+    font-size: 1rem;
+    text-align: center;
+    direction: rtl;
+    margin-bottom: 0;
+    color: #ffffff;
+  }
+  
+  .joinButton {
+    align-self: center;
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+  }
+  
+  .iconContainer {
+    padding: 1rem;
+    order: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .discordIcon {
+    font-size: 48px;
+  }
+  
+  .compact {
+    padding: 1rem;
+  }
+  
+  .compact .content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .compact .textContent {
+    text-align: center;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .compact .title {
+    text-align: center;
+    direction: rtl;
+    color: #ffffff;
+  }
+  
+  .compact .description {
+    text-align: center;
+    direction: rtl;
+    color: #ffffff;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .discordCTA {
+    padding: 1.5rem 1rem;
+    margin: 1rem 0;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+  }
+  
+  .joinButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .textContent {
+    padding: 1.25rem 0.75rem;
+  }
+}
+
+/* Dark theme adjustments */
+html[data-theme='dark'] .discordCTA {
+  /* Inline styles will override, but provide fallback */
+  border: 1px solid rgba(53, 195, 243, 0.3);
+}
+
+html[data-theme='dark'] .iconContainer {
+  background: rgba(53, 195, 243, 0.1);
+  border: 1px solid rgba(53, 195, 243, 0.2);
+}
+
+html[data-theme='dark'] .joinButton {
+  background: var(--discord-blurple);
+  border-color: var(--discord-blurple);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
+}
+
+html[data-theme='dark'] .joinButton:hover {
+  background: #4752C4;
+  border-color: #4752C4;
+  box-shadow: 0 6px 20px rgba(88, 101, 242, 0.5);
+}

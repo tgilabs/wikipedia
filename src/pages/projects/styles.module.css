@@ -1,0 +1,378 @@
+/* Projects Page Styles */
+
+.projectsSection {
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem 0;
+  overflow: hidden;
+}
+
+/* Section Header */
+.sectionHeader {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.pageTitle {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+  margin-bottom: 1rem;
+}
+
+.pageSubtitle {
+  font-size: 1.3rem;
+  color: var(--ifm-color-emphasis-600);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Projects Grid */
+.projectsGrid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Project Cards */
+.projectCard {
+  position: relative;
+  background: var(--ifm-background-surface-color);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  border: 2px solid var(--ifm-color-emphasis-200);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  box-shadow: var(--ifm-global-shadow-md);
+  display: flex;
+  flex-direction: column;
+}
+
+.projectCard:hover {
+  transform: translateY(-10px);
+  box-shadow: var(--ifm-global-shadow-lg);
+}
+
+.cardContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.cardGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.projectCard:hover .cardGlow {
+  opacity: 1;
+}
+
+/* Category-specific colors */
+.platform {
+  border-color: rgba(79, 172, 254, 0.3);
+}
+
+.platform:hover {
+  border-color: #4facfe;
+}
+
+.platform .cardGlow {
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(79, 172, 254, 0.05) 100%);
+  box-shadow: inset 0 0 50px rgba(79, 172, 254, 0.1);
+}
+
+.community {
+  border-color: rgba(108, 92, 231, 0.3);
+}
+
+.community:hover {
+  border-color: #6c5ce7;
+}
+
+.community .cardGlow {
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(108, 92, 231, 0.05) 100%);
+  box-shadow: inset 0 0 50px rgba(108, 92, 231, 0.1);
+}
+
+.hasbara {
+  border-color: rgba(0, 184, 148, 0.3);
+}
+
+.hasbara:hover {
+  border-color: #00b894;
+}
+
+.hasbara .cardGlow {
+  background: linear-gradient(135deg, rgba(0, 184, 148, 0.1) 0%, rgba(0, 184, 148, 0.05) 100%);
+  box-shadow: inset 0 0 50px rgba(0, 184, 148, 0.1);
+}
+
+.gaming {
+  border-color: rgba(253, 121, 168, 0.3);
+}
+
+.gaming:hover {
+  border-color: #fd79a8;
+}
+
+.gaming .cardGlow {
+  background: linear-gradient(135deg, rgba(253, 121, 168, 0.1) 0%, rgba(253, 121, 168, 0.05) 100%);
+  box-shadow: inset 0 0 50px rgba(253, 121, 168, 0.1);
+}
+
+/* Project Logo */
+.projectLogo {
+  height: 80px;
+  width: 80px;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 20px;
+  border: 2px solid var(--ifm-color-emphasis-200);
+}
+
+.logoImage {
+  max-width: 60px;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+.projectLogo i {
+  font-size: 2.5rem;
+  color: var(--ifm-color-primary);
+}
+
+/* Card Text */
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex-grow: 1;
+}
+
+/* Card Buttons */
+.cardButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.websiteButton {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.websiteButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
+}
+
+.websiteButton i {
+  margin-right: 0.5rem;
+}
+
+.docsButton {
+  background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+  border: 2px solid #6c5ce7;
+  color: white;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.docsButton:hover {
+  background: linear-gradient(135deg, #5f3dc4 0%, #9c88ff 100%);
+  border-color: #5f3dc4;
+  color: white;
+  transform: scale(1.05);
+}
+
+.docsButton i {
+  margin-right: 0.5rem;
+}
+
+/* Join Promotion Section */
+.joinPromotion {
+  margin-top: 4rem;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.promotionContent {
+  background: var(--ifm-background-surface-color);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: var(--ifm-global-shadow-md);
+}
+
+.promotionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
+  margin-bottom: 1rem;
+}
+
+.promotionText {
+  font-size: 1.1rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.promotionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.discordButton {
+  background: linear-gradient(135deg, #7289da 0%, #5865f2 100%);
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.discordButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(114, 137, 218, 0.3);
+}
+
+.discordButton i {
+  margin-right: 0.5rem;
+}
+
+.githubButton {
+  background: linear-gradient(135deg, #333 0%, #555 100%);
+  border: 2px solid #333;
+  color: white;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.githubButton:hover {
+  background: linear-gradient(135deg, #222 0%, #444 100%);
+  border-color: #222;
+  color: white;
+  transform: scale(1.05);
+}
+
+.githubButton i {
+  margin-right: 0.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .projectsSection {
+    padding: 2rem 0;
+  }
+  
+  .pageTitle {
+    font-size: 2.5rem;
+  }
+  
+  .pageSubtitle {
+    font-size: 1.1rem;
+    padding: 0 1rem;
+  }
+  
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+    gap: 1.5rem;
+  }
+  
+  .projectCard {
+    padding: 1.5rem;
+  }
+  
+  .cardButtons {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+  
+  .promotionContent {
+    padding: 2rem 1.5rem;
+    margin: 0 1rem;
+  }
+  
+  .promotionTitle {
+    font-size: 2rem;
+  }
+  
+  .promotionButtons {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .pageTitle {
+    font-size: 2rem;
+  }
+  
+  .cardTitle {
+    font-size: 1.3rem;
+  }
+  
+  .cardButtons {
+    flex-direction: column;
+  }
+  
+  .promotionButtons .button {
+    width: 100%;
+    max-width: 250px;
+  }
+}

@@ -1,41 +1,41 @@
-# ויקיפדיה הציבורית של TeGriAi
+# Website
 
-האתר הזה בנוי באמצעות [Docusaurus](https://docusaurus.io/), מחולל אתרים סטטיים מודרני.
+This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
-### התקנה
+## Installation
 
-```
-$ yarn
-```
-
-### פיתוח מקומי
-
-```
-$ yarn start
+```bash
+yarn
 ```
 
-הפקודה הזו מפעילה שרת פיתוח מקומי ופותחת חלון דפדפן. רוב השינויים משתקפים בזמן אמת מבלי שיהיה צורך להפעיל מחדש את השרת.
+## Local Development
 
-### בנייה
-
-```
-$ yarn build
+```bash
+yarn start
 ```
 
-הפקודה הזו מייצרת תוכן סטטי לתוך ספריית `build` וניתן לשרת אותו באמצעות כל שירות אירוח תוכן סטטי.
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-### פריסה
+## Build
 
-באמצעות SSH:
-
-```
-$ USE_SSH=true yarn deploy
+```bash
+yarn build
 ```
 
-ללא שימוש ב-SSH:
+This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-```
-$ GIT_USER=<שם המשתמש שלך ב-GitHub> yarn deploy
+## Deployment
+
+Using SSH:
+
+```bash
+USE_SSH=true yarn deploy
 ```
 
-אם אתה משתמש ב-GitHub Pages לאירוח, הפקודה הזו היא דרך נוחה לבנות את האתר ולדחוף את השינויים לענף `gh-pages`.
+Not using SSH:
+
+```bash
+GIT_USER=<Your GitHub username> yarn deploy
+```
+
+If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.

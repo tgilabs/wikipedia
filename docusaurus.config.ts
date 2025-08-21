@@ -1,11 +1,18 @@
-import { themes as prismThemes } from 'prism-react-renderer';
-import type { Config } from '@docusaurus/types';
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
 const config: Config = {
-  title: 'הויקיפדיה של TeGriAi',
-  tagline: 'ברוכים הבאים לעולם שלנו! הקהילה הישראלית הכי גדולה ברשת',
+  title: 'וויקיפדיה',
+  tagline: 'הויקיפדיה הרשמית של TeGriAi | המקום הכי ישראלי ברשת | שרת הדיסקורד וקהילת הגיימינג של ישראל',
   favicon: 'img/logo.png',
+
+  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  },
 
   // Set the production url of your site here
   url: 'https://wiki.tegriai.com',
@@ -16,31 +23,25 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'tgilabs', // Usually your GitHub org/user name.
-  projectName: 'public-docs', // Usually your repo name.
+  projectName: 'wikipedia', // Usually your repo name.
 
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // Hebrew RTL configuration
   i18n: {
     defaultLocale: 'he',
     locales: ['he'],
+    localeConfigs: {
+      he: {
+        label: 'עברית',
+        direction: 'rtl',
+        htmlLang: 'he-IL',
+        calendar: 'gregory',
+        path: 'he',
+      },
+    },
   },
-
-  scripts: [
-    {
-      src: "https://forms.tegriai.com/api/packages/website",
-      async: true,
-      onload: `setTimeout(function() {
-        window.formbricks.init({
-          environmentId: "cm1d4un8q00eztu3ng6nkqe8r",
-          apiHost: "https://forms.tegriai.com"
-        });
-      }, 500);`
-    }
-  ],
 
   presets: [
     [
@@ -48,11 +49,10 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          routeBasePath: '/',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
+          showLastUpdateTime: true,
+          routeBasePath: '/section',
           editUrl:
-            'https://github.com/tgilabs/public-docs/tree/Production/',
+            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
         blog: false,
         theme: {
@@ -62,149 +62,69 @@ const config: Config = {
     ],
   ],
 
-
-  plugins: [
-    require.resolve('./plugins/hostages-ticker/index.js'),
-    require.resolve('./plugins/accessibility/index.js'),
+  stylesheets: [
+    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
   ],
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/background.jpeg',
+    image: 'img/docusaurus-social-card.jpg',
+    // Force dark theme always for space theme
     colorMode: {
       defaultMode: 'dark',
-      disableSwitch: false,
+      disableSwitch: true,
       respectPrefersColorScheme: false,
     },
     navbar: {
-      title: 'הויקיפדיה של TeGriAi',
+      title: 'וויקיפדיה',
       logo: {
-        alt: 'TeGriAi Logo',
+        alt: 'לוגו וויקיפדיה',
         src: 'img/logo.png',
       },
+      hideOnScroll: false,
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'community',
+          position: 'left',
           html: '<i class="fas fa-users"></i> קהילה',
-          position: 'left',
         },
         {
-          type: 'dropdown',
+          to: 'servers',
+          position: 'left',
           html: '<i class="fas fa-gamepad"></i> שרתי משחק',
-          position: 'left',
-          items: [
-            {
-              href: '/servers/rules',
-              html: '<i class="fas fa-balance-scale"></i> חוקי הקהילה',
-            },
-            {
-              type: 'docSidebar',
-              sidebarId: 'fivem',
-              html: '<i class="fas fa-car"></i> פייבאם',
-            },
-          ],
         },
         {
-          type: 'dropdown',
-          html: '<i class="fas fa-book-open"></i> מדריכים', 
-          items: [
-            {
-              type: 'docSidebar',
-              sidebarId: 'wiki',
-              html: '<i class="fas fa-university"></i> הויקיפדיה שלנו', 
-            },
-            {
-              type: 'docSidebar',
-              sidebarId: 'workway',
-              html: '<i class="fas fa-tasks"></i> המקום לכל משימה',
-            },
-            {
-              type: 'docSidebar',
-              sidebarId: 'tg1',
-              html: '<i class="fas fa-gamepad"></i> פלטפורמת הטורנירים', 
-            },
-          ],
+          to: 'projects',
+          position: 'left',
+          html: '<i class="fas fa-briefcase"></i> פרוייקטים',
         },
         {
           type: 'docSidebar',
-          sidebarId: 'lab',
-          html: '<i class="fas fa-flask"></i> המעבדה',
+          sidebarId: 'legal',
           position: 'left',
-        },
-        {
-          type: 'dropdown',
-          html: '<i class="fas fa-gavel"></i> מדיניות',
-          position: 'left',
-          items: [
-            {
-              type: 'docSidebar',
-              sidebarId: 'legaltegriai',
-              html: '<i class="fas fa-globe"></i> חברה',
-            },
-            {
-              type: 'docSidebar',
-              sidebarId: 'legalworkway',
-              html: '<i class="fas fa-tasks"></i> WorkWay',
-            },
-            {
-              type: 'docSidebar',
-              sidebarId: 'legalbranding',
-              html: '<i class="fas fa-palette"></i> מותגים',
-            },
-            {
-              type: 'docSidebar',
-              sidebarId: 'legaldiscord',
-              html: '<i class="fab fa-discord"></i> דיסקורד',
-            },
-            {
-              type: 'docSidebar',
-              sidebarId: 'legalfivem',
-              html: '<i class="fas fa-car"></i> פייבאם',
-            },
-            ],
-        },
-        {
-          type: 'dropdown',
-          html: '<i class="fas fa-plus"></i> משאבים נוספים',
-          position: 'right',
-          items: [
-            {
-              href: 'https://www.tegriai.com',
-              html: '<i class="fas fa-home"></i> אתר טגי',
-            },
-            {
-              href: 'https://workway.co.il',
-              html: '<i class="fas fa-briefcase"></i> WorkWay',
-            },
-            {
-              href: 'https://cloud.ims-network.net/he',
-              html: '<i class="fas fa-cloud"></i> הענן שלנו',
-            },
-
-          ],
+          html: '<i class="fas fa-gavel"></i> חוק ותקן',
         },
         {
           href: 'https://discord.gg/tgi',
-          html: '<i class="fa-brands fa-discord"></i>',
           position: 'right',
+          html: '<i class="fab fa-discord"></i> בואו לדיסקורד',
+          className: 'discord-button',
         },
       ],
     },
     footer: {
       style: 'dark',
       links: [
-
       ],
       copyright: ` ${new Date().getFullYear()} TeGriAI © כל הזכויות שמורות . 
       <br> מופעל על ידי <a href="https://www.tegriai.com/lab">מעבדות טגי</a> 
       <br> הפרוייקט הזה הוא פרוייקט בקוד פתוח ברשיון <a href="https://github.com/tgilabs/public-docs?tab=CC-BY-4.0-1-ov-file">CC-BY-4.0 license</a>`,
     },
     prism: {
-      theme: prismThemes.github,
+      theme: prismThemes.dracula,
       darkTheme: prismThemes.dracula,
     },
-
   } satisfies Preset.ThemeConfig,
 };
 
