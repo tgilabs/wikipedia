@@ -95,7 +95,7 @@ const config: Config = {
           html: '<i class="fas fa-gamepad"></i> שרתי משחק',
         },
         {
-          to: '/docs/workway/intro',
+          to: 'projects',
           position: 'left',
           html: '<i class="fas fa-briefcase"></i> פרוייקטים',
         },
