@@ -59,44 +59,30 @@ const LegalSections: LegalCardItem[] = [
 ];
 
 function LegalCard({title, description, icon, link, isAvailable}: LegalCardItem) {
-  const CardContent = () => (
-    <div className={clsx('card', styles.legalCard, !isAvailable && styles.unavailable)}>
-      <div className={styles.cardHeader}>
-        <div className={styles.iconContainer}>
-          <FontAwesomeIcon icon={icon} className={styles.icon} />
-        </div>
-        <Heading as="h3" className={clsx('font-karantina', styles.cardTitle)}>
-          {title}
-        </Heading>
-      </div>
-      <div className={styles.cardBody}>
-        <p className={clsx('font-assistant', styles.cardDescription)}>
-          {description}
-        </p>
-      </div>
-      <div className={styles.cardFooter}>
-        {isAvailable ? (
-          <span className={styles.availableBadge}>זמין</span>
-        ) : (
-          <span className={styles.unavailableBadge}>בפיתוח</span>
-        )}
-      </div>
-    </div>
-  );
-
-  if (!isAvailable) {
-    return (
-      <div className={clsx('col', styles.cardColumn)}>
-        <CardContent />
-      </div>
-    );
-  }
-
   return (
     <div className={clsx('col', styles.cardColumn)}>
-      <Link to={link} className={styles.cardLink}>
-        <CardContent />
-      </Link>
+      <div className={clsx('card', styles.legalCard, !isAvailable && styles.unavailable)}>
+        <div className={styles.cardHeader}>
+          <div className={styles.iconContainer}>
+            <FontAwesomeIcon icon={icon} className={styles.icon} />
+          </div>
+          <Heading as="h3" className={clsx('font-karantina', styles.cardTitle)}>
+            {title}
+          </Heading>
+        </div>
+        <div className={styles.cardBody}>
+          <p className={clsx('font-assistant', styles.cardDescription)}>
+            {description}
+          </p>
+        </div>
+        <div className={styles.cardFooter}>
+          {isAvailable ? (
+            <Link to={link} className={styles.readButton}>קרא</Link>
+          ) : (
+            <span className={styles.unavailableBadge}>בפיתוח</span>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
@@ -113,7 +99,7 @@ export default function LegalCards(): ReactNode {
             כל המדיניות והתקנונים של קהילת TeGriAi במקום אחד
           </p>
         </div>
-        <div className="row">
+        <div className={styles.cardsContainer}>
           {LegalSections.map((props, idx) => (
             <LegalCard key={idx} {...props} />
           ))}

@@ -209,13 +209,13 @@
 /* Responsive design */
 @media (max-width: 1200px) {
   .cardColumn {
-    width: 25%; /* 4 cards per row on smaller screens */
+    width: 33.333%; /* 3 cards per row on smaller screens */
   }
 }
 
 @media (max-width: 996px) {
   .cardColumn {
-    width: 33.333%; /* 3 cards per row on medium screens */
+    width: 50%; /* 2 cards per row on medium screens */
   }
 }
 
@@ -225,7 +225,7 @@
   }
   
   .cardColumn {
-    width: 50%; /* 2 cards per row on small screens */
+    width: 100%; /* 1 card per row on small screens */
     padding: 0 0.5rem;
     margin-bottom: 1rem;
   }
