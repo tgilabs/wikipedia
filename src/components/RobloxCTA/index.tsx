@@ -119,14 +119,6 @@ const RobloxCTA: React.FC<RobloxCTAProps> = ({
         <div className={styles.textContent}>
           <h3 className={`${styles.title} title-white`}>{title}</h3>
           <p className={styles.description}>{description}</p>
-          {variant === 'default' && (
-            <p className={styles.directLink}>
-              קישור ישיר:&nbsp;
-              <code className={styles.linkCode}>
-                https://www.roblox.com/games/start?placeId={placeId}
-              </code>
-            </p>
-          )}
         </div>
         
         <div className={styles.iconContainer}>
