@@ -48,7 +48,7 @@ function HomepageHeader() {
           <Heading as="h1" className={clsx('hero__title font-karantina', styles.heroTitle)}>
             TeGriAi Wiki
           </Heading>
-          <p className={clsx('hero__subtitle font-assistant', styles.heroSubtitle)}>
+          <p className={clsx('hero__subtitle font-assistant title-white', styles.heroSubtitle)}>
             המקום הכי ישראלי ברשת
           </p>
           <div className={styles.heroButtons}>

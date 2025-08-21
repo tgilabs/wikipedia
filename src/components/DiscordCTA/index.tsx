@@ -45,7 +45,7 @@ const DiscordCTA: React.FC<DiscordCTAProps> = ({
           {buttonText}
         </button>
         <div className={styles.textContent}>
-          <h3 className={styles.title}>{title}</h3>
+          <h3 className={`${styles.title} title-white`}>{title}</h3>
           <p className={styles.description}>{description}</p>
         </div>
         <div className={styles.iconContainer}>

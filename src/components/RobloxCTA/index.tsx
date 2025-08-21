@@ -117,7 +117,7 @@ const RobloxCTA: React.FC<RobloxCTAProps> = ({
         </div>
         
         <div className={styles.textContent}>
-          <h3 className={styles.title}>{title}</h3>
+          <h3 className={`${styles.title} title-white`}>{title}</h3>
           <p className={styles.description}>{description}</p>
           {variant === 'default' && (
             <p className={styles.directLink}>
