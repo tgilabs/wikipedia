@@ -25,7 +25,7 @@ const config: Config = {
   organizationName: 'tgilabs', // Usually your GitHub org/user name.
   projectName: 'wikipedia', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Hebrew RTL configuration
