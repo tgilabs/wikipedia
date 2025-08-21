@@ -1,0 +1,156 @@
+.legalCardsSection {
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.legalCard {
+  height: 100%;
+  transition: all 0.3s ease;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: var(--ifm-background-color);
+}
+
+.legalCard:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  border-color: var(--ifm-color-primary);
+}
+
+.legalCard.unavailable {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.legalCard.unavailable:hover {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+.cardLink {
+  text-decoration: none !important;
+  color: inherit;
+  display: block;
+  height: 100%;
+}
+
+.cardLink:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardHeader {
+  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  text-align: center;
+}
+
+.iconContainer {
+  margin-bottom: 1rem;
+}
+
+.icon {
+  font-size: 3rem;
+  display: block;
+  line-height: 1;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cardBody {
+  padding: 0 1.5rem 1rem 1.5rem;
+  text-align: center;
+}
+
+.cardDescription {
+  margin: 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.cardFooter {
+  padding: 1rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+  background: var(--ifm-color-emphasis-100);
+}
+
+.availableBadge {
+  background: var(--ifm-color-success);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.unavailableBadge {
+  background: var(--ifm-color-warning);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .legalCardsSection {
+    padding: 1.5rem 0;
+  }
+  
+  .cardHeader {
+    padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+  }
+  
+  .icon {
+    font-size: 2.5rem;
+  }
+  
+  .cardTitle {
+    font-size: 1.1rem;
+  }
+  
+  .cardBody {
+    padding: 0 1.25rem 0.75rem 1.25rem;
+  }
+  
+  .cardDescription {
+    font-size: 0.85rem;
+  }
+  
+  .cardFooter {
+    padding: 0.75rem 1.25rem;
+  }
+}
+
+/* Dark mode specific styles */
+[data-theme='dark'] .legalCard {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .legalCard:hover {
+  border-color: var(--ifm-color-primary-lighter);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .cardFooter {
+  background: var(--ifm-color-emphasis-100);
+  border-top-color: var(--ifm-color-emphasis-100);
+}
