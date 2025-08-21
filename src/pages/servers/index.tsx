@@ -14,7 +14,7 @@ const GameServers = [
     icon: 'fas fa-cube',
     tagline: 'השרת הכי פופולרי שלנו',
     description: 'הצטרפו לשרתי הרובלוקס שלנו ותיהנו מחוויית משחק ייחודית',
-    link: '/section/gaming/roblox/welcome',
+    link: 'https://www.roblox.com/games/84552319997646/TeGriAi#!/about',
     guidesLink: '/section/gaming/roblox/welcome',
     available: true,
     color: 'roblox'
