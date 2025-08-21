@@ -24,9 +24,9 @@ const DiscordCTA: React.FC<DiscordCTAProps> = ({
 
   const containerStyle = {
     backgroundImage: `linear-gradient(135deg, 
-      rgba(0, 0, 0, 0.85) 0%,
-      rgba(88, 101, 242, 0.8) 30%,
-      rgba(0, 0, 0, 0.85) 100%
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0.6) 100%
     ), url('${image}')`
   };
 

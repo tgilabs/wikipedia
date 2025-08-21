@@ -15,7 +15,7 @@ const GameServers = [
     tagline: 'השרת הכי פופולרי שלנו',
     description: 'הצטרפו לשרתי הרובלוקס שלנו ותיהנו מחוויית משחק ייחודית',
     link: '/section/gaming/roblox/welcome',
-    guidesLink: '/section/gaming/roblox/guides',
+    guidesLink: '/section/gaming/roblox/welcome',
     available: true,
     color: 'roblox'
   },
