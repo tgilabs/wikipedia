@@ -4,20 +4,306 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
+  padding: 8rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.starsBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.6), transparent),
+    radial-gradient(2px 2px at 160px 30px, #fff, transparent),
+    radial-gradient(1px 1px at 180px 10px, rgba(53, 195, 243, 0.8), transparent),
+    radial-gradient(1px 1px at 220px 90px, rgba(139, 159, 232, 0.6), transparent);
+  background-repeat: repeat;
+  background-size: 200px 100px;
+  animation: twinkle 4s infinite;
+  z-index: 0;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.8; }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 1;
+}
+
+.heroTitle {
+  font-size: 4rem;
+  background: linear-gradient(45deg, #35c3f3, #8b9fe8, #e681d8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 30px rgba(53, 195, 243, 0.5);
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.heroButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.discordButton {
+  background: linear-gradient(45deg, #5865f2, #7289da);
+  border: none;
+  border-radius: 25px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 8px 32px rgba(88, 101, 242, 0.3);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: white;
+}
+
+.discordButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(88, 101, 242, 0.4);
+  text-decoration: none;
+  color: white;
+}
+
+.discordButton i {
+  margin-right: 0.5rem;
+}
+
+/* Navigation Section */
+.navigationSection {
+  padding: 6rem 0;
+  background: linear-gradient(180deg, #0a0a0a 0%, #111111 100%);
+  position: relative;
+}
+
+.sectionTitle {
+  font-size: 3rem;
+  background: linear-gradient(45deg, #35c3f3, #8b9fe8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 3rem;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.navigationCard {
+  background: linear-gradient(135deg, rgba(53, 195, 243, 0.1), rgba(139, 159, 232, 0.1));
+  border: 1px solid rgba(53, 195, 243, 0.3);
+  border-radius: 20px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.navigationCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent, rgba(53, 195, 243, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.navigationCard:hover::before {
+  opacity: 1;
+}
+
+.navigationCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(53, 195, 243, 0.2);
+  border-color: rgba(53, 195, 243, 0.6);
+  text-decoration: none;
+  color: inherit;
+}
+
+.cardIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(45deg, #35c3f3, #8b9fe8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  position: relative;
+  z-index: 1;
+}
+
+.cardDescription {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+  position: relative;
+  z-index: 1;
+}
+
+/* Quote Section */
+.quoteSection {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
+.quoteSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(1px 1px at 30px 50px, rgba(53, 195, 243, 0.3), transparent),
+    radial-gradient(1px 1px at 150px 30px, rgba(139, 159, 232, 0.3), transparent),
+    radial-gradient(1px 1px at 250px 80px, rgba(230, 129, 216, 0.3), transparent);
+  background-repeat: repeat;
+  background-size: 300px 150px;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.quoteContainer {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quoteTitle {
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, #35c3f3, #e681d8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+}
+
+.quoteAuthor {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.quoteIcons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 2rem;
+}
+
+.quoteIcons i {
+  color: #35c3f3;
+  animation: pulse 2s infinite;
+}
+
+.quoteIcons i:nth-child(2) {
+  animation-delay: 0.5s;
+  color: #e681d8;
+}
+
+.quoteIcons i:nth-child(3) {
+  animation-delay: 1s;
+  color: #8b9fe8;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+}
+
+/* Responsive Design */
 @media screen and (max-width: 996px) {
   .heroBanner {
-    padding: 2rem;
+    padding: 4rem 0;
+    min-height: 70vh;
+  }
+  
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroSubtitle {
+    font-size: 1.2rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .quoteTitle {
+    font-size: 1.8rem;
+  }
+  
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .navigationSection,
+  .quoteSection {
+    padding: 3rem 0;
   }
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media screen and (max-width: 768px) {
+  .heroTitle {
+    font-size: 2rem;
+  }
+  
+  .quoteTitle {
+    font-size: 1.5rem;
+  }
+  
+  .quoteIcons {
+    gap: 1rem;
+    font-size: 1.5rem;
+  }
 }
