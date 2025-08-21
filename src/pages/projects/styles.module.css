@@ -1,20 +1,10 @@
-/* Servers Page Styles */
+/* Projects Page Styles */
 
-.serversSection {
+.projectsSection {
   position: relative;
   min-height: 100vh;
   padding: 4rem 0;
   overflow: hidden;
-}
-
-/* Stars Background Animation */
-.starsBackground {
-  display: none;
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 1; }
 }
 
 /* Section Header */
@@ -35,25 +25,25 @@
 .pageSubtitle {
   font-size: 1.3rem;
   color: var(--ifm-color-emphasis-600);
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   line-height: 1.6;
 }
 
-/* Servers Grid */
-.serversGrid {
+/* Projects Grid */
+.projectsGrid {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* Server Cards */
-.serverCard {
+/* Project Cards */
+.projectCard {
   position: relative;
   background: var(--ifm-background-surface-color);
   border-radius: 20px;
@@ -63,9 +53,11 @@
   backdrop-filter: blur(10px);
   overflow: hidden;
   box-shadow: var(--ifm-global-shadow-md);
+  display: flex;
+  flex-direction: column;
 }
 
-.serverCard:hover {
+.projectCard:hover {
   transform: translateY(-10px);
   box-shadow: var(--ifm-global-shadow-lg);
 }
@@ -74,6 +66,9 @@
   position: relative;
   z-index: 2;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .cardGlow {
@@ -88,88 +83,94 @@
   z-index: 1;
 }
 
-.serverCard:hover .cardGlow {
+.projectCard:hover .cardGlow {
   opacity: 1;
 }
 
-/* Game-specific colors */
-.roblox {
-  border-color: rgba(0, 162, 255, 0.3);
+/* Category-specific colors */
+.platform {
+  border-color: rgba(79, 172, 254, 0.3);
 }
 
-.roblox:hover {
-  border-color: #00a2ff;
+.platform:hover {
+  border-color: #4facfe;
 }
 
-.roblox .cardGlow {
-  background: linear-gradient(135deg, rgba(0, 162, 255, 0.1) 0%, rgba(0, 162, 255, 0.05) 100%);
-  box-shadow: inset 0 0 50px rgba(0, 162, 255, 0.1);
+.platform .cardGlow {
+  background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(79, 172, 254, 0.05) 100%);
+  box-shadow: inset 0 0 50px rgba(79, 172, 254, 0.1);
 }
 
-.minecraft {
-  border-color: rgba(87, 166, 57, 0.3);
+.community {
+  border-color: rgba(108, 92, 231, 0.3);
 }
 
-.minecraft:hover {
-  border-color: #57a639;
+.community:hover {
+  border-color: #6c5ce7;
 }
 
-.minecraft .cardGlow {
-  background: linear-gradient(135deg, rgba(87, 166, 57, 0.1) 0%, rgba(87, 166, 57, 0.05) 100%);
-  box-shadow: inset 0 0 50px rgba(87, 166, 57, 0.1);
+.community .cardGlow {
+  background: linear-gradient(135deg, rgba(108, 92, 231, 0.1) 0%, rgba(108, 92, 231, 0.05) 100%);
+  box-shadow: inset 0 0 50px rgba(108, 92, 231, 0.1);
 }
 
-.fivem {
-  border-color: rgba(247, 168, 61, 0.3);
+.hasbara {
+  border-color: rgba(0, 184, 148, 0.3);
 }
 
-.fivem:hover {
-  border-color: #f7a83d;
+.hasbara:hover {
+  border-color: #00b894;
 }
 
-.fivem .cardGlow {
-  background: linear-gradient(135deg, rgba(247, 168, 61, 0.1) 0%, rgba(247, 168, 61, 0.05) 100%);
-  box-shadow: inset 0 0 50px rgba(247, 168, 61, 0.1);
+.hasbara .cardGlow {
+  background: linear-gradient(135deg, rgba(0, 184, 148, 0.1) 0%, rgba(0, 184, 148, 0.05) 100%);
+  box-shadow: inset 0 0 50px rgba(0, 184, 148, 0.1);
 }
 
-.rust {
-  border-color: rgba(206, 84, 57, 0.3);
+.gaming {
+  border-color: rgba(253, 121, 168, 0.3);
 }
 
-.rust:hover {
-  border-color: #ce5439;
+.gaming:hover {
+  border-color: #fd79a8;
 }
 
-.rust .cardGlow {
-  background: linear-gradient(135deg, rgba(206, 84, 57, 0.1) 0%, rgba(206, 84, 57, 0.05) 100%);
-  box-shadow: inset 0 0 50px rgba(206, 84, 57, 0.1);
+.gaming .cardGlow {
+  background: linear-gradient(135deg, rgba(253, 121, 168, 0.1) 0%, rgba(253, 121, 168, 0.05) 100%);
+  box-shadow: inset 0 0 50px rgba(253, 121, 168, 0.1);
 }
 
-/* Card Icon */
-.cardIcon {
-  font-size: 3rem;
-  margin-bottom: 1.5rem;
-  color: #4facfe;
+/* Project Logo */
+.projectLogo {
+  height: 80px;
+  width: 80px;
+  margin: 0 auto 1.5rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 20px;
+  border: 2px solid var(--ifm-color-emphasis-200);
 }
 
-.roblox .cardIcon { color: #00a2ff; }
-.minecraft .cardIcon { color: #57a639; }
-.fivem .cardIcon { color: #f7a83d; }
-.rust .cardIcon { color: #ce5439; }
+.logoImage {
+  max-width: 60px;
+  max-height: 60px;
+  object-fit: contain;
+}
+
+.projectLogo i {
+  font-size: 2.5rem;
+  color: var(--ifm-color-primary);
+}
 
 /* Card Text */
 .cardTitle {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: var(--ifm-font-color-base);
-  margin-bottom: 0.5rem;
-}
-
-.cardTagline {
-  font-size: 1rem;
-  color: var(--ifm-color-emphasis-600);
   margin-bottom: 1rem;
-  font-style: italic;
+  line-height: 1.2;
 }
 
 .cardDescription {
@@ -177,20 +178,18 @@
   color: var(--ifm-color-emphasis-700);
   line-height: 1.6;
   margin-bottom: 2rem;
+  flex-grow: 1;
 }
 
-/* Card Button */
-.cardButton {
-  margin-top: auto;
-}
-
-.robloxButtons {
+/* Card Buttons */
+.cardButtons {
   display: flex;
   gap: 0.5rem;
   flex-direction: column;
+  margin-top: auto;
 }
 
-.playButton {
+.websiteButton {
   background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   border: none;
   padding: 0.8rem 1.5rem;
@@ -200,16 +199,16 @@
   overflow: hidden;
 }
 
-.playButton:hover {
+.websiteButton:hover {
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
 }
 
-.playButton i {
+.websiteButton i {
   margin-right: 0.5rem;
 }
 
-.guidesButton {
+.docsButton {
   background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
   border: 2px solid #6c5ce7;
   color: white;
@@ -218,46 +217,19 @@
   transition: all 0.3s ease;
 }
 
-.guidesButton:hover {
+.docsButton:hover {
   background: linear-gradient(135deg, #5f3dc4 0%, #9c88ff 100%);
   border-color: #5f3dc4;
   color: white;
   transform: scale(1.05);
 }
 
-.guidesButton i {
+.docsButton i {
   margin-right: 0.5rem;
 }
 
-.comingSoonButton {
-  background: var(--ifm-color-emphasis-200);
-  border: 2px solid var(--ifm-color-emphasis-300);
-  color: var(--ifm-color-emphasis-600);
-  padding: 0.8rem 1.5rem;
-  font-weight: 600;
-  cursor: not-allowed;
-}
-
-.comingSoonButton i {
-  margin-right: 0.5rem;
-}
-
-/* Coming Soon Badge */
-.comingSoonBadge {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
-  color: white;
-  padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  z-index: 3;
-}
-
-/* Discord Promotion Section */
-.discordPromotion {
+/* Join Promotion Section */
+.joinPromotion {
   margin-top: 4rem;
   text-align: center;
   position: relative;
@@ -270,7 +242,7 @@
   padding: 3rem 2rem;
   backdrop-filter: blur(10px);
   border: 1px solid var(--ifm-color-emphasis-200);
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   box-shadow: var(--ifm-global-shadow-md);
 }
@@ -287,6 +259,13 @@
   color: var(--ifm-color-emphasis-700);
   line-height: 1.6;
   margin-bottom: 2rem;
+}
+
+.promotionButtons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .discordButton {
@@ -308,15 +287,35 @@
   margin-right: 0.5rem;
 }
 
+.githubButton {
+  background: linear-gradient(135deg, #333 0%, #555 100%);
+  border: 2px solid #333;
+  color: white;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.githubButton:hover {
+  background: linear-gradient(135deg, #222 0%, #444 100%);
+  border-color: #222;
+  color: white;
+  transform: scale(1.05);
+}
+
+.githubButton i {
+  margin-right: 0.5rem;
+}
+
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .serversGrid {
+  .projectsGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .serversSection {
+  .projectsSection {
     padding: 2rem 0;
   }
   
@@ -329,17 +328,17 @@
     padding: 0 1rem;
   }
   
-  .serversGrid {
+  .projectsGrid {
     grid-template-columns: 1fr;
     padding: 0 1rem;
     gap: 1.5rem;
   }
   
-  .serverCard {
+  .projectCard {
     padding: 1.5rem;
   }
   
-  .robloxButtons {
+  .cardButtons {
     flex-direction: row;
     gap: 0.5rem;
   }
@@ -352,6 +351,11 @@
   .promotionTitle {
     font-size: 2rem;
   }
+  
+  .promotionButtons {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 @media (max-width: 480px) {
@@ -360,14 +364,15 @@
   }
   
   .cardTitle {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
-  .cardIcon {
-    font-size: 2.5rem;
-  }
-  
-  .robloxButtons {
+  .cardButtons {
     flex-direction: column;
+  }
+  
+  .promotionButtons .button {
+    width: 100%;
+    max-width: 250px;
   }
 }

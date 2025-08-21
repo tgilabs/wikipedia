@@ -27,7 +27,7 @@ const NavigationCards = [
     title: 'פרוייקטים',
     icon: 'fas fa-briefcase',
     description: 'למדו על הפרוייקטים הטכנולוגיים של TeGriAi',
-    link: '/section/platforms/workway/intro',
+    link: '/projects',
     gradient: 'from-pink-500 to-orange-600'
   },
   {
