@@ -1,33 +1,64 @@
 .legalCardsSection {
-  padding: 2rem 0;
+  padding: 3rem 0;
   width: 100%;
+  background: linear-gradient(135deg, rgba(var(--ifm-color-primary-rgb), 0.03), rgba(var(--ifm-color-secondary-rgb), 0.03));
+}
+
+.cardsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.cardColumn {
+  flex: 0 0 auto;
+  width: 25%; /* 4 cards per row */
+  padding: 0 0.75rem;
+  margin-bottom: 1.5rem;
 }
 
 .legalCard {
   height: 100%;
-  transition: all 0.3s ease;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
+  min-height: 320px; /* Ensure all cards have the same minimum height */
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: none;
+  border-radius: 20px;
   overflow: hidden;
   position: relative;
-  background: var(--ifm-background-color);
+  background: linear-gradient(145deg, var(--ifm-background-color), rgba(var(--ifm-color-primary-rgb), 0.02));
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    0 2px 10px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .legalCard:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px);
-  border-color: var(--ifm-color-primary);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.12),
+    0 8px 25px rgba(var(--ifm-color-primary-rgb), 0.15);
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(var(--ifm-color-primary-rgb), 0.3);
 }
 
 .legalCard.unavailable {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
+  filter: grayscale(0.5);
 }
 
 .legalCard.unavailable:hover {
-  transform: none;
-  box-shadow: none;
-  border-color: var(--ifm-color-emphasis-300);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
 .cardLink {
@@ -35,6 +66,7 @@
   color: inherit;
   display: block;
   height: 100%;
+  border-radius: 20px;
 }
 
 .cardLink:hover {
@@ -43,114 +75,219 @@
 }
 
 .cardHeader {
-  padding: 1.5rem 1.5rem 1rem 1.5rem;
+  padding: 2rem 1.5rem 1rem 1.5rem;
   text-align: center;
+  position: relative;
+}
+
+.cardHeader::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ifm-color-primary), var(--ifm-color-secondary));
+  border-radius: 20px 20px 0 0;
 }
 
 .iconContainer {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.iconContainer::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, rgba(var(--ifm-color-primary-rgb), 0.1), rgba(var(--ifm-color-secondary-rgb), 0.1));
+  border-radius: 50%;
+  z-index: 0;
 }
 
 .icon {
-  font-size: 3rem;
+  font-size: 2.5rem;
+  color: var(--ifm-color-primary);
   display: block;
   line-height: 1;
+  position: relative;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.legalCard:hover .icon {
+  transform: scale(1.1);
+  color: var(--ifm-color-primary-dark);
 }
 
 .cardTitle {
   margin: 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-secondary));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
+  letter-spacing: -0.5px;
 }
 
 .cardBody {
-  padding: 0 1.5rem 1rem 1.5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
   text-align: center;
+  flex: 1; /* Allow the body to grow and fill available space */
 }
 
 .cardDescription {
   margin: 0;
   color: var(--ifm-color-emphasis-700);
-  font-size: 0.9rem;
-  line-height: 1.5;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-weight: 400;
 }
 
 .cardFooter {
-  padding: 1rem 1.5rem;
+  padding: 1.25rem 1.5rem;
   text-align: center;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
-  background: var(--ifm-color-emphasis-100);
+  border-top: 1px solid rgba(var(--ifm-color-emphasis-200-rgb), 0.5);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(5px);
+  margin-top: auto; /* Push footer to bottom */
 }
 
 .availableBadge {
-  background: var(--ifm-color-success);
+  background: linear-gradient(135deg, var(--ifm-color-success), var(--ifm-color-success-dark));
   color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(var(--ifm-color-success-rgb), 0.3);
+  border: none;
+}
+
+.readButton {
+  background: linear-gradient(135deg, var(--ifm-color-primary), var(--ifm-color-primary-dark));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(var(--ifm-color-primary-rgb), 0.3);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none !important;
+}
+
+.readButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--ifm-color-primary-rgb), 0.4);
+  background: linear-gradient(135deg, var(--ifm-color-primary-dark), var(--ifm-color-primary-darker));
 }
 
 .unavailableBadge {
-  background: var(--ifm-color-warning);
+  background: linear-gradient(135deg, var(--ifm-color-warning), var(--ifm-color-warning-dark));
   color: white;
-  padding: 0.25rem 0.75rem;
-  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
   font-size: 0.8rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(var(--ifm-color-warning-rgb), 0.3);
+  border: none;
 }
 
 /* Responsive design */
+@media (max-width: 1200px) {
+  .cardColumn {
+    width: 25%; /* 4 cards per row on smaller screens */
+  }
+}
+
+@media (max-width: 996px) {
+  .cardColumn {
+    width: 33.333%; /* 3 cards per row on medium screens */
+  }
+}
+
 @media (max-width: 768px) {
   .legalCardsSection {
-    padding: 1.5rem 0;
+    padding: 2rem 0;
+  }
+  
+  .cardColumn {
+    width: 50%; /* 2 cards per row on small screens */
+    padding: 0 0.5rem;
+    margin-bottom: 1rem;
   }
   
   .cardHeader {
-    padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+    padding: 1.5rem 1.25rem 0.75rem 1.25rem;
   }
   
   .icon {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+  
+  .iconContainer::before {
+    width: 60px;
+    height: 60px;
   }
   
   .cardTitle {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
   }
   
   .cardBody {
-    padding: 0 1.25rem 0.75rem 1.25rem;
+    padding: 0 1.25rem 1rem 1.25rem;
   }
   
   .cardDescription {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
   }
   
   .cardFooter {
-    padding: 0.75rem 1.25rem;
+    padding: 1rem 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .cardColumn {
+    width: 100%; /* 1 card per row on extra small screens */
+  }
+  
+  .legalCard {
+    border-radius: 16px;
   }
 }
 
 /* Dark mode specific styles */
 [data-theme='dark'] .legalCard {
-  background: var(--ifm-background-surface-color);
-  border-color: var(--ifm-color-emphasis-200);
+  background: linear-gradient(145deg, var(--ifm-background-surface-color), rgba(var(--ifm-color-primary-rgb), 0.05));
+  border-color: rgba(255, 255, 255, 0.08);
 }
 
 [data-theme='dark'] .legalCard:hover {
-  border-color: var(--ifm-color-primary-lighter);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  border-color: rgba(var(--ifm-color-primary-rgb), 0.4);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 8px 25px rgba(var(--ifm-color-primary-rgb), 0.2);
 }
 
 [data-theme='dark'] .cardFooter {
-  background: var(--ifm-color-emphasis-100);
-  border-top-color: var(--ifm-color-emphasis-100);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='dark'] .iconContainer::before {
+  background: linear-gradient(135deg, rgba(var(--ifm-color-primary-rgb), 0.15), rgba(var(--ifm-color-secondary-rgb), 0.15));
 }

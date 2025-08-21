@@ -2,12 +2,20 @@ import type {ReactNode} from 'react';
 import clsx from 'clsx';
 import Heading from '@theme/Heading';
 import Link from '@docusaurus/Link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { 
+  faComments, 
+  faGamepad, 
+  faGlobe, 
+  faFlask, 
+  faBriefcase 
+} from '@fortawesome/free-solid-svg-icons';
 import styles from './styles.module.css';
 
 type LegalCardItem = {
   title: string;
   description: string;
-  icon: string;
+  icon: any;
   link: string;
   isAvailable: boolean;
 };
@@ -16,35 +24,35 @@ const LegalSections: LegalCardItem[] = [
   {
     title: 'דיסקורד',
     description: 'תקנון והנחיות לשימוש בשרת הדיסקורד של קהילת TeGriAi',
-    icon: '💬',
+    icon: faComments,
     link: '/legal/discord/safety',
     isAvailable: true,
   },
   {
     title: 'Roblox',
     description: 'כללי התנהגות ובטיחות בפלטפורמת Roblox',
-    icon: '🎮',
+    icon: faGamepad,
     link: '/legal/roblox/rules',
     isAvailable: true,
   },
   {
     title: 'אתר',
     description: 'מדיניות פרטיות ותנאי שימוש באתר',
-    icon: '🌐',
+    icon: faGlobe,
     link: '/legal/website/privacy-policy',
     isAvailable: true,
   },
   {
     title: 'Perfume',
     description: 'מדיניות ותקנון הקשורים לפלטפורמת Perfume',
-    icon: '🌸',
+    icon: faFlask,
     link: '#',
     isAvailable: false,
   },
   {
     title: 'Workway',
     description: 'הנחיות ותקנון עבור פלטפורמת Workway',
-    icon: '💼',
+    icon: faBriefcase,
     link: '#',
     isAvailable: false,
   },
@@ -55,7 +63,7 @@ function LegalCard({title, description, icon, link, isAvailable}: LegalCardItem)
     <div className={clsx('card', styles.legalCard, !isAvailable && styles.unavailable)}>
       <div className={styles.cardHeader}>
         <div className={styles.iconContainer}>
-          <span className={styles.icon}>{icon}</span>
+          <FontAwesomeIcon icon={icon} className={styles.icon} />
         </div>
         <Heading as="h3" className={clsx('font-karantina', styles.cardTitle)}>
           {title}
@@ -78,14 +86,14 @@ function LegalCard({title, description, icon, link, isAvailable}: LegalCardItem)
 
   if (!isAvailable) {
     return (
-      <div className={clsx('col col--6 col--lg-4')}>
+      <div className={clsx('col', styles.cardColumn)}>
         <CardContent />
       </div>
     );
   }
 
   return (
-    <div className={clsx('col col--6 col--lg-4')}>
+    <div className={clsx('col', styles.cardColumn)}>
       <Link to={link} className={styles.cardLink}>
         <CardContent />
       </Link>
