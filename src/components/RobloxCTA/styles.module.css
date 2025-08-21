@@ -1,0 +1,497 @@
+/* Roblox Brand Colors */
+:root {
+  --roblox-primary: #00b06f;
+  --roblox-secondary: #393b3d;
+  --roblox-red: #e74c3c;
+  --roblox-blue: #0066cc;
+  --roblox-white: #ffffff;
+  --roblox-black: #000000;
+  --roblox-dark: #232527;
+  --roblox-light-grey: #99aab5;
+  --roblox-dark-grey: #2c2f33;
+}
+
+.robloxCTA {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin: 2rem 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  direction: rtl;
+  border: 2px solid rgba(0, 176, 111, 0.3);
+}
+
+.robloxCTA::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+.robloxCTA:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 48px rgba(0, 176, 111, 0.4);
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.iconContainer {
+  flex-shrink: 0;
+  background: rgba(0, 176, 111, 0.15);
+  border-radius: 16px;
+  padding: 1.25rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 176, 111, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.robloxIcon {
+  width: 56px;
+  height: 56px;
+  color: rgba(255, 255, 255, 0.9);
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.robloxIcon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.textContent {
+  flex: 1;
+  color: #ffffff !important;
+  text-align: center;
+  direction: rtl;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  margin: 0 0 0.75rem 0;
+  font-size: 2rem;
+  font-weight: 800;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.7);
+  text-align: center;
+  direction: rtl;
+  color: #ffffff !important;
+  line-height: 1.2;
+}
+
+.description {
+  margin: 0 0 1rem 0;
+  font-size: 1.1rem;
+  opacity: 1;
+  line-height: 1.4;
+  text-align: center;
+  direction: rtl;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.directLink {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  text-align: center;
+  direction: rtl;
+  color: #ffffff;
+  word-break: break-all;
+}
+
+.linkCode {
+  background: rgba(30, 31, 36, 0.8);
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+}
+
+.buttonGroup {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.joinButton {
+  border: none;
+  color: var(--roblox-white);
+  padding: 1rem 2rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+  min-width: 180px;
+}
+
+.joinButton.primary {
+  background: var(--roblox-primary);
+  box-shadow: 0 6px 20px rgba(0, 176, 111, 0.4);
+}
+
+.joinButton.primary:hover {
+  background: #009a5d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 176, 111, 0.6);
+}
+
+.joinButton.secondary {
+  background: var(--roblox-secondary);
+  box-shadow: 0 6px 20px rgba(57, 59, 61, 0.4);
+  font-size: 0.9rem;
+  padding: 0.8rem 1.5rem;
+}
+
+.joinButton.secondary:hover {
+  background: #2a2c2e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(57, 59, 61, 0.6);
+}
+
+.joinButton:active {
+  transform: translateY(0);
+}
+
+.backgroundDecoration {
+  position: absolute;
+  top: -50%;
+  left: -20%;
+  width: 100%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0, 176, 111, 0.1) 0%, transparent 70%);
+  transform: rotate(-45deg);
+  pointer-events: none;
+}
+
+/* Animation Variants */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes glow {
+  0% { box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); }
+  50% { box-shadow: 0 12px 60px rgba(0, 176, 111, 0.6); }
+  100% { box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3); }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+.animation-pulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animation-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animation-bounce .joinButton {
+  animation: bounce 2s infinite;
+}
+
+/* Compact Variant */
+.compact {
+  padding: 1.25rem;
+  margin: 1rem 0;
+}
+
+.compact .content {
+  gap: 1rem;
+}
+
+.compact .iconContainer {
+  padding: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.compact .robloxIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.compact .title {
+  font-size: 1.25rem;
+  margin-bottom: 0.25rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.compact .description {
+  font-size: 0.9rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.compact .joinButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  min-width: auto;
+}
+
+.compact .buttonGroup {
+  gap: 0.5rem;
+}
+
+/* Banner Variant */
+.banner {
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.banner .content {
+  flex-direction: column;
+  text-align: center;
+  gap: 1rem;
+}
+
+.banner .textContent {
+  order: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner .buttonGroup {
+  order: 3;
+  align-self: center;
+  flex-direction: row;
+}
+
+.banner .iconContainer {
+  order: 1;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Animated Variant */
+.animated {
+  background-attachment: fixed;
+}
+
+.animated .iconContainer {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.animated .robloxIcon {
+  animation: bounce 3s ease-in-out infinite;
+}
+
+.animated .joinButton.primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.animated .joinButton.primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s;
+}
+
+.animated .joinButton.primary:hover::before {
+  left: 100%;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .robloxCTA {
+    padding: 2rem 1.5rem;
+  }
+  
+  .content {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  
+  .textContent {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .title {
+    font-size: 1.6rem;
+    text-align: center;
+    direction: rtl;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+  }
+  
+  .description {
+    font-size: 1rem;
+    text-align: center;
+    direction: rtl;
+    margin-bottom: 0;
+    color: #ffffff;
+  }
+  
+  .buttonGroup {
+    align-self: center;
+    flex-direction: column;
+  }
+
+  .joinButton {
+    align-self: center;
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
+  }
+  
+  .iconContainer {
+    padding: 1rem;
+    order: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .robloxIcon {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .compact {
+    padding: 1rem;
+  }
+  
+  .compact .content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .compact .textContent {
+    text-align: center;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .compact .title {
+    text-align: center;
+    direction: rtl;
+    color: #ffffff;
+  }
+  
+  .compact .description {
+    text-align: center;
+    direction: rtl;
+    color: #ffffff;
+  }
+
+  .banner .buttonGroup {
+    flex-direction: column;
+  }
+}
+
+/* Small mobile screens */
+@media (max-width: 480px) {
+  .robloxCTA {
+    padding: 1.5rem 1rem;
+    margin: 1rem 0;
+  }
+  
+  .title {
+    font-size: 1.4rem;
+  }
+  
+  .description {
+    font-size: 0.9rem;
+  }
+  
+  .joinButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.95rem;
+  }
+  
+  .textContent {
+    padding: 1.25rem 0.75rem;
+  }
+
+  .directLink {
+    font-size: 0.7rem;
+  }
+
+  .linkCode {
+    font-size: 0.65rem;
+  }
+}
+
+/* Dark theme adjustments */
+html[data-theme='dark'] .robloxCTA {
+  border: 1px solid rgba(0, 176, 111, 0.4);
+}
+
+html[data-theme='dark'] .iconContainer {
+  background: rgba(0, 176, 111, 0.2);
+  border: 1px solid rgba(0, 176, 111, 0.3);
+}
+
+html[data-theme='dark'] .joinButton.primary {
+  background: var(--roblox-primary);
+  border-color: var(--roblox-primary);
+  box-shadow: 0 4px 12px rgba(0, 176, 111, 0.4);
+}
+
+html[data-theme='dark'] .joinButton.primary:hover {
+  background: #009a5d;
+  border-color: #009a5d;
+  box-shadow: 0 6px 20px rgba(0, 176, 111, 0.5);
+}
