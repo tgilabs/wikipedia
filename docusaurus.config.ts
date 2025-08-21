@@ -90,7 +90,7 @@ const config: Config = {
           html: '<i class="fas fa-users"></i> קהילה',
         },
         {
-          to: 'intro',
+          to: 'servers',
           position: 'left',
           html: '<i class="fas fa-gamepad"></i> שרתי משחק',
         },

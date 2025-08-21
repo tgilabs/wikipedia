@@ -20,7 +20,7 @@ const NavigationCards = [
     title: 'שרתי משחק',
     icon: 'fas fa-gamepad',
     description: 'גלו את שרתי המשחקים שלנו ברובלוקס ועוד',
-    link: '/section/gaming/roblox',
+    link: '/servers',
     gradient: 'from-purple-500 to-pink-600'
   },
   {
