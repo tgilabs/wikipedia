@@ -8,14 +8,15 @@ import {
   faGamepad, 
   faGlobe, 
   faFlask, 
-  faBriefcase 
+  faBriefcase,
+  type IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles.module.css';
 
 type LegalCardItem = {
   title: string;
   description: string;
-  icon: any;
+  icon: IconDefinition;
   link: string;
   isAvailable: boolean;
 };

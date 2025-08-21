@@ -47,6 +47,12 @@ const RobloxCTA: React.FC<RobloxCTAProps> = ({
     const AND_STORE = "https://play.google.com/store/apps/details?id=com.roblox.client";
     const ROBLOX_DOWNLOAD = "https://www.roblox.com/download";
 
+    // Timing constants for navigation fallbacks
+    const WEB_LAUNCH_TIMEOUT = 1800;
+    const WEB_LAUNCH_DELAY = 1200;
+    const STORE_FALLBACK_TIMEOUT = 3200;
+    const STORE_FALLBACK_DELAY = 2600;
+
     let didNavigate = false;
     const t0 = Date.now();
 
@@ -55,21 +61,21 @@ const RobloxCTA: React.FC<RobloxCTAProps> = ({
 
     // Fallback to web launcher
     setTimeout(() => {
-      if (Date.now() - t0 < 1800 && !didNavigate) {
+      if (Date.now() - t0 < WEB_LAUNCH_TIMEOUT && !didNavigate) {
         didNavigate = true;
         window.location.href = webLink;
       }
-    }, 1200);
+    }, WEB_LAUNCH_DELAY);
 
     // Final fallback to store/download
     setTimeout(() => {
-      if (Date.now() - t0 < 3200 && !didNavigate) {
+      if (Date.now() - t0 < STORE_FALLBACK_TIMEOUT && !didNavigate) {
         didNavigate = true;
         if (isIOS) window.location.href = IOS_STORE;
         else if (isAndroid) window.location.href = AND_STORE;
         else window.location.href = ROBLOX_DOWNLOAD;
       }
-    }, 2600);
+    }, STORE_FALLBACK_DELAY);
   };
 
   const handleWebRedirect = () => {

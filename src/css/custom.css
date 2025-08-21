@@ -251,7 +251,7 @@ html[dir="rtl"] .button {
 }
 
 html[dir="rtl"] .breadcrumbs__item:not(:last-child):after {
-  content: '\\';
+  content: '\005C';
   margin: 0 var(--ifm-breadcrumb-separator-size-multiplier) * var(--ifm-breadcrumb-item-padding-horizontal);
   transform: scaleX(-1);
 }

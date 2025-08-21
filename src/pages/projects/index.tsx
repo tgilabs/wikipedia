@@ -84,7 +84,9 @@ function ProjectsSection() {
                     onError={(e) => {
                       // Fallback to icon if image doesn't load
                       e.currentTarget.style.display = 'none';
-                      e.currentTarget.parentElement.innerHTML = '<i class="fas fa-cube"></i>';
+                      const icon = document.createElement('i');
+                      icon.className = 'fas fa-cube';
+                      e.currentTarget.parentElement.appendChild(icon);
                     }}
                   />
                 </div>
