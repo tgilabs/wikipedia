@@ -1,0 +1,594 @@
+/* Main Section */
+.commandsSection {
+  padding: 3rem 0;
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.mainTitle {
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--color-gradient-start), var(--color-gradient-mid-1), var(--color-gradient-mid-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 1rem;
+  letter-spacing: -2px;
+  text-shadow: 0 0 20px rgba(53, 195, 243, 0.3);
+  direction: rtl;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: var(--ifm-color-content-secondary);
+  margin-bottom: 2rem;
+  font-weight: 400;
+  direction: rtl;
+  text-align: center;
+}
+
+/* Admin Info Section */
+.adminInfo {
+  background: rgba(53, 195, 243, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(53, 195, 243, 0.2);
+  backdrop-filter: blur(10px);
+  direction: rtl;
+  text-align: center;
+}
+
+.infoText {
+  font-size: 1rem;
+  color: var(--ifm-color-content);
+  margin-bottom: 1.5rem;
+  direction: rtl;
+  text-align: center;
+}
+
+.adminTabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.adminTab {
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(17, 17, 17, 0.8);
+  color: var(--ifm-color-content-secondary);
+  border: 2px solid rgba(53, 195, 243, 0.2);
+}
+
+.activeTab {
+  background: linear-gradient(135deg, var(--color-glow-blue), var(--color-glow-purple));
+  color: white;
+  box-shadow: 0 4px 15px rgba(53, 195, 243, 0.3);
+  border-color: var(--color-glow-blue);
+}
+
+.adminTab:hover:not(.activeTab) {
+  background: rgba(53, 195, 243, 0.1);
+  border-color: rgba(53, 195, 243, 0.4);
+}
+
+/* Help Section */
+.helpSection {
+  background: rgba(17, 17, 17, 0.8);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(53, 195, 243, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  direction: rtl;
+}
+
+.helpTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-glow-blue);
+  margin-bottom: 1.5rem;
+  text-align: center;
+  direction: rtl;
+}
+
+.helpSteps {
+  font-size: 1.1rem;
+  color: var(--ifm-color-content);
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 0;
+  list-style: none;
+  counter-reset: step-counter;
+  direction: rtl;
+  text-align: right;
+}
+
+.helpSteps li {
+  counter-increment: step-counter;
+  margin-bottom: 1rem;
+  padding-right: 3rem;
+  padding-left: 0;
+  position: relative;
+  text-align: right;
+}
+
+.helpSteps li::before {
+  content: counter(step-counter);
+  position: absolute;
+  right: 0;
+  left: auto;
+  top: 0;
+  background: linear-gradient(135deg, var(--color-glow-blue), var(--color-glow-purple));
+  color: white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 10px rgba(53, 195, 243, 0.3);
+}
+
+.helpSteps code {
+  background: rgba(53, 195, 243, 0.1);
+  color: var(--color-glow-blue);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-weight: 600;
+  border: 1px solid rgba(53, 195, 243, 0.2);
+}
+
+/* Controls Section */
+.controlsSection {
+  margin-bottom: 3rem;
+}
+
+.searchContainer {
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 1.5rem;
+  left: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ifm-color-content-secondary);
+  font-size: 1.1rem;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 1rem 3.5rem 1rem 1rem;
+  border-radius: 25px;
+  border: 2px solid rgba(53, 195, 243, 0.2);
+  background: rgba(17, 17, 17, 0.8);
+  color: var(--ifm-color-content);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  text-align: right;
+  direction: rtl;
+}
+
+.searchInput::placeholder {
+  color: var(--ifm-color-content-secondary);
+}
+
+.searchInput:focus {
+  outline: none;
+  border-color: var(--color-glow-blue);
+  box-shadow: 0 4px 20px rgba(53, 195, 243, 0.3);
+}
+
+.categoryFilters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.categoryButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px;
+  border: 2px solid rgba(53, 195, 243, 0.2);
+  background: rgba(17, 17, 17, 0.8);
+  color: var(--ifm-color-content);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.categoryButton:hover {
+  border-color: var(--color-glow-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(53, 195, 243, 0.3);
+}
+
+.activeCategoryButton {
+  background: linear-gradient(135deg, var(--color-glow-blue), var(--color-glow-purple));
+  color: white;
+  border-color: var(--color-glow-blue);
+  box-shadow: 0 4px 15px rgba(53, 195, 243, 0.4);
+}
+
+.categoryIcon {
+  font-size: 0.9rem;
+}
+
+/* Commands Container */
+.commandsContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.categorySection {
+  margin-bottom: 4rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.categoryTitle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-glow-blue);
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid rgba(53, 195, 243, 0.3);
+  direction: rtl;
+  text-align: right;
+  justify-content: flex-start;
+}
+
+.categoryTitleIcon {
+  font-size: 1.5rem;
+}
+
+.commandCount {
+  font-size: 1rem;
+  color: var(--ifm-color-content-secondary);
+  background: rgba(53, 195, 243, 0.1);
+  padding: 0.25rem 0.75rem;
+  border-radius: 15px;
+  font-weight: 500;
+  border: 1px solid rgba(53, 195, 243, 0.2);
+}
+
+.commandsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
+  padding: 0 1rem;
+}
+
+/* Command Card */
+.commandCard {
+  background: rgba(17, 17, 17, 0.9);
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: 1px solid rgba(53, 195, 243, 0.2);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  direction: rtl;
+  text-align: right;
+}
+
+.commandCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-glow-blue), var(--color-glow-purple));
+}
+
+.commandCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border-color: rgba(53, 195, 243, 0.4);
+}
+
+.commandHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.commandIconContainer {
+  flex-shrink: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(53, 195, 243, 0.1), rgba(139, 159, 232, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(53, 195, 243, 0.2);
+}
+
+.commandIcon {
+  font-size: 1.3rem;
+  color: var(--color-glow-blue);
+}
+
+.commandInfo {
+  flex: 1;
+}
+
+.commandName {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-glow-blue);
+  background: rgba(53, 195, 243, 0.1);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  display: inline;
+  border: 1px solid rgba(53, 195, 243, 0.2);
+  direction: ltr;
+  text-align: left;
+}
+
+.undoCommand {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.undoLabel {
+  font-size: 0.8rem;
+  color: var(--ifm-color-content-secondary);
+  font-weight: 600;
+}
+
+.undoCommandName {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-glow-pink);
+  background: rgba(230, 129, 216, 0.1);
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid rgba(230, 129, 216, 0.2);
+}
+
+.commandBody {
+  padding-left: 0;
+  direction: rtl;
+  text-align: right;
+}
+
+.commandDescription {
+  color: var(--ifm-color-content);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.commandExample {
+  margin-bottom: 1rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.exampleLabel {
+  font-size: 0.85rem;
+  color: var(--ifm-color-content-secondary);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.exampleCode {
+  background: rgba(53, 195, 243, 0.1);
+  color: var(--color-glow-blue);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-right: 3px solid var(--color-glow-blue);
+  border-left: none;
+  border: 1px solid rgba(53, 195, 243, 0.2);
+  display: block;
+  text-align: left;
+  direction: ltr;
+}
+
+.commandAliases {
+  margin-top: 1rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.aliasesLabel {
+  font-size: 0.85rem;
+  color: var(--ifm-color-content-secondary);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.5rem;
+  direction: rtl;
+  text-align: right;
+}
+
+.aliasesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.aliasCode {
+  background: rgba(17, 17, 17, 0.8);
+  color: var(--ifm-color-content-secondary);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(53, 195, 243, 0.1);
+}
+
+/* VIP Badge */
+.vipBadge {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 169, 164, 0.1), rgba(254, 210, 206, 0.1));
+  border-radius: 20px;
+  border: 2px solid rgba(255, 169, 164, 0.3);
+  backdrop-filter: blur(10px);
+  direction: rtl;
+}
+
+.rankLabel {
+  font-size: 1.1rem;
+  color: var(--ifm-color-content);
+  font-weight: 600;
+  margin-left: 1rem;
+  margin-right: 0;
+}
+
+.vipLabel {
+  background: linear-gradient(135deg, var(--color-glow-pink), var(--color-gradient-end));
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 25px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 15px rgba(230, 129, 216, 0.4);
+  display: inline-block;
+}
+
+/* No Results */
+.noResults {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--ifm-color-content-secondary);
+  font-size: 1.1rem;
+  direction: rtl;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 996px) {
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+  
+  .commandsGrid {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+  
+  .categoryFilters {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0 1rem;
+  }
+  
+  .categoryButton {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .adminTabs {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .helpSteps {
+    padding-right: 1rem;
+    padding-left: 0;
+  }
+  
+  .helpSteps li {
+    padding-right: 2.5rem;
+    padding-left: 0;
+  }
+  
+  .helpSteps li::before {
+    right: 0;
+    left: auto;
+    width: 1.5rem;
+    height: 1.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .commandsSection {
+    padding: 2rem 0;
+  }
+  
+  .mainTitle {
+    font-size: 2rem;
+  }
+  
+  .adminInfo {
+    padding: 1.5rem;
+  }
+  
+  .helpSection {
+    padding: 1.5rem;
+  }
+  
+  .commandCard {
+    padding: 1rem;
+  }
+  
+  .commandHeader {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+    direction: rtl;
+  }
+  
+  .categoryTitle {
+    font-size: 1.5rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    direction: rtl;
+  }
+  
+  .vipBadge {
+    padding: 1.5rem;
+  }
+  
+  .rankLabel {
+    display: block;
+    margin-bottom: 1rem;
+    margin-right: 0;
+    margin-left: 0;
+    text-align: center;
+  }
+}
