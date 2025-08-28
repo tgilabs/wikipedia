@@ -561,7 +561,7 @@ function CommandCard({command, description, example, aliases, undo, icon}: Roblo
           <code className={styles.commandName}>{command}</code>
           {undo && (
             <div className={styles.undoCommand}>
-              <span className={styles.undoLabel}>Undo:</span>
+              <span className={styles.undoLabel}>ביטול:</span>
               <code className={styles.undoCommandName}>;{undo}</code>
             </div>
           )}
@@ -570,12 +570,12 @@ function CommandCard({command, description, example, aliases, undo, icon}: Roblo
       <div className={styles.commandBody}>
         <p className={styles.commandDescription}>{description}</p>
         <div className={styles.commandExample}>
-          <span className={styles.exampleLabel}>Example:</span>
+          <span className={styles.exampleLabel}>דוגמה:</span>
           <code className={styles.exampleCode}>{example}</code>
         </div>
         {aliases && aliases.length > 0 && (
           <div className={styles.commandAliases}>
-            <span className={styles.aliasesLabel}>Aliases:</span>
+            <span className={styles.aliasesLabel}>כינויים:</span>
             <div className={styles.aliasesList}>
               {aliases.map((alias, idx) => (
                 <code key={idx} className={styles.aliasCode}>{alias}</code>
@@ -624,7 +624,7 @@ export default function RobloxCommands(): ReactNode {
         </div>
 
         <div className={styles.helpSection}>
-          <Heading as="h2" className={styles.helpTitle}>איך להשתמש בפקודות HD Admin</Heading>
+          <Heading as="h2" className={styles.helpTitle}>איך להשתמש בפקודות</Heading>
           <ol className={styles.helpSteps}>
             <li>לחצו על המקש <code>'</code> במקלדת שלכם</li>
             <li>הקלידו פקודה בתיבת הטקסט ולחצו אנטר!</li>

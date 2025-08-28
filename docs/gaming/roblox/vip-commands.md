@@ -6,7 +6,6 @@ description: מדריך מלא לפקודות אדמין VIP בחוויית הר
 
 import RobloxCommands from '@site/src/components/RobloxCommands';
 
-# פקודות VIP ברובלוקס
 
 <RobloxCommands />
 
