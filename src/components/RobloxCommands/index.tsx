@@ -636,7 +636,7 @@ export default function RobloxCommands(): ReactNode {
             <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
             <input
               type="text"
-              placeholder="חפשו פקודות HD Admin..."
+              placeholder="חפשו פקודות..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className={styles.searchInput}

@@ -152,7 +152,8 @@
 
 .searchIcon {
   position: absolute;
-  left: 1.5rem;
+  right: 1.5rem;
+  left: auto;
   top: 50%;
   transform: translateY(-50%);
   color: var(--ifm-color-content-secondary);
@@ -161,7 +162,7 @@
 
 .searchInput {
   width: 100%;
-  padding: 1rem 1rem 1rem 3.5rem;
+  padding: 1rem 3.5rem 1rem 1rem;
   border-radius: 25px;
   border: 2px solid rgba(53, 195, 243, 0.2);
   background: rgba(17, 17, 17, 0.8);
@@ -170,6 +171,8 @@
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
+  text-align: right;
+  direction: rtl;
 }
 
 .searchInput::placeholder {
@@ -332,6 +335,8 @@
   border-radius: 6px;
   display: inline;
   border: 1px solid rgba(53, 195, 243, 0.2);
+  direction: ltr;
+  text-align: left;
 }
 
 .undoCommand {
@@ -387,9 +392,12 @@
   border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 600;
-  border-left: 3px solid var(--color-glow-blue);
+  border-right: 3px solid var(--color-glow-blue);
+  border-left: none;
   border: 1px solid rgba(53, 195, 243, 0.2);
   display: block;
+  text-align: left;
+  direction: ltr;
 }
 
 .commandAliases {
@@ -487,14 +495,18 @@
   }
   
   .helpSteps {
-    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-left: 0;
   }
   
   .helpSteps li {
-    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-left: 0;
   }
   
   .helpSteps li::before {
+    right: 0;
+    left: auto;
     width: 1.5rem;
     height: 1.5rem;
     font-size: 0.8rem;
@@ -543,5 +555,6 @@
     display: block;
     margin-bottom: 1rem;
     margin-right: 0;
+    margin-left: 0;
   }
 }

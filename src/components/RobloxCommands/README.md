@@ -33,7 +33,6 @@ export default function CommandsPage() {
 
 - **Main Container**: Full-width section with gradient background
 - **Header**: Title, subtitle, and admin plugin selection
-- **Help Section**: Instructions on how to use HD Admin commands
 - **Controls**: Search bar and category filters
 - **Commands Grid**: Responsive grid layout of command cards
 - **VIP Badge**: Indicates the required rank for all commands
