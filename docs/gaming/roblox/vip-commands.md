@@ -1,7 +1,8 @@
 ---
-sidebar_position: 3
-title: פקודות VIP
-description: מדריך מלא לפקודות אדמין VIP בחוויית הרובלוקס שלנו
+title: המקום הכי ישראלי ברשת | TeGriAi Roblox | פקודות VIP
+sidebar_label: פקודות VIP
+description: בואו לגלות את שרת הרובלוקס של קהילת TeGriAi, המקום הכי ישראלי ברשת! - שרת רובלוקס ישראלי
+sidebar_position: 4
 ---
 
 import RobloxCTA from '@site/src/components/RobloxCTA';
