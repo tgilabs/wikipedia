@@ -4,6 +4,8 @@ title: פקודות VIP
 description: מדריך מלא לפקודות אדמין VIP בחוויית הרובלוקס שלנו
 ---
 
+import RobloxCTA from '@site/src/components/RobloxCTA';
+
 # פקודות VIP ברובלוקס
 
 ## איך להשתמש בפקודות
@@ -63,6 +65,7 @@ description: מדריך מלא לפקודות אדמין VIP בחוויית הר
 | `;fat me` | להפוך לשמן | `;fat builderman` |
 | `;thin me` | להפוך לרזה | `;thin builderman` |
 
+<RobloxCTA />
 
 ## שליטה בשחקן
 
@@ -118,6 +121,9 @@ description: מדריך מלא לפקודות אדמין VIP בחוויית הר
 | `;rainbowFart me` | אפקט "קשת בענן" | `;rainbowFart builderman` |
 | `;icecream me` | רכב גלידה חוטף | `;icecream builderman` |
 
+
+
+<RobloxCTA />
 
 ## מידע נוסף
 
