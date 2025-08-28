@@ -1,13 +1,10 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import styles from './styles.module.css';
 
 interface RobloxCTAProps {
   title?: string;
   description?: string;
   buttonText?: string;
-  placeId?: string;
-  linkCode?: string;
-  launchData?: string;
   variant?: 'default' | 'compact' | 'banner' | 'animated';
   image?: string;
   animation?: 'pulse' | 'glow' | 'bounce' | 'none';
@@ -17,69 +14,13 @@ const RobloxCTA: React.FC<RobloxCTAProps> = ({
   title = "הצטרפו אלינו ברובלוקס",
   description = "חוויה ייחודית במשחק הכי פופולרי בעולם",
   buttonText = "שחקו עכשיו",
-  placeId = "84552319997646", // TeGriAi default
-  linkCode = "",
-  launchData = '{"entry":"website","campaign":"landing"}',
   variant = 'default',
   image = "/img/roblox-discord-background.jpg",
   animation = 'pulse'
 }) => {
-  const deepLink = useMemo(() => {
-    const encodedLaunchData = encodeURIComponent(launchData);
-    const base = `roblox://experiences/start?placeId=${placeId}`;
-    const code = linkCode ? `&linkCode=${encodeURIComponent(linkCode)}` : "";
-    return `${base}${code}&launchData=${encodedLaunchData}`;
-  }, [placeId, linkCode, launchData]);
-
-  const webLink = useMemo(() => {
-    const encodedLaunchData = encodeURIComponent(launchData);
-    const base = `https://www.roblox.com/games/start?placeId=${placeId}`;
-    const code = linkCode ? `&linkCode=${encodeURIComponent(linkCode)}` : "";
-    return `${base}${code}&launchData=${encodedLaunchData}`;
-  }, [placeId, linkCode, launchData]);
-
   const handleJoinClick = () => {
-    const ua = typeof navigator !== "undefined" ? navigator.userAgent : "";
-    const isIOS = /iPhone|iPad|iPod/i.test(ua);
-    const isAndroid = /Android/i.test(ua);
-
-    const IOS_STORE = "https://apps.apple.com/app/roblox/id431946152";
-    const AND_STORE = "https://play.google.com/store/apps/details?id=com.roblox.client";
-    const ROBLOX_DOWNLOAD = "https://www.roblox.com/download";
-
-    // Timing constants for navigation fallbacks
-    const WEB_LAUNCH_TIMEOUT = 1800;
-    const WEB_LAUNCH_DELAY = 1200;
-    const STORE_FALLBACK_TIMEOUT = 3200;
-    const STORE_FALLBACK_DELAY = 2600;
-
-    let didNavigate = false;
-    const t0 = Date.now();
-
-    // Try native deep link first
-    window.location.href = deepLink;
-
-    // Fallback to web launcher
-    setTimeout(() => {
-      if (Date.now() - t0 < WEB_LAUNCH_TIMEOUT && !didNavigate) {
-        didNavigate = true;
-        window.location.href = webLink;
-      }
-    }, WEB_LAUNCH_DELAY);
-
-    // Final fallback to store/download
-    setTimeout(() => {
-      if (Date.now() - t0 < STORE_FALLBACK_TIMEOUT && !didNavigate) {
-        didNavigate = true;
-        if (isIOS) window.location.href = IOS_STORE;
-        else if (isAndroid) window.location.href = AND_STORE;
-        else window.location.href = ROBLOX_DOWNLOAD;
-      }
-    }, STORE_FALLBACK_DELAY);
-  };
-
-  const handleWebRedirect = () => {
-    window.open(webLink, '_blank', 'noopener,noreferrer');
+    // Always redirect to custom domain
+    window.location.href = "https://roblox.tegriai.com";
   };
 
   const containerStyle = {
@@ -111,15 +52,6 @@ const RobloxCTA: React.FC<RobloxCTAProps> = ({
           >
             {buttonText}
           </button>
-          {variant === 'default' && (
-            <button 
-              className={`${styles.joinButton} ${styles.secondary}`}
-              onClick={handleWebRedirect}
-              aria-label="פתח דרך הדפדפן"
-            >
-              פתח דרך הדפדפן
-            </button>
-          )}
         </div>
         
         <div className={styles.textContent}>

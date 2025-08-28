@@ -34,7 +34,7 @@ const robloxCommands: RobloxCommand[] = [
   // Utility Commands
   {
     command: 'cmdbar',
-    description: 'Opens the command bar',
+    description: 'פותח את שורת הפקודות',
     example: ';cmdbar',
     aliases: ['commandBar'],
     category: 'utility',
@@ -42,7 +42,7 @@ const robloxCommands: RobloxCommand[] = [
   },
   {
     command: 'refresh Player',
-    description: 'Clears any and all effects and loops from yourself, or the from the player with the specified name',
+    description: 'מנקה את כל האפקטים והלולאות מעצמכם, או מהשחקן שצוין',
     example: ';refresh builderman',
     aliases: ['re', 'reset'],
     category: 'utility',
@@ -50,7 +50,7 @@ const robloxCommands: RobloxCommand[] = [
   },
   {
     command: 'respawn Player',
-    description: 'Makes you, or the player with the specified name, respawn',
+    description: 'גורם לכם, או לשחקן שצוין, להיוולד מחדש',
     example: ';respawn builderman',
     aliases: ['res'],
     category: 'utility',
@@ -58,7 +58,7 @@ const robloxCommands: RobloxCommand[] = [
   },
   {
     command: 'follow Player',
-    description: 'Teleports you to the server that the player with the specified name is in (must be in the same game)',
+    description: 'מעביר אתכם לשרת בו נמצא השחקן שצוין (חייב להיות באותו משחק)',
     example: ';follow builderman',
     aliases: ['join', 'joinServer'],
     category: 'utility',
@@ -532,12 +532,12 @@ const robloxCommands: RobloxCommand[] = [
 ];
 
 const categoryNames = {
-  appearance: 'Appearance',
-  effects: 'Effects',
-  player: 'Player Control',
-  camera: 'Camera & UI',
-  utility: 'Utility',
-  fun: 'Fun Commands'
+  appearance: 'מראה',
+  effects: 'אפקטים',
+  player: 'שליטה בשחקן',
+  camera: 'מצלמה וממשק',
+  utility: 'כלים',
+  fun: 'פקודות כיף'
 };
 
 const categoryIcons = {
@@ -615,27 +615,19 @@ export default function RobloxCommands(): ReactNode {
       <div className="container">
         <div className="text--center margin-bottom--lg">
           <Heading as="h1" className={clsx('font-karantina', styles.mainTitle)}>
-            Roblox VIP Commands
+            פקודות VIP ברובלוקס
           </Heading>
           <p className={clsx('font-assistant', styles.subtitle)}>
-            Looking to ban.. or explode a player? You're in the right place.
+            רוצים לבאן.. או לפוצץ שחקן? הגעתם למקום הנכון.
           </p>
-          <div className={styles.adminInfo}>
-            <p className={clsx('font-assistant', styles.infoText)}>
-              Please make sure you select the correct admin command plugin from below. HD Admin and Kohl's Admin Infinite have different commands.
-            </p>
-            <div className={styles.adminTabs}>
-              <div className={clsx(styles.adminTab, styles.activeTab)}>HD Admin</div>
-              <div className={styles.adminTab}>Kohl's Admin Infinite</div>
-            </div>
-          </div>
+
         </div>
 
         <div className={styles.helpSection}>
-          <Heading as="h2" className={styles.helpTitle}>How to Use HD Admin Commands</Heading>
+          <Heading as="h2" className={styles.helpTitle}>איך להשתמש בפקודות HD Admin</Heading>
           <ol className={styles.helpSteps}>
-            <li>Hit the <code>'</code> key on your keyboard</li>
-            <li>Type a command into the text box and hit enter!</li>
+            <li>לחצו על המקש <code>'</code> במקלדת שלכם</li>
+            <li>הקלידו פקודה בתיבת הטקסט ולחצו אנטר!</li>
           </ol>
         </div>
 
@@ -644,7 +636,7 @@ export default function RobloxCommands(): ReactNode {
             <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
             <input
               type="text"
-              placeholder="Search HD Admin commands..."
+              placeholder="חפשו פקודות HD Admin..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className={styles.searchInput}
@@ -656,7 +648,7 @@ export default function RobloxCommands(): ReactNode {
               className={clsx(styles.categoryButton, selectedCategory === 'all' && styles.activeCategoryButton)}
               onClick={() => setSelectedCategory('all')}
             >
-              All Commands
+              כל הפקודות
             </button>
             {Object.entries(categoryNames).map(([key, name]) => (
               <button
@@ -690,12 +682,12 @@ export default function RobloxCommands(): ReactNode {
 
         {filteredCommands.length === 0 && (
           <div className={styles.noResults}>
-            <p>No commands found matching your search criteria.</p>
+            <p>לא נמצאו פקודות התואמות לחיפוש שלכם.</p>
           </div>
         )}
 
         <div className={styles.vipBadge}>
-          <span className={styles.rankLabel}>Rank Required:</span>
+          <span className={styles.rankLabel}>דרגה נדרשת:</span>
           <span className={styles.vipLabel}>VIP</span>
         </div>
       </div>
