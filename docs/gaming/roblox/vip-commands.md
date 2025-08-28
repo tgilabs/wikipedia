@@ -18,9 +18,9 @@ description: מדריך מלא לפקודות אדמין VIP בחוויית הר
 | פקודה | תיאור קצר | דוגמה |
 |-------|------------|-------|
 | `;cmdbar` | פותח את שורת הפקודות | `;cmdbar` |
-| `;refresh Player` | מנקה אפקטים ולולאות | `;refresh builderman` |
-| `;respawn Player` | ריספאון לשחקן | `;respawn builderman` |
-| `;follow Player` | מעבר לשרת של שחקן אחר | `;follow builderman` |
+| `;refresh me` | מנקה אפקטים ולולאות | `;refresh builderman` |
+| `;respawn me` | ריספאון לשחקן | `;respawn builderman` |
+| `;follow me` | מעבר לשרת של שחקן אחר | `;follow builderman` |
 
 
 ## פקודות מראה
@@ -28,17 +28,17 @@ description: מדריך מלא לפקודות אדמין VIP בחוויית הר
 
 | פקודה | תיאור קצר | דוגמה |
 |-------|------------|-------|
-| `;shirt Player AssetID` | משנה חולצה | `;shirt builderman 1` |
-| `;pants Player AssetID` | משנה מכנסיים | `;pants builderman 1324804528` |
-| `;hat Player AssetID` | מוסיף כובע | `;hat builderman 186956940` |
-| `;clearHats Player` | מסיר כובעים | `;clearHats builderman` |
-| `;face Player AssetID` | משנה פנים | `;face builderman 7074764` |
-| `;char Player Player` | מחליף מודל לשחקן אחר | `;char builderman robloxplayer` |
-| `;morph Player Morph` | מורף לשחקן | `;morph builderman Justin` |
-| `;r15 Player` | משנה מודל ל-R15 | `;r15 builderman` |
-| `;r6 Player` | משנה מודל ל-R6 | `;r6 builderman` |
-| `;bundle Player AssetID` | מחיל חבילה | `;bundle builderman 291` |
-| `;dino Player` | משנה לדינוזאור | `;dino builderman` |
+| `;shirt me AssetID` | משנה חולצה | `;shirt builderman 1` |
+| `;pants me AssetID` | משנה מכנסיים | `;pants builderman 1324804528` |
+| `;hat me AssetID` | מוסיף כובע | `;hat builderman 186956940` |
+| `;clearHats me` | מסיר כובעים | `;clearHats builderman` |
+| `;face me AssetID` | משנה פנים | `;face builderman 7074764` |
+| `;char me me` | מחליף מודל לשחקן אחר | `;char builderman robloxme` |
+| `;morph me Morph` | מורף לשחקן | `;morph builderman Justin` |
+| `;r15 me` | משנה מודל ל-R15 | `;r15 builderman` |
+| `;r6 me` | משנה מודל ל-R6 | `;r6 builderman` |
+| `;bundle me AssetID` | מחיל חבילה | `;bundle builderman 291` |
+| `;dino me` | משנה לדינוזאור | `;dino builderman` |
 
 
 ## שינויי גוף וגודל
@@ -46,22 +46,22 @@ description: מדריך מלא לפקודות אדמין VIP בחוויית הר
 
 | פקודה | תיאור קצר | דוגמה |
 |-------|------------|-------|
-| `;bigHead Player` | ראש גדול | `;bigHead builderman` |
-| `;smallHead Player` | ראש קטן | `;smallHead builderman` |
-| `;potatoHead Player` | ראש תפוח אדמה | `;potatoHead builderman` |
-| `;dwarf Player` | דמות קטנה (גמד) | `;dwarf builderman` |
-| `;giant Player` | דמות ענק | `;giant builderman` |
-| `;size Player Amount` | שינוי גודל כללי | `;size builderman 2` |
-| `;bodyTypeScale Player Scale` | שינוי פרופורציות גוף | `;bodyTypeScale builderman 2` |
-| `;depth Player Scale` | שינוי עומק | `;depth builderman 2` |
-| `;headSize Player Scale` | שינוי גודל ראש | `;headSize builderman 0.5` |
-| `;height Player Scale` | שינוי גובה | `;height builderman 2` |
-| `;hipHeight Player Scale` | שינוי גובה ירכיים | `;hipHeight builderman 3` |
-| `;squash Player` | הפיכה לשטוח | `;squash builderman` |
-| `;proportion Player Scale` | שינוי פרופורציות | `;proportion builderman 2` |
-| `;width Player Scale` | שינוי רוחב | `;width builderman 0.5` |
-| `;fat Player` | להפוך לשמן | `;fat builderman` |
-| `;thin Player` | להפוך לרזה | `;thin builderman` |
+| `;bigHead me` | ראש גדול | `;bigHead builderman` |
+| `;smallHead me` | ראש קטן | `;smallHead builderman` |
+| `;potatoHead me` | ראש תפוח אדמה | `;potatoHead builderman` |
+| `;dwarf me` | דמות קטנה (גמד) | `;dwarf builderman` |
+| `;giant me` | דמות ענק | `;giant builderman` |
+| `;size me Amount` | שינוי גודל כללי | `;size builderman 2` |
+| `;bodyTypeScale me Scale` | שינוי פרופורציות גוף | `;bodyTypeScale builderman 2` |
+| `;depth me Scale` | שינוי עומק | `;depth builderman 2` |
+| `;headSize me Scale` | שינוי גודל ראש | `;headSize builderman 0.5` |
+| `;height me Scale` | שינוי גובה | `;height builderman 2` |
+| `;hipHeight me Scale` | שינוי גובה ירכיים | `;hipHeight builderman 3` |
+| `;squash me` | הפיכה לשטוח | `;squash builderman` |
+| `;proportion me Scale` | שינוי פרופורציות | `;proportion builderman 2` |
+| `;width me Scale` | שינוי רוחב | `;width builderman 0.5` |
+| `;fat me` | להפוך לשמן | `;fat builderman` |
+| `;thin me` | להפוך לרזה | `;thin builderman` |
 
 
 ## שליטה בשחקן
@@ -69,34 +69,34 @@ description: מדריך מלא לפקודות אדמין VIP בחוויית הר
 
 | פקודה | תיאור קצר | דוגמה |
 |-------|------------|-------|
-| `;invisible Player` | הופך לבלתי נראה | `;invisible builderman` |
-| `;jump Player` | גורם לשחקן לקפוץ | `;jump builderman` |
-| `;sit Player` | גורם לשחקן לשבת | `;sit builderman` |
-| `;freeze Player` | מקפיא במקום | `;freeze builderman` |
-| `;jail Player` | כלא מזכוכית | `;jail builderman` |
-| `;ice Player` | קוביית קרח | `;ice builderman` |
-| `;name Player FakeName` | שם תצוגה מזויף | `;name builderman awesomename1337` |
-| `;hideName Player` | מסתיר שם | `;hideName builderman` |
+| `;invisible me` | הופך לבלתי נראה | `;invisible builderman` |
+| `;jump me` | גורם לשחקן לקפוץ | `;jump builderman` |
+| `;sit me` | גורם לשחקן לשבת | `;sit builderman` |
+| `;freeze me` | מקפיא במקום | `;freeze builderman` |
+| `;jail me` | כלא מזכוכית | `;jail builderman` |
+| `;ice me` | קוביית קרח | `;ice builderman` |
+| `;name me FakeName` | שם תצוגה מזויף | `;name builderman awesomename1337` |
+| `;hideName me` | מסתיר שם | `;hideName builderman` |
 
 ## אפקטים
 
 
 | פקודה | תיאור קצר | דוגמה |
 |-------|------------|-------|
-| `;paint Player Color` | משנה צבע | `;paint builderman red` |
-| `;material Player Material` | משנה חומר | `;material builderman Wood` |
-| `;reflectance Player Value` | רמת השתקפות | `;reflectance builderman 0.5` |
-| `;transparency Player Value` | שקיפות | `;transparency builderman 0.5` |
-| `;glass Player` | אפקט זכוכית | `;glass builderman` |
-| `;neon Player` | אפקט ניאון | `;neon builderman` |
-| `;shine Player` | אפקט ברק | `;shine builderman` |
-| `;ghost Player` | אפקט רוח רפאים | `;ghost builderman` |
-| `;gold Player` | אפקט זהב | `;gold builderman` |
-| `;forceField Player` | שדה כוח | `;ff builderman` |
-| `;fire Player` | אפקט אש | `;fire builderman` |
-| `;smoke Player` | אפקט עשן | `;smoke builderman` |
-| `;sparkles Player` | אפקט נצנוצים | `;sparkles builderman` |
-| `;nightVision Player` | ראיית לילה | `;nightVision builderman` |
+| `;paint me Color` | משנה צבע | `;paint builderman red` |
+| `;material me Material` | משנה חומר | `;material builderman Wood` |
+| `;reflectance me Value` | רמת השתקפות | `;reflectance builderman 0.5` |
+| `;transparency me Value` | שקיפות | `;transparency builderman 0.5` |
+| `;glass me` | אפקט זכוכית | `;glass builderman` |
+| `;neon me` | אפקט ניאון | `;neon builderman` |
+| `;shine me` | אפקט ברק | `;shine builderman` |
+| `;ghost me` | אפקט רוח רפאים | `;ghost builderman` |
+| `;gold me` | אפקט זהב | `;gold builderman` |
+| `;forceField me` | שדה כוח | `;ff builderman` |
+| `;fire me` | אפקט אש | `;fire builderman` |
+| `;smoke me` | אפקט עשן | `;smoke builderman` |
+| `;sparkles me` | אפקט נצנוצים | `;sparkles builderman` |
+| `;nightVision me` | ראיית לילה | `;nightVision builderman` |
 
 
 ## מצלמה וממשק
@@ -104,19 +104,19 @@ description: מדריך מלא לפקודות אדמין VIP בחוויית הר
 
 | פקודה | תיאור קצר | דוגמה |
 |-------|------------|-------|
-| `;view Player` | מצלמה עוקבת אחרי שחקן | `;view builderman` |
-| `;warp Player` | אנימציית עיוות מצלמה | `;warp builderman` |
-| `;blur Player Amount` | טשטוש מצלמה | `;blur builderman 10` |
-| `;hideGuis Player` | הסתרת ממשקים | `;hideGuis builderman` |
+| `;view me` | מצלמה עוקבת אחרי שחקן | `;view builderman` |
+| `;warp me` | אנימציית עיוות מצלמה | `;warp builderman` |
+| `;blur me Amount` | טשטוש מצלמה | `;blur builderman 10` |
+| `;hideGuis me` | הסתרת ממשקים | `;hideGuis builderman` |
 
 ## פקודות כיף
 
 
 | פקודה | תיאור קצר | דוגמה |
 |-------|------------|-------|
-| `;spin Player Speed` | סיבוב דמות | `;spin builderman 1` |
-| `;rainbowFart Player` | אפקט "קשת בענן" | `;rainbowFart builderman` |
-| `;icecream Player` | רכב גלידה חוטף | `;icecream builderman` |
+| `;spin me Speed` | סיבוב דמות | `;spin builderman 1` |
+| `;rainbowFart me` | אפקט "קשת בענן" | `;rainbowFart builderman` |
+| `;icecream me` | רכב גלידה חוטף | `;icecream builderman` |
 
 
 ## מידע נוסף
