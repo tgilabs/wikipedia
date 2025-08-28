@@ -68,7 +68,7 @@ const config: Config = {
 
   themeConfig: {
     // Replace with your project's social card
-    image: 'img/docusaurus-social-card.jpg',
+    image: 'img/discord-background.png',
     // Force dark theme always for space theme
     colorMode: {
       defaultMode: 'dark',
