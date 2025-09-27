@@ -2,7 +2,7 @@
 title: המקום הכי ישראלי ברשת | TeGriAi | אירוע ראש השנה 2025
 sidebar_label: אירוע ראש השנה 2025
 description: אירוע ראש השנה 2025 של קהילת TeGriAi
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 import DiscordCTA from '@site/src/components/DiscordCTA';
