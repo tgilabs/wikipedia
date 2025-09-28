@@ -43,20 +43,6 @@ const LegalSections: LegalCardItem[] = [
     link: '/section/legal/website/privacy-policy',
     isAvailable: true,
   },
-  {
-    title: 'Perfume',
-    description: 'מדיניות ותקנון הקשורים לפלטפורמת Perfume',
-    icon: faFlask,
-    link: '#',
-    isAvailable: false,
-  },
-  {
-    title: 'Workway',
-    description: 'הנחיות ותקנון עבור פלטפורמת Workway',
-    icon: faBriefcase,
-    link: '#',
-    isAvailable: false,
-  },
 ];
 
 function LegalCard({title, description, icon, link, isAvailable}: LegalCardItem) {
