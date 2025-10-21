@@ -6,19 +6,7 @@
 		},
 		 "clickup": {
       "url": "https://mcp.clickup.com/mcp"
-    },
-		"appwrite-api": {
-			"command": "uvx",
-			"args": [
-				"mcp-server-appwrite",
-				"--sites"
-			],
-			"env": {
-				"APPWRITE_PROJECT_ID": "labs",
-				"APPWRITE_API_KEY": "standard_984ef60a54799837979eaa3d918d4258eead19f3ed4750ab7aef300d1bb3075aca5316e3030715ef0bb9566182f40b94c38c063edee0df8365451f5b759a5d176114d42ee615cdcf4d46f41898e659a9b44fac6ee95bc825b709b408d5af86c9b54ad302c15ca992f5d0b29352f1e997dde2ccca71061712f139a360d62c0afb",
-				"APPWRITE_ENDPOINT": "https://fra.cloud.appwrite.io/v1"
-			}
-		}
+    }
 	},
 	"inputs": []
 }

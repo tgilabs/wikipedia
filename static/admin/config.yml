@@ -1,0 +1,73 @@
+backend:
+  name: github
+  repo: tgilabs/wikipedia
+  branch: Production
+  # For local development, you can use the test-repo backend
+  # name: test-repo
+
+# Publish mode: editorial workflow for content review before publishing
+publish_mode: editorial_workflow
+
+# Media files configuration
+media_folder: "static/img"
+public_folder: "/img"
+
+# Collections define the structure of your content
+collections:
+  # Blog posts
+  - name: "blog"
+    label: "Blog"
+    folder: "blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Authors", name: "authors", widget: "list", required: false}
+      - {label: "Tags", name: "tags", widget: "list", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  # Community documentation
+  - name: "community"
+    label: "Community Docs"
+    folder: "docs/community"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  # Gaming documentation
+  - name: "gaming"
+    label: "Gaming Docs"
+    folder: "docs/gaming"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  # Legal documentation
+  - name: "legal"
+    label: "Legal Docs"
+    folder: "docs/legal"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  # Platforms documentation
+  - name: "platforms"
+    label: "Platforms Docs"
+    folder: "docs/platforms"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Sidebar Position", name: "sidebar_position", widget: "number", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
