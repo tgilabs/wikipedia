@@ -26,6 +26,7 @@
     "@tiptap/pm": "^3.7.2",
     "@tiptap/react": "^3.7.2",
     "@tiptap/starter-kit": "^3.7.2",
+    "appwrite": "^21.2.1",
     "clsx": "^2.0.0",
     "cookie": "^1.0.2",
     "jsonwebtoken": "^9.0.2",
