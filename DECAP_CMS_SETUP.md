@@ -20,116 +20,74 @@ http://localhost:3000/admin/
 
 ## Authentication Setup
 
-Decap CMS uses GitHub OAuth for authentication. You have two options:
+Decap CMS uses GitHub OAuth for authentication. Since you're using Cloudflare, follow these steps:
 
-### Option 1: Netlify (Easiest)
-
-If you're deploying to Netlify, authentication is handled automatically. Just:
-1. Deploy your site to Netlify
-2. Enable Identity in your Netlify site settings
-3. Configure GitHub as the Git Gateway
-
-### Option 2: Cloudflare Worker (Lightweight)
-
-For a custom OAuth solution using Cloudflare Workers:
+### Set up Cloudflare Worker OAuth Proxy
 
 #### Step 1: Create GitHub OAuth Application
 
-1. Go to GitHub Settings → Developer settings → OAuth Apps
-2. Click "New OAuth App"
-3. Fill in the details:
-   - **Application name**: Your site name
+1. Go to GitHub Settings → Developer settings → OAuth Apps → New OAuth App
+2. Fill in the details:
+   - **Application name**: `Your Site Name CMS`
    - **Homepage URL**: `https://yourdomain.com`
-   - **Authorization callback URL**: `https://auth.yourdomain.com/callback`
-4. Save the **Client ID** and **Client Secret**
+   - **Authorization callback URL**: `https://your-auth-worker.workers.dev/callback`
+3. Click "Register application"
+4. Save the **Client ID** and generate a **Client Secret** (save it securely!)
 
 #### Step 2: Deploy Cloudflare Worker
 
-Create a Cloudflare Worker with the following code structure:
+1. **Create a new Cloudflare Worker**:
+   - Go to Cloudflare Dashboard → Workers & Pages
+   - Click "Create Application" → "Create Worker"
+   - Name it (e.g., `decap-cms-oauth`)
 
-```javascript
-// Your worker needs to handle two routes:
-// 1. /auth - Redirects to GitHub OAuth
-// 2. /callback - Receives auth code and sends to popup window
+2. **Add the OAuth handler code**:
+   - Use the code from `cloudflare-worker-oauth.js` in your project root
+   - Or copy from the template below
 
-const CLIENT_ID = 'your_github_client_id';
-const CLIENT_SECRET = 'your_github_client_secret';
+3. **Configure environment variables**:
+   In the Worker settings, add these secrets:
+   ```
+   CLIENT_ID=your_github_client_id
+   CLIENT_SECRET=your_github_client_secret
+   ALLOWED_ORIGIN=https://yourdomain.com
+   ```
 
-export default {
-  async fetch(request) {
-    const url = new URL(request.url);
-    
-    if (url.pathname === '/auth') {
-      // Redirect to GitHub OAuth
-      const authUrl = `https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=repo,user`;
-      return Response.redirect(authUrl, 302);
-    }
-    
-    if (url.pathname === '/callback') {
-      const code = url.searchParams.get('code');
-      
-      // Exchange code for access token
-      const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          client_id: CLIENT_ID,
-          client_secret: CLIENT_SECRET,
-          code,
-        }),
-      });
-      
-      const data = await tokenResponse.json();
-      
-      // Send token back to CMS popup window
-      return new Response(`
-        <html>
-          <script>
-            window.opener.postMessage(
-              'authorization:github:success:${JSON.stringify(data)}',
-              window.location.origin
-            );
-            window.close();
-          </script>
-        </html>
-      `, {
-        headers: { 'Content-Type': 'text/html' },
-      });
-    }
-    
-    return new Response('Not Found', { status: 404 });
-  },
-};
-```
+4. **Deploy the worker** and note your worker URL (e.g., `https://decap-cms-oauth.your-subdomain.workers.dev`)
 
-#### Step 3: Update CMS Config
+#### Step 3: Update Decap CMS Configuration
 
-Update `static/admin/config.yml` to use your OAuth proxy:
+Edit `static/admin/config.yml` and update the backend section:
 
 ```yaml
 backend:
   name: github
   repo: tgilabs/wikipedia
   branch: Production
-  base_url: https://auth.yourdomain.com
+  base_url: https://your-auth-worker.workers.dev
   auth_endpoint: /auth
 ```
 
-For more details, see the [Cloudflare Worker OAuth template](https://github.com/i40west/netlify-cms-cloudflare-pages).
+Replace `https://your-auth-worker.workers.dev` with your actual Cloudflare Worker URL.
 
-### Option 3: Local Development (Test Mode)
+#### Step 4: Test the Setup
 
-For local testing without authentication, update the config:
+1. Build and deploy your site
+2. Visit `https://yourdomain.com/admin/`
+3. Click "Login with GitHub"
+4. Authorize the application
+5. You should be redirected back to the CMS
+
+### Alternative: Local Development (Test Mode)
+
+For local testing without OAuth, update `static/admin/config.yml`:
 
 ```yaml
 backend:
   name: test-repo
 ```
 
-This creates a local Git repository in your browser's localStorage.
+This creates a local Git repository in your browser's localStorage. Changes won't be saved to GitHub.
 
 ## Content Collections
 
