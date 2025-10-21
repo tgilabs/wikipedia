@@ -18,39 +18,14 @@ public_folder: "/img"
 
 # Collections define the structure of your content
 collections:
-  - name: "blog"
-    label: "Blog"
-    folder: "blog"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Publish Date"
-        name: "date"
-        widget: "datetime"
-      - label: "Description"
-        name: "description"
-        widget: "text"
-        required: false
-      - label: "Authors"
-        name: "authors"
-        widget: "list"
-        required: false
-      - label: "Tags"
-        name: "tags"
-        widget: "list"
-        required: false
-      - label: "Body"
-        name: "body"
-        widget: "markdown"
-
-  - name: "community"
-    label: "Community Docs"
+  # Community Documentation
+  - name: "community_docs"
+    label: "Community"
+    label_singular: "Community Doc"
     folder: "docs/community"
     create: true
-    slug: "{{slug}}"
+    nested:
+      depth: 100
     fields:
       - label: "Title"
         name: "title"
@@ -63,11 +38,12 @@ collections:
         name: "body"
         widget: "markdown"
 
-  - name: "gaming"
-    label: "Gaming Docs"
-    folder: "docs/gaming"
+  # Gaming Documentation - Roblox
+  - name: "gaming_roblox"
+    label: "Gaming → Roblox"
+    label_singular: "Roblox Doc"
+    folder: "docs/gaming/roblox"
     create: true
-    slug: "{{slug}}"
     fields:
       - label: "Title"
         name: "title"
@@ -80,11 +56,12 @@ collections:
         name: "body"
         widget: "markdown"
 
-  - name: "legal"
-    label: "Legal Docs"
-    folder: "docs/legal"
+  # Legal - Discord
+  - name: "legal_discord"
+    label: "Legal → Discord"
+    label_singular: "Discord Legal Doc"
+    folder: "docs/legal/discord"
     create: true
-    slug: "{{slug}}"
     fields:
       - label: "Title"
         name: "title"
@@ -97,11 +74,84 @@ collections:
         name: "body"
         widget: "markdown"
 
-  - name: "platforms"
-    label: "Platforms Docs"
-    folder: "docs/platforms"
+  # Legal - Perfume
+  - name: "legal_perfume"
+    label: "Legal → Perfume"
+    label_singular: "Perfume Legal Doc"
+    folder: "docs/legal/perfume"
     create: true
-    slug: "{{slug}}"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Sidebar Position"
+        name: "sidebar_position"
+        widget: "number"
+        required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
+  # Legal - Roblox
+  - name: "legal_roblox"
+    label: "Legal → Roblox"
+    label_singular: "Roblox Legal Doc"
+    folder: "docs/legal/roblox"
+    create: true
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Sidebar Position"
+        name: "sidebar_position"
+        widget: "number"
+        required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
+  # Legal - Website
+  - name: "legal_website"
+    label: "Legal → Website"
+    label_singular: "Website Legal Doc"
+    folder: "docs/legal/website"
+    create: true
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Sidebar Position"
+        name: "sidebar_position"
+        widget: "number"
+        required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
+  # Legal - Workway
+  - name: "legal_workway"
+    label: "Legal → Workway"
+    label_singular: "Workway Legal Doc"
+    folder: "docs/legal/workway"
+    create: true
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Sidebar Position"
+        name: "sidebar_position"
+        widget: "number"
+        required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+
+  # Platforms - Workway
+  - name: "platforms_workway"
+    label: "Platforms → Workway"
+    label_singular: "Workway Platform Doc"
+    folder: "docs/platforms/workway"
+    create: true
     fields:
       - label: "Title"
         name: "title"
