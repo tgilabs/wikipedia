@@ -5,9 +5,11 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 ## Content Management
 
-This site uses [Decap CMS](https://decapcms.org/) for content management. Access the CMS at `/admin/` after deployment.
+This site uses a **custom Discord-authenticated CMS** with a TipTap markdown editor. Users authenticate via Discord and submit changes as Pull Requests.
 
-See [DECAP_CMS_SETUP.md](./DECAP_CMS_SETUP.md) for detailed setup instructions.
+**Access the CMS:** `/admin`
+
+See [CMS_SETUP.md](./CMS_SETUP.md) for detailed setup instructions and configuration.
 
 ## Installation
 
