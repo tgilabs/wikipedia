@@ -290,7 +290,7 @@ export default function Editor() {
 
   if (isLoading) {
     return (
-      <Layout title="טוען..." description="עורך תוכן">
+      <Layout title="טוען..." description="עורך תוכן" noFooter wrapperClassName="dashboard-page">
         <div className="editor-loading">
           <i className="fas fa-spinner fa-spin" style={{ fontSize: '3rem' }}></i>
           <p>טוען קובץ...</p>
@@ -304,7 +304,7 @@ export default function Editor() {
   }
 
   return (
-    <Layout title={editingFile.path ? 'ערוך קובץ' : 'קובץ חדש'} description="עורך תוכן">
+    <Layout title={editingFile.path ? 'ערוך קובץ' : 'קובץ חדש'} description="עורך תוכן" noFooter wrapperClassName="dashboard-page">
       <div className="editor-container">
         <div className="editor-header">
           <div className="editor-title">

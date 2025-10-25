@@ -3,6 +3,7 @@
   background: #f5f7fa;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .editor-loading {
@@ -37,6 +38,8 @@
   gap: 12px;
   font-size: 1.2rem;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: visible;
 }
 
 .editor-title i {
@@ -110,6 +113,8 @@
 .new-file-section h3 {
   margin: 0 0 16px 0;
   color: #333;
+  overflow: visible;
+  line-height: 1.4;
 }
 
 .folder-info {
@@ -241,6 +246,8 @@
 .editing-session-banner span {
   flex: 1;
   font-weight: 500;
+  overflow: visible;
+  line-height: 1.5;
 }
 
 .end-session-button {

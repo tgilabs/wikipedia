@@ -107,7 +107,7 @@ export default function Dashboard() {
   }
 
   return (
-    <Layout title="לוח בקרה" description="ניהול תוכן">
+    <Layout title="לוח בקרה" description="ניהול תוכן" noFooter wrapperClassName="dashboard-page">
       <div className="cms-container">
         <div className="cms-header">
           <div className="cms-header-content">

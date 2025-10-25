@@ -1,6 +1,13 @@
+/* Hide the platform navbar on dashboard pages */
+.dashboard-page nav.navbar,
+.dashboard-page .navbar {
+  display: none !important;
+}
+
 .cms-container {
   min-height: 100vh;
   background: #f5f7fa;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .cms-header {
@@ -23,6 +30,8 @@
   margin: 0;
   font-size: 1.8rem;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: visible;
 }
 
 .user-info {
@@ -40,6 +49,8 @@
 
 .user-name {
   font-weight: 500;
+  white-space: nowrap;
+  overflow: visible;
 }
 
 .logout-button,
@@ -164,12 +175,16 @@
 .dashboard-welcome h2 {
   color: #333;
   margin-bottom: 16px;
+  overflow: visible;
+  line-height: 1.4;
 }
 
 .dashboard-welcome p {
   color: #666;
   margin-bottom: 24px;
   font-size: 1.1rem;
+  overflow: visible;
+  line-height: 1.6;
 }
 
 .create-new-button {
