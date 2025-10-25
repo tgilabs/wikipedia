@@ -29,6 +29,20 @@ const config: Config = {
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
+  headTags: [
+    {
+      tagName: 'script',
+      innerHTML: `
+(function(c,o,n,s,e,n,t){
+  c[e]=c[e]||function(){(c[e].q=c[e].q||[]).push(arguments)};
+  n=o.createElement(s);t=o.getElementsByTagName(s)[0];
+  n.async=1;n.src='https://webcookies.co.il/api/script?key=DWbuch6TdlYfpMsulF88QPrRd1Qw8iBf';
+  t.parentNode.insertBefore(n,t);
+})(window,document,'script','script','cookieConsent');
+      `,
+    },
+  ],
+
   // Custom fields for CMS configuration
   customFields: {
     APPWRITE_ENDPOINT: process.env.APPWRITE_ENDPOINT || 'https://cloud.appwrite.io/v1',
