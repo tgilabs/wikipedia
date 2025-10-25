@@ -32,6 +32,7 @@ const config: Config = {
   headTags: [
     {
       tagName: 'script',
+      attributes: {},
       innerHTML: `
 (function(c,o,n,s,e,n,t){
   c[e]=c[e]||function(){(c[e].q=c[e].q||[]).push(arguments)};
