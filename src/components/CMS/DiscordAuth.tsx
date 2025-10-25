@@ -12,9 +12,20 @@ interface DiscordAuthProps {
   onAuthSuccess: (user: DiscordUser, token: string) => void;
 }
 
-const DISCORD_CLIENT_ID = process.env.REACT_APP_DISCORD_CLIENT_ID || '';
+// Access environment variables through window object (set in docusaurus.config.ts)
+const getEnvVar = (key: string): string => {
+  if (typeof window !== 'undefined') {
+    return (window as any).env?.[key] || '';
+  }
+  return '';
+};
+
+const DISCORD_CLIENT_ID = getEnvVar('DISCORD_CLIENT_ID');
+const DISCORD_CLIENT_SECRET = getEnvVar('DISCORD_CLIENT_SECRET');
+const DISCORD_GUILD_ID = getEnvVar('DISCORD_GUILD_ID');
+const DISCORD_REQUIRED_ROLE_ID = getEnvVar('DISCORD_REQUIRED_ROLE_ID');
 const DISCORD_REDIRECT_URI = typeof window !== 'undefined' 
-  ? `${window.location.origin}/admin` 
+  ? `${window.location.origin}/dashboard` 
   : '';
 
 export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
@@ -31,6 +42,38 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
     }
   }, []);
 
+  const verifyUserAccess = async (accessToken: string, userId: string): Promise<boolean> => {
+    try {
+      // Get user's guild member information
+      const guildMemberResponse = await fetch(
+        `https://discord.com/api/users/@me/guilds/${DISCORD_GUILD_ID}/member`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      if (!guildMemberResponse.ok) {
+        console.error('User is not a member of the required guild');
+        return false;
+      }
+
+      const memberData = await guildMemberResponse.json();
+      
+      // Check if user has the required role
+      if (!memberData.roles || !memberData.roles.includes(DISCORD_REQUIRED_ROLE_ID)) {
+        console.error('User does not have the required role');
+        return false;
+      }
+
+      return true;
+    } catch (err) {
+      console.error('Error verifying user access:', err);
+      return false;
+    }
+  };
+
   const handleDiscordCallback = async (code: string) => {
     setIsLoading(true);
     setError(null);
@@ -44,7 +87,7 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
         },
         body: new URLSearchParams({
           client_id: DISCORD_CLIENT_ID,
-          client_secret: process.env.REACT_APP_DISCORD_CLIENT_SECRET || '',
+          client_secret: DISCORD_CLIENT_SECRET,
           grant_type: 'authorization_code',
           code,
           redirect_uri: DISCORD_REDIRECT_URI,
@@ -71,12 +114,19 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
 
       const userData: DiscordUser = await userResponse.json();
 
+      // Verify user is in the required server with the required role
+      const hasAccess = await verifyUserAccess(accessToken, userData.id);
+      
+      if (!hasAccess) {
+        throw new Error('אין לך הרשאות גישה. עליך להיות חבר בשרת Discord ולהחזיק בתפקיד הנדרש.');
+      }
+
       // Store token in localStorage
       localStorage.setItem('discord_token', accessToken);
       localStorage.setItem('discord_user', JSON.stringify(userData));
 
       // Clean up URL
-      window.history.replaceState({}, document.title, '/admin');
+      window.history.replaceState({}, document.title, '/dashboard');
 
       onAuthSuccess(userData, accessToken);
     } catch (err) {
@@ -89,7 +139,7 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
   const handleLogin = () => {
     const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(
       DISCORD_REDIRECT_URI
-    )}&response_type=code&scope=identify%20email`;
+    )}&response_type=code&scope=identify%20email%20guilds%20guilds.members.read`;
     
     window.location.href = authUrl;
   };

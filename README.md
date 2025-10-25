@@ -5,11 +5,11 @@ This website is built using [Docusaurus](https://docusaurus.io/), a modern stati
 
 ## Content Management
 
-This site uses a **custom Discord-authenticated CMS** with a TipTap markdown editor. Users authenticate via Discord and submit changes as Pull Requests.
+This site uses a **custom Discord-authenticated CMS** with role-based access control and a TipTap markdown editor. Users authenticate via Discord and submit changes as Pull Requests.
 
-**Access the CMS:** `/admin`
+**Access the CMS:** `/dashboard`
 
-See [CMS_SETUP.md](./CMS_SETUP.md) for detailed setup instructions and configuration.
+**Setup:** See [ENV_SETUP.md](./ENV_SETUP.md) for environment variable configuration.
 
 ## Installation
 

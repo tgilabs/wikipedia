@@ -32,6 +32,12 @@ const config: Config = {
   customFields: {
     APPWRITE_ENDPOINT: process.env.APPWRITE_ENDPOINT || 'https://cloud.appwrite.io/v1',
     APPWRITE_PROJECT_ID: process.env.APPWRITE_PROJECT_ID,
+    // CMS environment variables
+    DISCORD_CLIENT_ID: process.env.DISCORD_CLIENT_ID,
+    DISCORD_CLIENT_SECRET: process.env.DISCORD_CLIENT_SECRET,
+    DISCORD_GUILD_ID: process.env.DISCORD_GUILD_ID,
+    DISCORD_REQUIRED_ROLE_ID: process.env.DISCORD_REQUIRED_ROLE_ID,
+    GITHUB_TOKEN: process.env.GITHUB_TOKEN,
   },
 
   // Hebrew RTL configuration

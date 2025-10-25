@@ -148,9 +148,48 @@
   margin: 20px auto;
   padding: 0 20px;
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 1fr 300px;
   gap: 20px;
   min-height: calc(100vh - 200px);
+}
+
+.dashboard-welcome {
+  background: white;
+  border-radius: 8px;
+  padding: 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.dashboard-welcome h2 {
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.dashboard-welcome p {
+  color: #666;
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+}
+
+.create-new-button {
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.create-new-button:hover {
+  background: #218838;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
 }
 
 .cms-sidebar {
@@ -309,6 +348,19 @@
 /* Dark mode support */
 html[data-theme='dark'] .cms-container {
   background: #1a1a1a;
+}
+
+html[data-theme='dark'] .dashboard-welcome {
+  background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+html[data-theme='dark'] .dashboard-welcome h2 {
+  color: #e0e0e0;
+}
+
+html[data-theme='dark'] .dashboard-welcome p {
+  color: #aaa;
 }
 
 html[data-theme='dark'] .pr-status-panel,
