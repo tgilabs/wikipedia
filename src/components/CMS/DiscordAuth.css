@@ -1,0 +1,79 @@
+.discord-login-button {
+  background: #5865F2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.3);
+  font-family: var(--ifm-font-family-base);
+}
+
+.discord-login-button:hover {
+  background: #4752c4;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(88, 101, 242, 0.4);
+}
+
+.discord-login-button:active {
+  transform: translateY(0);
+}
+
+.discord-auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: var(--ifm-background-color);
+  font-family: var(--ifm-font-family-base);
+  padding: 20px;
+}
+
+.discord-auth-card {
+  background: var(--ifm-card-background-color, rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 40px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+  border: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.discord-auth-title {
+  color: var(--ifm-font-color-base);
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.discord-auth-text {
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 30px;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.discord-auth-error {
+  color: #ff6b6b;
+  margin-bottom: 20px;
+  font-size: 1rem;
+  padding: 12px;
+  background: rgba(255, 107, 107, 0.1);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+}
+
+.discord-auth-spinner {
+  font-size: 3rem;
+  color: #5865F2;
+  margin-top: 20px;
+}

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import './DiscordAuth.css';
 
 interface DiscordUser {
   id: string;
@@ -12,27 +14,23 @@ interface DiscordAuthProps {
   onAuthSuccess: (user: DiscordUser, token: string) => void;
 }
 
-// Access environment variables through window object (set in docusaurus.config.ts)
-const getEnvVar = (key: string): string => {
-  if (typeof window !== 'undefined') {
-    return (window as any).env?.[key] || '';
-  }
-  return '';
-};
-
-const DISCORD_CLIENT_ID = getEnvVar('DISCORD_CLIENT_ID');
-const DISCORD_CLIENT_SECRET = getEnvVar('DISCORD_CLIENT_SECRET');
-const DISCORD_GUILD_ID = getEnvVar('DISCORD_GUILD_ID');
-const DISCORD_REQUIRED_ROLE_ID = getEnvVar('DISCORD_REQUIRED_ROLE_ID');
-const DISCORD_REDIRECT_URI = typeof window !== 'undefined' 
-  ? `${window.location.origin}/dashboard` 
-  : '';
-
 export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
+  const { siteConfig } = useDocusaurusContext();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Get config directly from Docusaurus context
+  const config = {
+    clientId: (siteConfig.customFields?.DISCORD_CLIENT_ID as string) || '',
+    clientSecret: (siteConfig.customFields?.DISCORD_CLIENT_SECRET as string) || '',
+    guildId: (siteConfig.customFields?.DISCORD_GUILD_ID as string) || '',
+    requiredRoleId: (siteConfig.customFields?.DISCORD_REQUIRED_ROLE_ID as string) || '',
+    redirectUri: typeof window !== 'undefined' ? `${window.location.origin}/dashboard` : ''
+  };
+
   useEffect(() => {
+    console.log('Discord Config:', config);
+    
     // Check if we have a code in the URL (OAuth callback)
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
@@ -46,7 +44,7 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
     try {
       // Get user's guild member information
       const guildMemberResponse = await fetch(
-        `https://discord.com/api/users/@me/guilds/${DISCORD_GUILD_ID}/member`,
+        `https://discord.com/api/users/@me/guilds/${config.guildId}/member`,
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -62,7 +60,7 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
       const memberData = await guildMemberResponse.json();
       
       // Check if user has the required role
-      if (!memberData.roles || !memberData.roles.includes(DISCORD_REQUIRED_ROLE_ID)) {
+      if (!memberData.roles || !memberData.roles.includes(config.requiredRoleId)) {
         console.error('User does not have the required role');
         return false;
       }
@@ -86,11 +84,11 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: new URLSearchParams({
-          client_id: DISCORD_CLIENT_ID,
-          client_secret: DISCORD_CLIENT_SECRET,
+          client_id: config.clientId,
+          client_secret: config.clientSecret,
           grant_type: 'authorization_code',
           code,
-          redirect_uri: DISCORD_REDIRECT_URI,
+          redirect_uri: config.redirectUri,
         }),
       });
 
@@ -137,19 +135,31 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
   };
 
   const handleLogin = () => {
-    const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(
-      DISCORD_REDIRECT_URI
+    console.log('Current config:', config);
+    console.log('Window env:', (window as any).env);
+    
+    if (!config.clientId) {
+      alert('שגיאה: Discord Client ID חסר. אנא בדוק את הגדרות הסביבה.');
+      return;
+    }
+    
+    const authUrl = `https://discord.com/api/oauth2/authorize?client_id=${config.clientId}&redirect_uri=${encodeURIComponent(
+      config.redirectUri
     )}&response_type=code&scope=identify%20email%20guilds%20guilds.members.read`;
     
+    console.log('Auth URL:', authUrl);
     window.location.href = authUrl;
   };
 
   if (isLoading) {
     return (
-      <div style={styles.container}>
-        <div style={styles.card}>
-          <h2 style={styles.title}>מאמת...</h2>
-          <p style={styles.text}>אנא המתן בזמן שאנחנו מאמתים את החשבון שלך</p>
+      <div className="discord-auth-container">
+        <div className="discord-auth-card">
+          <h2 className="discord-auth-title">מאמת...</h2>
+          <p className="discord-auth-text">אנא המתן בזמן שאנחנו מאמתים את החשבון שלך</p>
+          <div className="discord-auth-spinner">
+            <i className="fas fa-spinner fa-spin"></i>
+          </div>
         </div>
       </div>
     );
@@ -157,11 +167,12 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
 
   if (error) {
     return (
-      <div style={styles.container}>
-        <div style={styles.card}>
-          <h2 style={styles.title}>שגיאת אימות</h2>
-          <p style={styles.errorText}>{error}</p>
-          <button onClick={handleLogin} style={styles.button}>
+      <div className="discord-auth-container">
+        <div className="discord-auth-card">
+          <h2 className="discord-auth-title">שגיאת אימות</h2>
+          <p className="discord-auth-error">{error}</p>
+          <button onClick={handleLogin} className="discord-login-button">
+            <i className="fas fa-redo" style={{ marginLeft: '8px' }}></i>
             נסה שוב
           </button>
         </div>
@@ -170,11 +181,11 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
   }
 
   return (
-    <div style={styles.container}>
-      <div style={styles.card}>
-        <h1 style={styles.title}>מערכת ניהול התוכן של TeGriAI</h1>
-        <p style={styles.text}>התחבר עם Discord כדי להתחיל לערוך</p>
-        <button onClick={handleLogin} style={styles.button}>
+    <div className="discord-auth-container">
+      <div className="discord-auth-card">
+        <h1 className="discord-auth-title">מערכת ניהול התוכן של TeGriAI</h1>
+        <p className="discord-auth-text">התחבר עם Discord כדי להתחיל לערוך</p>
+        <button onClick={handleLogin} className="discord-login-button">
           <i className="fab fa-discord" style={{ marginLeft: '10px' }}></i>
           התחבר עם Discord
         </button>
@@ -182,54 +193,3 @@ export default function DiscordAuth({ onAuthSuccess }: DiscordAuthProps) {
     </div>
   );
 }
-
-const styles: Record<string, React.CSSProperties> = {
-  container: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    minHeight: '100vh',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    fontFamily: 'var(--ifm-font-family-base)',
-  },
-  card: {
-    background: 'rgba(255, 255, 255, 0.1)',
-    backdropFilter: 'blur(10px)',
-    borderRadius: '20px',
-    padding: '40px',
-    maxWidth: '500px',
-    width: '90%',
-    textAlign: 'center',
-    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-    border: '1px solid rgba(255, 255, 255, 0.18)',
-  },
-  title: {
-    color: '#ffffff',
-    marginBottom: '20px',
-    fontSize: '2rem',
-  },
-  text: {
-    color: '#ffffff',
-    marginBottom: '30px',
-    fontSize: '1.1rem',
-    opacity: 0.9,
-  },
-  errorText: {
-    color: '#ffcccc',
-    marginBottom: '20px',
-    fontSize: '1rem',
-  },
-  button: {
-    background: '#5865F2',
-    color: 'white',
-    border: 'none',
-    borderRadius: '8px',
-    padding: '15px 30px',
-    fontSize: '1.1rem',
-    cursor: 'pointer',
-    transition: 'all 0.3s ease',
-    display: 'inline-flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-};
