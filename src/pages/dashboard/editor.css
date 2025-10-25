@@ -1,7 +1,8 @@
 .editor-container {
   min-height: 100vh;
   background: #f5f7fa;
-  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
 }
 
 .editor-loading {
@@ -27,6 +28,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .editor-title {
@@ -87,11 +89,14 @@
 
 .editor-content {
   max-width: 1200px;
-  margin: 20px auto;
-  padding: 0 20px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  flex: 1;
+  overflow: hidden;
 }
 
 .new-file-section {
@@ -99,6 +104,7 @@
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
 }
 
 .new-file-section h3 {
@@ -174,8 +180,9 @@
   padding: 20px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   display: grid;
-  grid-template-columns: 1fr 200px;
+  grid-template-columns: repeat(2, 1fr);
   gap: 16px;
+  flex-shrink: 0;
 }
 
 .metadata-field {
@@ -184,23 +191,80 @@
   gap: 6px;
 }
 
+.metadata-field.full-width {
+  grid-column: 1 / -1;
+}
+
 .metadata-field label {
   font-weight: 500;
   font-size: 0.9rem;
   color: #555;
 }
 
-.metadata-field input {
+.metadata-field input,
+.metadata-field textarea {
   padding: 10px 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-size: 1rem;
   transition: border-color 0.2s;
+  font-family: inherit;
 }
 
-.metadata-field input:focus {
+.metadata-field input:focus,
+.metadata-field textarea:focus {
   outline: none;
   border-color: #667eea;
+}
+
+.metadata-field textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.editing-session-banner {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 16px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+  flex-shrink: 0;
+}
+
+.editing-session-banner i {
+  font-size: 1.2rem;
+}
+
+.editing-session-banner span {
+  flex: 1;
+  font-weight: 500;
+}
+
+.end-session-button {
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.end-session-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Markdown editor wrapper - fills remaining space */
+.editor-content > .markdown-editor {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Responsive */
@@ -221,6 +285,16 @@
   .new-file-fields,
   .metadata-section {
     grid-template-columns: 1fr;
+  }
+
+  .editing-session-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .end-session-button {
+    width: 100%;
   }
 }
 
@@ -262,7 +336,8 @@ html[data-theme='dark'] .field small {
 
 html[data-theme='dark'] .field input,
 html[data-theme='dark'] .field select,
-html[data-theme='dark'] .metadata-field input {
+html[data-theme='dark'] .metadata-field input,
+html[data-theme='dark'] .metadata-field textarea {
   background: #2d2d2d;
   border-color: #444;
   color: #e0e0e0;

@@ -71,18 +71,24 @@ export const parseFrontmatter = (content: string): {
   const body = match[2];
 
   frontmatter.split('\n').forEach(line => {
-    const [key, ...valueParts] = line.split(':');
-    if (key && valueParts.length > 0) {
-      const value = valueParts.join(':').trim();
-      const trimmedKey = key.trim();
-      
-      if (trimmedKey === 'title') {
-        metadata[trimmedKey] = value.replace(/['"]/g, '');
-      } else if (trimmedKey === 'sidebar_position') {
-        metadata[trimmedKey] = parseInt(value, 10);
-      } else {
-        metadata[trimmedKey] = value;
-      }
+    const colonIndex = line.indexOf(':');
+    if (colonIndex === -1) return;
+
+    const key = line.substring(0, colonIndex).trim();
+    const value = line.substring(colonIndex + 1).trim();
+    
+    if (!key) return;
+
+    // Remove quotes from string values
+    if ((value.startsWith('"') && value.endsWith('"')) || 
+        (value.startsWith("'") && value.endsWith("'"))) {
+      metadata[key] = value.slice(1, -1);
+    } else if (!isNaN(Number(value))) {
+      // Parse numbers
+      metadata[key] = parseInt(value, 10);
+    } else {
+      // Keep as string
+      metadata[key] = value;
     }
   });
 
@@ -93,23 +99,38 @@ export const parseFrontmatter = (content: string): {
  * Build frontmatter string from metadata object
  */
 export const buildFrontmatter = (metadata: Record<string, any>): string => {
-  const keys = Object.keys(metadata);
+  const keys = Object.keys(metadata).filter(key => 
+    metadata[key] !== undefined && metadata[key] !== ''
+  );
+  
   if (keys.length === 0) return '';
 
   let frontmatter = '---\n';
   
-  if (metadata.title) {
-    frontmatter += `title: "${metadata.title}"\n`;
-  }
+  // Add fields in a specific order for consistency
+  const orderedFields = ['title', 'sidebar_label', 'description', 'sidebar_position'];
   
-  if (metadata.sidebar_position !== undefined) {
-    frontmatter += `sidebar_position: ${metadata.sidebar_position}\n`;
-  }
+  // Add ordered fields first
+  orderedFields.forEach(field => {
+    if (metadata[field] !== undefined && metadata[field] !== '') {
+      const value = metadata[field];
+      if (typeof value === 'string') {
+        frontmatter += `${field}: "${value}"\n`;
+      } else {
+        frontmatter += `${field}: ${value}\n`;
+      }
+    }
+  });
   
-  // Add any other metadata fields
+  // Add any other fields
   keys.forEach(key => {
-    if (key !== 'title' && key !== 'sidebar_position') {
-      frontmatter += `${key}: ${metadata[key]}\n`;
+    if (!orderedFields.includes(key)) {
+      const value = metadata[key];
+      if (typeof value === 'string') {
+        frontmatter += `${key}: "${value}"\n`;
+      } else {
+        frontmatter += `${key}: ${value}\n`;
+      }
     }
   });
   

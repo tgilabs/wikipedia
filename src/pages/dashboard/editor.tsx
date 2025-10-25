@@ -27,7 +27,10 @@ interface EditingFile {
   currentContent: string;
   metadata: {
     title?: string;
+    sidebar_label?: string;
+    description?: string;
     sidebar_position?: number;
+    [key: string]: any; // Allow any other frontmatter fields
   };
 }
 
@@ -47,6 +50,9 @@ export default function Editor() {
   const [isSaving, setIsSaving] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [newFilePath, setNewFilePath] = useState('');
+  const [newFolder, setNewFolder] = useState('');
+  const [createInSubfolder, setCreateInSubfolder] = useState(false);
+  const [currentBranch, setCurrentBranch] = useState<string | null>(null);
 
   useEffect(() => {
     // Check if user is logged in
@@ -57,6 +63,12 @@ export default function Editor() {
     }
 
     setUser(JSON.parse(savedUser));
+
+    // Check for existing branch in session
+    const savedBranch = sessionStorage.getItem('current_edit_branch');
+    if (savedBranch) {
+      setCurrentBranch(savedBranch);
+    }
 
     // Check if we're editing an existing file
     const params = new URLSearchParams(location.search);
@@ -161,8 +173,17 @@ export default function Editor() {
         return;
       }
       
-      // Only allow creation in community folder
-      finalPath = `${REPO_CONFIG.allowedPath}/${fileName}`;
+      // Build path with optional subfolder
+      if (createInSubfolder && newFolder.trim()) {
+        // Validate folder name
+        if (!/^[a-zA-Z0-9_-]+$/.test(newFolder.trim())) {
+          alert('❌ שם תיקייה לא חוקי. השתמש רק באותיות אנגליות, מספרים, מקף ומקף תחתון');
+          return;
+        }
+        finalPath = `${REPO_CONFIG.allowedPath}/${newFolder.trim()}/${fileName}`;
+      } else {
+        finalPath = `${REPO_CONFIG.allowedPath}/${fileName}`;
+      }
     }
 
     // Double-check the path is allowed
@@ -182,7 +203,39 @@ export default function Editor() {
       const fileName = finalPath.split('/').pop() || 'file';
       const action = editingFile.path ? 'Update' : 'Create';
       
-      const pr = await github.submitChange(
+      // Check if we're continuing an existing editing session
+      let branchName = currentBranch;
+      let pr: any;
+      
+      if (branchName) {
+        // Continue editing on existing branch
+        try {
+          await github.updateFile(
+            finalPath,
+            finalContent,
+            branchName,
+            `${action} ${fileName} via CMS`
+          );
+          
+          alert(`✅ הקובץ ${fileName} נוסף לעריכה הקיימת!\n\nתוכל להמשיך לערוך קבצים נוספים באותה עריכה.`);
+          
+          // Navigate back to dashboard to select another file
+          history.push('/dashboard');
+          return;
+        } catch (error) {
+          console.error('Failed to update on existing branch:', error);
+          // Branch might not exist anymore, create a new one
+          branchName = null;
+          setCurrentBranch(null);
+          sessionStorage.removeItem('current_edit_branch');
+        }
+      }
+      
+      // Create new branch and PR
+      const timestamp = Date.now();
+      branchName = `cms-edit/${user.username}/${timestamp}`;
+      
+      pr = await github.submitChange(
         finalPath,
         finalContent,
         `${action} ${fileName} via CMS`,
@@ -190,6 +243,10 @@ export default function Editor() {
         `### שינוי שבוצע על ידי ${user.username} דרך CMS\n\n**פעולה:** ${action === 'Create' ? 'יצירת קובץ חדש' : 'עדכון קובץ'}\n**קובץ:** ${finalPath}\n**כותרת:** ${editingFile.metadata.title || 'ללא כותרת'}\n\n---\n\nשינוי זה בוצע באמצעות מערכת ניהול התוכן המותאמת אישית עם אימות Discord.`,
         user.username
       );
+
+      // Save branch for continued editing
+      setCurrentBranch(branchName);
+      sessionStorage.setItem('current_edit_branch', branchName);
 
       // Save PR info
       const submittedPRs = JSON.parse(localStorage.getItem('submitted_prs') || '[]');
@@ -204,10 +261,21 @@ export default function Editor() {
       submittedPRs.push(newPR);
       localStorage.setItem('submitted_prs', JSON.stringify(submittedPRs));
 
-      alert(`✅ השינויים נשלחו בהצלחה!\n\nPull Request #${pr.number} נוצר.\nהמתן לאישור של מנהל המאגר.`);
+      const continueEditing = window.confirm(
+        `✅ השינויים נשלחו בהצלחה!\n\nPull Request #${pr.number} נוצר.\n\n` +
+        `האם תרצה להמשיך לערוך קבצים נוספים באותה עריכה?\n` +
+        `(כל הקבצים ייכללו באותו PR)`
+      );
       
-      // Navigate back to dashboard
-      history.push('/dashboard');
+      if (continueEditing) {
+        // Navigate back to dashboard to select another file
+        history.push('/dashboard');
+      } else {
+        // Clear the branch session and go back
+        setCurrentBranch(null);
+        sessionStorage.removeItem('current_edit_branch');
+        history.push('/dashboard');
+      }
     } catch (error) {
       console.error('Failed to submit:', error);
       alert('❌ שגיאה בשליחת השינויים. אנא נסה שוב.');
@@ -283,6 +351,31 @@ export default function Editor() {
               </p>
               <div className="new-file-fields">
                 <div className="field">
+                  <label>
+                    <input
+                      type="checkbox"
+                      checked={createInSubfolder}
+                      onChange={(e) => setCreateInSubfolder(e.target.checked)}
+                      style={{ marginLeft: '8px' }}
+                    />
+                    צור בתיקיית משנה
+                  </label>
+                </div>
+                
+                {createInSubfolder && (
+                  <div className="field">
+                    <label>שם תיקייה חדשה:</label>
+                    <input
+                      type="text"
+                      value={newFolder}
+                      onChange={(e) => setNewFolder(e.target.value)}
+                      placeholder="my-folder"
+                    />
+                    <small>התיקייה תיווצר ב-docs/community/ (אם לא קיימת)</small>
+                  </div>
+                )}
+                
+                <div className="field">
                   <label>שם קובץ:</label>
                   <input
                     type="text"
@@ -298,16 +391,34 @@ export default function Editor() {
 
           <div className="metadata-section">
             <div className="metadata-field">
-              <label>כותרת:</label>
+              <label>כותרת (title):</label>
               <input
                 type="text"
                 value={editingFile.metadata.title || ''}
                 onChange={(e) => handleMetadataChange('title', e.target.value)}
-                placeholder="כותרת הדף"
+                placeholder="כותרת הדף המלאה"
               />
             </div>
             <div className="metadata-field">
-              <label>מיקום בתפריט:</label>
+              <label>תווית בסרגל (sidebar_label):</label>
+              <input
+                type="text"
+                value={editingFile.metadata.sidebar_label || ''}
+                onChange={(e) => handleMetadataChange('sidebar_label', e.target.value)}
+                placeholder="שם קצר לתפריט"
+              />
+            </div>
+            <div className="metadata-field full-width">
+              <label>תיאור (description):</label>
+              <textarea
+                value={editingFile.metadata.description || ''}
+                onChange={(e) => handleMetadataChange('description', e.target.value)}
+                placeholder="תיאור הדף למנועי חיפוש"
+                rows={2}
+              />
+            </div>
+            <div className="metadata-field">
+              <label>מיקום בתפריט (sidebar_position):</label>
               <input
                 type="number"
                 value={editingFile.metadata.sidebar_position || ''}
@@ -316,6 +427,24 @@ export default function Editor() {
               />
             </div>
           </div>
+
+          {currentBranch && (
+            <div className="editing-session-banner">
+              <i className="fas fa-code-branch"></i>
+              <span>ממשיך עריכה קיימת - כל הקבצים ייכללו באותו PR</span>
+              <button 
+                onClick={() => {
+                  if (window.confirm('האם לסיים את העריכה המרובה ולחזור למצב רגיל?')) {
+                    setCurrentBranch(null);
+                    sessionStorage.removeItem('current_edit_branch');
+                  }
+                }}
+                className="end-session-button"
+              >
+                סיים עריכה
+              </button>
+            </div>
+          )}
 
           <MarkdownEditor
             initialContent={editingFile.currentContent}
