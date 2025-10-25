@@ -106,9 +106,32 @@
   color: #333;
 }
 
+.folder-info {
+  background: #e7f3ff;
+  border-right: 4px solid #667eea;
+  padding: 12px 16px;
+  margin: 0 0 20px 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+  color: #2c5282;
+}
+
+.folder-info i {
+  color: #667eea;
+  font-size: 1.1rem;
+}
+
+.folder-info strong {
+  color: #1a365d;
+  font-family: 'Courier New', monospace;
+}
+
 .new-file-fields {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
@@ -137,6 +160,12 @@
 .field select:focus {
   outline: none;
   border-color: #667eea;
+}
+
+.field small {
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 4px;
 }
 
 .metadata-section {
@@ -212,9 +241,23 @@ html[data-theme='dark'] .new-file-section h3 {
   color: #e0e0e0;
 }
 
+html[data-theme='dark'] .folder-info {
+  background: #1a2332;
+  border-right-color: #667eea;
+  color: #7ba7d6;
+}
+
+html[data-theme='dark'] .folder-info strong {
+  color: #a5c9f5;
+}
+
 html[data-theme='dark'] .field label,
 html[data-theme='dark'] .metadata-field label {
   color: #aaa;
+}
+
+html[data-theme='dark'] .field small {
+  color: #888;
 }
 
 html[data-theme='dark'] .field input,

@@ -1,4 +1,5 @@
 import { Octokit } from '@octokit/rest';
+import { encodeBase64UTF8 } from './utils';
 
 interface PRResult {
   number: number;
@@ -76,7 +77,7 @@ export class GitHubService {
       repo: this.repo,
       path: filePath,
       message: commitMessage,
-      content: btoa(unescape(encodeURIComponent(content))), // Encode to base64
+      content: encodeBase64UTF8(content), // Encode to base64 with UTF-8 support
       branch: branchName,
       sha,
     });

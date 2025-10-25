@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { decodeBase64UTF8, REPO_CONFIG } from './utils';
 import './FileBrowser.css';
 
 interface FileItem {
@@ -10,15 +11,15 @@ interface FileItem {
 
 interface FileBrowserProps {
   onFileSelect: (filePath: string, content: string) => void;
-  repoOwner: string;
-  repoName: string;
 }
 
-export default function FileBrowser({ onFileSelect, repoOwner, repoName }: FileBrowserProps) {
+export default function FileBrowser({ onFileSelect }: FileBrowserProps) {
   const [files, setFiles] = useState<FileItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(new Set(['docs']));
+  const [expandedFolders, setExpandedFolders] = useState<Set<string>>(
+    new Set([REPO_CONFIG.allowedPath])
+  );
 
   useEffect(() => {
     loadFileStructure();
@@ -29,7 +30,8 @@ export default function FileBrowser({ onFileSelect, repoOwner, repoName }: FileB
     setError(null);
 
     try {
-      const structure = await fetchGitHubTree(repoOwner, repoName, 'Production', 'docs');
+      // Only load the community folder
+      const structure = await fetchGitHubTree(REPO_CONFIG.allowedPath);
       setFiles(structure);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load files');
@@ -38,14 +40,9 @@ export default function FileBrowser({ onFileSelect, repoOwner, repoName }: FileB
     }
   };
 
-  const fetchGitHubTree = async (
-    owner: string,
-    repo: string,
-    branch: string,
-    path: string
-  ): Promise<FileItem[]> => {
+  const fetchGitHubTree = async (path: string): Promise<FileItem[]> => {
     const response = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${path}?ref=${branch}`
+      `https://api.github.com/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.name}/contents/${path}?ref=${REPO_CONFIG.branch}`
     );
 
     if (!response.ok) {
@@ -90,7 +87,7 @@ export default function FileBrowser({ onFileSelect, repoOwner, repoName }: FileB
       const folder = findFolder(files, folderPath);
       if (folder && (!folder.children || folder.children.length === 0)) {
         try {
-          const children = await fetchGitHubTree(repoOwner, repoName, 'Production', folderPath);
+          const children = await fetchGitHubTree(folderPath);
           folder.children = children;
           setFiles([...files]);
         } catch (err) {
@@ -116,7 +113,7 @@ export default function FileBrowser({ onFileSelect, repoOwner, repoName }: FileB
   const handleFileClick = async (file: FileItem) => {
     try {
       const response = await fetch(
-        `https://api.github.com/repos/${repoOwner}/${repoName}/contents/${file.path}?ref=Production`
+        `https://api.github.com/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.name}/contents/${file.path}?ref=${REPO_CONFIG.branch}`
       );
 
       if (!response.ok) {
@@ -124,7 +121,7 @@ export default function FileBrowser({ onFileSelect, repoOwner, repoName }: FileB
       }
 
       const data = await response.json();
-      const content = atob(data.content); // Decode base64 content
+      const content = decodeBase64UTF8(data.content);
       
       onFileSelect(file.path, content);
     } catch (err) {

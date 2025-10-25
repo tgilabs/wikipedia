@@ -3,6 +3,8 @@ import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
 import Link from '@tiptap/extension-link';
 import Image from '@tiptap/extension-image';
+import TextAlign from '@tiptap/extension-text-align';
+import { Markdown } from '@tiptap/markdown';
 import './MarkdownEditor.css';
 
 interface MarkdownEditorProps {
@@ -28,66 +30,35 @@ export default function MarkdownEditor({ initialContent, onChange }: MarkdownEdi
       Image.configure({
         inline: true,
       }),
+      TextAlign.configure({
+        types: ['heading', 'paragraph'],
+        alignments: ['left', 'center', 'right'],
+        defaultAlignment: 'right',
+      }),
+      Markdown.configure({
+        markedOptions: {
+          gfm: true, // GitHub Flavored Markdown
+        },
+        indentation: {
+          style: 'space',
+          size: 2,
+        },
+      }),
     ],
     content: initialContent,
+    contentType: 'markdown', // Parse initial content as Markdown
+    editorProps: {
+      attributes: {
+        dir: 'auto', // Automatically detect text direction
+        lang: 'he', // Set Hebrew as the language
+      },
+    },
     onUpdate: ({ editor }) => {
-      // Get markdown from the editor
-      const html = editor.getHTML();
-      onChange(convertToMarkdown(html));
+      // Get markdown from the editor using the native Markdown extension
+      const markdown = editor.getMarkdown();
+      onChange(markdown);
     },
   });
-
-  const convertToMarkdown = (html: string): string => {
-    // Basic HTML to Markdown conversion
-    let markdown = html;
-    
-    // Remove wrapping <p> tags if they exist
-    markdown = markdown.replace(/<p>(.*?)<\/p>/g, '$1\n\n');
-    
-    // Headings
-    markdown = markdown.replace(/<h1>(.*?)<\/h1>/g, '# $1\n\n');
-    markdown = markdown.replace(/<h2>(.*?)<\/h2>/g, '## $1\n\n');
-    markdown = markdown.replace(/<h3>(.*?)<\/h3>/g, '### $1\n\n');
-    markdown = markdown.replace(/<h4>(.*?)<\/h4>/g, '#### $1\n\n');
-    markdown = markdown.replace(/<h5>(.*?)<\/h5>/g, '##### $1\n\n');
-    markdown = markdown.replace(/<h6>(.*?)<\/h6>/g, '###### $1\n\n');
-    
-    // Bold and italic
-    markdown = markdown.replace(/<strong>(.*?)<\/strong>/g, '**$1**');
-    markdown = markdown.replace(/<em>(.*?)<\/em>/g, '*$1*');
-    markdown = markdown.replace(/<b>(.*?)<\/b>/g, '**$1**');
-    markdown = markdown.replace(/<i>(.*?)<\/i>/g, '*$1*');
-    
-    // Links
-    markdown = markdown.replace(/<a href="(.*?)".*?>(.*?)<\/a>/g, '[$2]($1)');
-    
-    // Images
-    markdown = markdown.replace(/<img src="(.*?)" alt="(.*?)".*?>/g, '![$2]($1)');
-    markdown = markdown.replace(/<img src="(.*?)".*?>/g, '![]($1)');
-    
-    // Lists
-    markdown = markdown.replace(/<ul>(.*?)<\/ul>/gs, (match, content) => {
-      return content.replace(/<li>(.*?)<\/li>/g, '- $1\n');
-    });
-    markdown = markdown.replace(/<ol>(.*?)<\/ol>/gs, (match, content) => {
-      let counter = 1;
-      return content.replace(/<li>(.*?)<\/li>/g, () => `${counter++}. $1\n`);
-    });
-    
-    // Code blocks
-    markdown = markdown.replace(/<pre><code>(.*?)<\/code><\/pre>/gs, '```\n$1\n```\n');
-    markdown = markdown.replace(/<code>(.*?)<\/code>/g, '`$1`');
-    
-    // Blockquotes
-    markdown = markdown.replace(/<blockquote>(.*?)<\/blockquote>/gs, (match, content) => {
-      return content.split('\n').map((line: string) => `> ${line}`).join('\n') + '\n';
-    });
-    
-    // Clean up extra newlines
-    markdown = markdown.replace(/\n{3,}/g, '\n\n');
-    
-    return markdown.trim();
-  };
 
   const setLink = () => {
     const url = window.prompt('הזן URL:');

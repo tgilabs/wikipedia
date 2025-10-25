@@ -3,6 +3,7 @@ import Layout from '@theme/Layout';
 import DiscordAuth from '../components/CMS/DiscordAuth';
 import FileBrowser from '../components/CMS/FileBrowser';
 import { initializeGitHubService, getGitHubService } from '../components/CMS/GitHubService';
+import { REPO_CONFIG } from '../components/CMS/utils';
 import { useHistory } from '@docusaurus/router';
 import './dashboard.css';
 
@@ -21,9 +22,6 @@ interface SubmittedPR {
   filePath: string;
   timestamp: number;
 }
-
-const REPO_OWNER = 'tgilabs';
-const REPO_NAME = 'wikipedia';
 
 // Access environment variables through window object
 const getEnvVar = (key: string): string => {
@@ -58,7 +56,7 @@ export default function Dashboard() {
 
     // Initialize GitHub service with bot token
     const githubToken = getEnvVar('GITHUB_TOKEN');
-    initializeGitHubService(REPO_OWNER, REPO_NAME, githubToken);
+    initializeGitHubService(REPO_CONFIG.owner, REPO_CONFIG.name, githubToken);
   }, []);
 
   const handleAuthSuccess = (discordUser: DiscordUser, discordToken: string) => {
@@ -171,11 +169,7 @@ export default function Dashboard() {
           </div>
 
           <div className="cms-sidebar">
-            <FileBrowser
-              onFileSelect={handleFileSelect}
-              repoOwner={REPO_OWNER}
-              repoName={REPO_NAME}
-            />
+            <FileBrowser onFileSelect={handleFileSelect} />
           </div>
         </div>
       </div>

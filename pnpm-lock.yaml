@@ -38,6 +38,12 @@ importers:
       '@tiptap/extension-link':
         specifier: ^3.8.0
         version: 3.8.0(@tiptap/core@3.8.0(@tiptap/pm@3.8.0))(@tiptap/pm@3.8.0)
+      '@tiptap/extension-text-align':
+        specifier: ^3.8.0
+        version: 3.8.0(@tiptap/core@3.8.0(@tiptap/pm@3.8.0))
+      '@tiptap/markdown':
+        specifier: ^3.8.0
+        version: 3.8.0(@tiptap/core@3.8.0(@tiptap/pm@3.8.0))(@tiptap/pm@3.8.0)
       '@tiptap/pm':
         specifier: ^3.8.0
         version: 3.8.0
@@ -1708,6 +1714,11 @@ packages:
     peerDependencies:
       '@tiptap/core': ^3.8.0
 
+  '@tiptap/extension-text-align@3.8.0':
+    resolution: {integrity: sha512-Qw0RsPDfv1kI2La7CIYO4M2LLY8BqJvSuGKo+x1Zi4X2SC2ezbempr7HOu1jmVy0De8Udyym1ji9SlsG84MFmw==}
+    peerDependencies:
+      '@tiptap/core': ^3.8.0
+
   '@tiptap/extension-text@3.8.0':
     resolution: {integrity: sha512-Q1iktk5f6LcK9EbwEYj+rpXm18RpZ6uWOLlDLOhuXLL8AqYs0otgBypv9k3K0xS50anDeN9wrxAlC+8xggnQjA==}
     peerDependencies:
@@ -1720,6 +1731,12 @@ packages:
 
   '@tiptap/extensions@3.8.0':
     resolution: {integrity: sha512-Zz0Tl8JrSAvGUhn9XUqMGOeofzuAVaHFfO44kdKk7X6DeYHjpFY9FdDPUjmhWyoq9BsX0iG7sXmIguFgBvXdTQ==}
+    peerDependencies:
+      '@tiptap/core': ^3.8.0
+      '@tiptap/pm': ^3.8.0
+
+  '@tiptap/markdown@3.8.0':
+    resolution: {integrity: sha512-UAS0UJM8b+e7OA3EjfNocgFJ/O8WfGGE8XKVbOYyOOxX6iIHRpz4dtO5v7WroCHy0esnJQJU11UYU2OyliOSlg==}
     peerDependencies:
       '@tiptap/core': ^3.8.0
       '@tiptap/pm': ^3.8.0
@@ -3846,6 +3863,11 @@ packages:
 
   markdown-table@3.0.4:
     resolution: {integrity: sha512-wiYz4+JrLyb/DqW2hkFJxP7Vd7JuTDm77fvbM8VfEQdmSMqcImWeeRbHwZjBjIFki/VaMK2BhFi7oUUZeM5bqw==}
+
+  marked@16.4.1:
+    resolution: {integrity: sha512-ntROs7RaN3EvWfy3EZi14H4YxmT6A5YvywfhO+0pm+cH/dnSQRmdAmoFIc3B9aiwTehyk7pESH4ofyBY+V5hZg==}
+    engines: {node: '>= 20'}
+    hasBin: true
 
   math-intrinsics@1.1.0:
     resolution: {integrity: sha512-/IXtbwEk5HTPyEwyKX6hGkYXxM9nbj64B+ilVJnC/R6B0pH5G4V3b0pVbL7DBj4tkhBAppbQUlf6F6Xl9LHu1g==}
@@ -8403,6 +8425,10 @@ snapshots:
     dependencies:
       '@tiptap/core': 3.8.0(@tiptap/pm@3.8.0)
 
+  '@tiptap/extension-text-align@3.8.0(@tiptap/core@3.8.0(@tiptap/pm@3.8.0))':
+    dependencies:
+      '@tiptap/core': 3.8.0(@tiptap/pm@3.8.0)
+
   '@tiptap/extension-text@3.8.0(@tiptap/core@3.8.0(@tiptap/pm@3.8.0))':
     dependencies:
       '@tiptap/core': 3.8.0(@tiptap/pm@3.8.0)
@@ -8415,6 +8441,12 @@ snapshots:
     dependencies:
       '@tiptap/core': 3.8.0(@tiptap/pm@3.8.0)
       '@tiptap/pm': 3.8.0
+
+  '@tiptap/markdown@3.8.0(@tiptap/core@3.8.0(@tiptap/pm@3.8.0))(@tiptap/pm@3.8.0)':
+    dependencies:
+      '@tiptap/core': 3.8.0(@tiptap/pm@3.8.0)
+      '@tiptap/pm': 3.8.0
+      marked: 16.4.1
 
   '@tiptap/pm@3.8.0':
     dependencies:
@@ -10727,6 +10759,8 @@ snapshots:
       repeat-string: 1.6.1
 
   markdown-table@3.0.4: {}
+
+  marked@16.4.1: {}
 
   math-intrinsics@1.1.0: {}
 

@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Layout from '@theme/Layout';
 import MarkdownEditor from '../../components/CMS/MarkdownEditor';
 import { getGitHubService } from '../../components/CMS/GitHubService';
+import {
+  decodeBase64UTF8,
+  parseFrontmatter,
+  buildFrontmatter,
+  isPathAllowed,
+  validateFileName,
+  REPO_CONFIG,
+} from '../../components/CMS/utils';
 import { useHistory, useLocation } from '@docusaurus/router';
 import './editor.css';
 
@@ -31,9 +39,6 @@ interface SubmittedPR {
   timestamp: number;
 }
 
-const REPO_OWNER = 'tgilabs';
-const REPO_NAME = 'wikipedia';
-
 export default function Editor() {
   const history = useHistory();
   const location = useLocation();
@@ -42,7 +47,6 @@ export default function Editor() {
   const [isSaving, setIsSaving] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [newFilePath, setNewFilePath] = useState('');
-  const [newFileFolder, setNewFileFolder] = useState('docs/');
 
   useEffect(() => {
     // Check if user is logged in
@@ -59,9 +63,15 @@ export default function Editor() {
     const filePath = params.get('file');
 
     if (filePath) {
+      // Validate that the file is in the allowed folder
+      if (!isPathAllowed(filePath)) {
+        alert('❌ ניתן לערוך רק קבצים בתיקיית Community');
+        history.push('/dashboard');
+        return;
+      }
       loadFile(filePath);
     } else {
-      // Creating a new file
+      // Creating a new file - default to community folder
       setEditingFile({
         path: '',
         originalContent: '',
@@ -79,7 +89,7 @@ export default function Editor() {
     setIsLoading(true);
     try {
       const response = await fetch(
-        `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${filePath}?ref=Production`
+        `https://api.github.com/repos/${REPO_CONFIG.owner}/${REPO_CONFIG.name}/contents/${filePath}?ref=${REPO_CONFIG.branch}`
       );
 
       if (!response.ok) {
@@ -87,38 +97,15 @@ export default function Editor() {
       }
 
       const data = await response.json();
-      const content = atob(data.content);
+      const content = decodeBase64UTF8(data.content);
 
-      // Parse frontmatter
-      const frontmatterRegex = /^---\n([\s\S]*?)\n---\n([\s\S]*)$/;
-      const match = content.match(frontmatterRegex);
-
-      let metadata = {};
-      let bodyContent = content;
-
-      if (match) {
-        const frontmatter = match[1];
-        bodyContent = match[2];
-
-        frontmatter.split('\n').forEach(line => {
-          const [key, ...valueParts] = line.split(':');
-          if (key && valueParts.length > 0) {
-            const value = valueParts.join(':').trim();
-            const trimmedKey = key.trim();
-            
-            if (trimmedKey === 'title') {
-              metadata[trimmedKey] = value.replace(/['"]/g, '');
-            } else if (trimmedKey === 'sidebar_position') {
-              metadata[trimmedKey] = parseInt(value, 10);
-            }
-          }
-        });
-      }
+      // Use shared frontmatter parser
+      const { metadata, body } = parseFrontmatter(content);
 
       setEditingFile({
         path: filePath,
         originalContent: content,
-        currentContent: bodyContent,
+        currentContent: body,
         metadata,
       });
     } catch (error) {
@@ -167,31 +154,29 @@ export default function Editor() {
       if (!fileName.endsWith('.md')) {
         fileName += '.md';
       }
+
+      // Validate file name
+      if (!validateFileName(fileName)) {
+        alert('❌ שם קובץ לא חוקי. השתמש רק באותיות אנגליות, מספרים, מקף ומקף תחתון');
+        return;
+      }
       
-      finalPath = `${newFileFolder}${fileName}`;
+      // Only allow creation in community folder
+      finalPath = `${REPO_CONFIG.allowedPath}/${fileName}`;
+    }
+
+    // Double-check the path is allowed
+    if (!isPathAllowed(finalPath)) {
+      alert('❌ ניתן לערוך רק קבצים בתיקיית Community');
+      return;
     }
 
     setIsSaving(true);
 
     try {
-      // Reconstruct the file with frontmatter
-      let finalContent = '';
-      
-      if (Object.keys(editingFile.metadata).length > 0) {
-        finalContent = '---\n';
-        
-        if (editingFile.metadata.title) {
-          finalContent += `title: "${editingFile.metadata.title}"\n`;
-        }
-        
-        if (editingFile.metadata.sidebar_position !== undefined) {
-          finalContent += `sidebar_position: ${editingFile.metadata.sidebar_position}\n`;
-        }
-        
-        finalContent += '---\n\n';
-      }
-      
-      finalContent += editingFile.currentContent;
+      // Use shared frontmatter builder
+      const frontmatter = buildFrontmatter(editingFile.metadata);
+      const finalContent = frontmatter + editingFile.currentContent;
 
       const github = getGitHubService();
       const fileName = finalPath.split('/').pop() || 'file';
@@ -293,24 +278,10 @@ export default function Editor() {
           {!editingFile.path && (
             <div className="new-file-section">
               <h3>פרטי קובץ חדש</h3>
+              <p className="folder-info">
+                <i className="fas fa-info-circle"></i> הקובץ ייווצר בתיקייה: <strong>docs/community/</strong>
+              </p>
               <div className="new-file-fields">
-                <div className="field">
-                  <label>תיקייה:</label>
-                  <select 
-                    value={newFileFolder} 
-                    onChange={(e) => setNewFileFolder(e.target.value)}
-                  >
-                    <option value="docs/">docs/</option>
-                    <option value="docs/community/">docs/community/</option>
-                    <option value="docs/gaming/roblox/">docs/gaming/roblox/</option>
-                    <option value="docs/legal/discord/">docs/legal/discord/</option>
-                    <option value="docs/legal/perfume/">docs/legal/perfume/</option>
-                    <option value="docs/legal/roblox/">docs/legal/roblox/</option>
-                    <option value="docs/legal/website/">docs/legal/website/</option>
-                    <option value="docs/legal/workway/">docs/legal/workway/</option>
-                    <option value="docs/platforms/workway/">docs/platforms/workway/</option>
-                  </select>
-                </div>
                 <div className="field">
                   <label>שם קובץ:</label>
                   <input
@@ -319,6 +290,7 @@ export default function Editor() {
                     onChange={(e) => setNewFilePath(e.target.value)}
                     placeholder="my-page.md"
                   />
+                  <small>השתמש רק באותיות אנגליות, מספרים, מקף (-) ומקף תחתון (_)</small>
                 </div>
               </div>
             </div>
